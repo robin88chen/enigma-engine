@@ -1,10 +1,60 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35514.174 d17.12
+VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Math", "Math", "{1D3A1286-C66B-4E6E-9C5C-05C094675D13}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math.Shared", "Math\Math.Shared\Math.Shared.vcxitems", "{B4BAF899-23C4-4C20-BC18-CB54BBA879A2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math.Win", "Math\Math.Win\Math.Win.vcxproj", "{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math.Android", "Math\Math.Android\Math.Android.vcxproj", "{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}.Debug|ARM64.ActiveCfg = Debug|x64
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}.Debug|x64.ActiveCfg = Debug|x64
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}.Debug|x64.Build.0 = Debug|x64
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}.Debug|x86.ActiveCfg = Debug|Win32
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}.Debug|x86.Build.0 = Debug|Win32
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}.Release|ARM64.ActiveCfg = Release|x64
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}.Release|x64.ActiveCfg = Release|x64
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}.Release|x64.Build.0 = Release|x64
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}.Release|x86.ActiveCfg = Release|Win32
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92}.Release|x86.Build.0 = Release|Win32
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Debug|ARM64.Build.0 = Debug|ARM64
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Debug|x64.ActiveCfg = Debug|x64
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Debug|x64.Build.0 = Debug|x64
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Debug|x86.ActiveCfg = Debug|x86
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Debug|x86.Build.0 = Debug|x86
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Release|ARM64.ActiveCfg = Release|ARM64
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Release|ARM64.Build.0 = Release|ARM64
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Release|x64.ActiveCfg = Release|x64
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Release|x64.Build.0 = Release|x64
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Release|x86.ActiveCfg = Release|x86
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B4BAF899-23C4-4C20-BC18-CB54BBA879A2} = {1D3A1286-C66B-4E6E-9C5C-05C094675D13}
+		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92} = {1D3A1286-C66B-4E6E-9C5C-05C094675D13}
+		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520} = {1D3A1286-C66B-4E6E-9C5C-05C094675D13}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Math\Math.Shared\Math.Shared.vcxitems*{b4baf899-23c4-4c20-bc18-cb54bba879a2}*SharedItemsImports = 9
+		Math\Math.Shared\Math.Shared.vcxitems*{daed55d5-ba8e-4f8a-b390-d42fbdf1f520}*SharedItemsImports = 4
+		Math\Math.Shared\Math.Shared.vcxitems*{e06114ad-3d80-49d7-acdc-c44ea83e9d92}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal
