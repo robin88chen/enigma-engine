@@ -21,9 +21,9 @@ namespace Math
 
         operator const float* () const;
         operator float* ();
-        float x() const;
+        [[nodiscard]] float x() const;
         void x(float x);
-        float y() const;
+        [[nodiscard]] float y() const;
         void y(float y);
 
         bool operator== (const Vector2& v) const;  ///< 浮點數值比較
@@ -40,20 +40,20 @@ namespace Math
         Vector2& operator*= (float scalar);
         Vector2& operator/= (float scalar);
 
-        float length() const;
-        float squaredLength() const;
-        float dot(const Vector2& v) const;
-        Vector2 normalize() const;
+        [[nodiscard]] float length() const;
+        [[nodiscard]] float squaredLength() const;
+        [[nodiscard]] float dot(const Vector2& v) const;
+        [[nodiscard]] Vector2 normalize() const;
         void normalizeSelf();
 
         /// returns (y,-x)
-        Vector2 perp() const;
+        [[nodiscard]] Vector2 perp() const;
 
         /// returns (y,-x)/sqrt(x*x+y*y)
-        Vector2 unitPerp() const;
+        [[nodiscard]] Vector2 unitPerp() const;
 
         /// returns dotPerp((x,y),(V.x,V.y)) = x*V.y - y*V.x
-        float dotPerp(const Vector2& v) const;
+        [[nodiscard]] float dotPerp(const Vector2& v) const;
 
         static const Vector2 ZERO;
         static const Vector2 UNIT_X;

@@ -49,12 +49,12 @@ void Vector2::y(float y)
 
 bool Vector2::operator== (const Vector2& v) const
 {
-    return isEqual(m_x, v.m_x) && isEqual(m_y, v.m_y);
+    return FloatCompare::isEqual(m_x, v.m_x) && FloatCompare::isEqual(m_y, v.m_y);
 }
 
 bool Vector2::operator!= (const Vector2& v) const
 {
-    return !isEqual(m_x, v.m_x) || !isEqual(m_y, v.m_y);
+    return !FloatCompare::isEqual(m_x, v.m_x) || !FloatCompare::isEqual(m_y, v.m_y);
 }
 
 Vector2 Vector2::operator+ (const Vector2& v) const
@@ -74,7 +74,7 @@ Vector2 Vector2::operator* (float scalar) const
 
 Vector2 Vector2::operator/ (float scalar) const
 {
-    assert(!isEqual(scalar, 0.0f));
+    assert(!FloatCompare::isEqual(scalar, 0.0f));
     return Vector2{ m_x / scalar, m_y / scalar };
 }
 
@@ -106,7 +106,7 @@ Vector2& Vector2::operator*= (float scalar)
 
 Vector2& Vector2::operator/= (float scalar)
 {
-    assert(!isEqual(scalar, 0.0f));
+    assert(!FloatCompare::isEqual(scalar, 0.0f));
     m_x /= scalar;
     m_y /= scalar;
     return *this;
@@ -114,7 +114,7 @@ Vector2& Vector2::operator/= (float scalar)
 
 float Vector2::length() const
 {
-    return sqrt(m_x * m_x + m_y * m_y);
+    return std::sqrt(m_x * m_x + m_y * m_y);
 }
 
 float Vector2::squaredLength() const
@@ -130,14 +130,14 @@ float Vector2::dot(const Vector2& v) const
 Vector2 Vector2::normalize() const
 {
     const float len = length();
-    assert(!isEqual(len, 0.0f));
+    assert(!FloatCompare::isEqual(len, 0.0f));
     return Vector2{ m_x / len, m_y / len };
 }
 
 void Vector2::normalizeSelf()
 {
     const float len = length();
-    assert(!isEqual(len, 0.0f));
+    assert(!FloatCompare::isEqual(len, 0.0f));
     m_x /= len;
     m_y /= len;
 }
@@ -150,7 +150,7 @@ Vector2 Vector2::perp() const
 Vector2 Vector2::unitPerp() const
 {
     const float len = length();
-    assert(!isEqual(len, 0.0f));
+    assert(!FloatCompare::isEqual(len, 0.0f));
     return Vector2{ m_y / len, -m_x / len };
 }
 
