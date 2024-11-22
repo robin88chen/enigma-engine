@@ -1,0 +1,46 @@
+﻿# This workflow executes several linters on changed files based on languages used in your code base whenever
+# you push a code or open a pull request.
+#
+# You can adjust the behavior by modifying this file.
+# For more information, see:
+# https://github.com/github/super-linter
+name: Clang Tidy Analyze 🎓
+
+on:
+  #push:
+  #  branches: [ "main" ]
+  #  paths: ['**.c', '**.cpp', '**.h', '**.hpp', '**.cxx', '**.hxx', '**.cc', '**.hh', '**CMakeLists.txt', '**.cmake']
+  pull_request:
+    branches: [ "main" ]
+    paths: ['**.c', '**.cpp', '**.h', '**.hpp', '**.cxx', '**.hxx', '**.cc', '**.hh', '**CMakeLists.txt', '**.cmake']
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  run-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+
+      - uses: cpp-linter/cpp-linter-action@v2
+        id: linter
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          style: ''  # Use .clang-format config file
+          tidy-checks: '' # Use .clang-tidy config file
+          extra-args: '-std=c++17 -I./Enigma -I./ShareLib/zlib/include -I./ShareLib/rapidjson/include -I./ShareLib/freetype/include -I./ShareLib/png/include -I./ShareLib/nanagui/include'
+          verbosity: info
+          tidy-review: true
+          passive-reviews: true
+          version: 18
+          # only 'update' a single comment in a pull request thread.
+          #thread-comments: ${{ github.event_name == 'pull_request' && 'update' }}
+
+      - name: Fail fast?!
+        if: steps.linter.outputs.checks-failed > 0
+        run: exit 1
