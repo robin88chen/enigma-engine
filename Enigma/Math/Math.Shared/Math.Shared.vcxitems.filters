@@ -7,6 +7,9 @@
     <Filter Include="Math">
       <UniqueIdentifier>{3a1474ef-540e-4b8f-a6c8-6e1b2d33c6b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Angle">
+      <UniqueIdentifier>{4f6a364e-f0a5-4a24-9eff-c69fbc03d64f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector2.cpp">
@@ -14,6 +17,18 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\MathGlobal.cpp">
       <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector3.cpp">
+      <Filter>Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector4.cpp">
+      <Filter>Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Radian.cpp">
+      <Filter>Angle</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Degree.cpp">
+      <Filter>Angle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -25,6 +40,18 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\MathGlobal.hpp">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector3.hpp">
+      <Filter>Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector4.hpp">
+      <Filter>Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Radian.hpp">
+      <Filter>Angle</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Degree.hpp">
+      <Filter>Angle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
