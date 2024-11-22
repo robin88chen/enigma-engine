@@ -142,19 +142,19 @@ void Vector2::normalizeSelf()
     m_y /= len;
 }
 
-Vector2 Vector2::perp() const
+Vector2 Vector2::perpendicular() const
 {
     return Vector2{ m_y, -m_x };
 }
 
-Vector2 Vector2::unitPerp() const
+Vector2 Vector2::unitPerpendicular() const
 {
     const float len = length();
     assert(!FloatCompare::isEqual(len, 0.0f));
     return Vector2{ m_y / len, -m_x / len };
 }
 
-float Vector2::dotPerp(const Vector2& v) const
+float Vector2::dotPerpendicular(const Vector2& v) const
 {
     return m_x * v.m_y - m_y * v.m_x;
 }
