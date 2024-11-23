@@ -47,13 +47,13 @@ namespace Math
         void normalizeSelf();
 
         /// returns (y,-x)
-        [[nodiscard]] Vector2 perp() const;
+        [[nodiscard]] Vector2 perpendicular() const;
 
         /// returns (y,-x)/sqrt(x*x+y*y)
-        [[nodiscard]] Vector2 unitPerp() const;
+        [[nodiscard]] Vector2 unitPerpendicular() const;
 
-        /// returns dotPerp((x,y),(V.x,V.y)) = x*V.y - y*V.x
-        [[nodiscard]] float dotPerp(const Vector2& v) const;
+        /// returns dotPerpendicular((x,y),(V.x,V.y)) = x*V.y - y*V.x
+        [[nodiscard]] float dotPerpendicular(const Vector2& v) const;
 
         static const Vector2 ZERO;
         static const Vector2 UNIT_X;

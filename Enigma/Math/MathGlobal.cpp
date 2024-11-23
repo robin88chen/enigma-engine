@@ -28,3 +28,5 @@ bool FloatCompare::isEqual(float l, float r)
         // unless the result is subnormal
         || (diff < std::numeric_limits<float>::min());
 }
+
+const float Math::Constants::PI = 4.0f * std::atanf(1.0f);

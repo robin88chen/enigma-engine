@@ -23,6 +23,11 @@ namespace Math
     private:
         static float m_epsilonUlp;
     };
+    class Constants
+    {
+    public:
+        static const float PI;
+    };
 }
 
 #endif // MATH_GLOBAL_HPP
