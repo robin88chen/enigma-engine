@@ -22,13 +22,13 @@ unsigned int rgbaFloat2Int(float r, float g, float b, float a)
 std::array<float, 4> rgbaInt2Float(unsigned int argb)
 {
     unsigned char c = argb & BYTE_MASK;
-    float b = static_cast<float>(c) / FULL_BYTE_F;
+    const float b = static_cast<float>(c) / FULL_BYTE_F;
     c = (argb >> BYTE_SHIFT) & BYTE_MASK;
-    float g = static_cast<float>(c) / FULL_BYTE_F;
+    const float g = static_cast<float>(c) / FULL_BYTE_F;
     c = (argb >> SHORT_SHIFT) & BYTE_MASK;
-    float r = static_cast<float>(c) / FULL_BYTE_F;
+    const float r = static_cast<float>(c) / FULL_BYTE_F;
     c = (argb >> THREE_BYTE_SHIFT) & BYTE_MASK;
-    float a = static_cast<float>(c) / FULL_BYTE_F;
+    const float a = static_cast<float>(c) / FULL_BYTE_F;
     return { r, g, b, a };
 }
 
@@ -139,22 +139,22 @@ bool ColorRGBA::operator>=(const ColorRGBA& c) const
 
 ColorRGBA ColorRGBA::operator+(const ColorRGBA& c) const
 {
-    return ColorRGBA(m_tuple[0] + c.m_tuple[0], m_tuple[1] + c.m_tuple[1], m_tuple[2] + c.m_tuple[2], m_tuple[3] + c.m_tuple[3]);
+    return { m_tuple[0] + c.m_tuple[0], m_tuple[1] + c.m_tuple[1], m_tuple[2] + c.m_tuple[2], m_tuple[3] + c.m_tuple[3] };
 }
 
 ColorRGBA ColorRGBA::operator-(const ColorRGBA& c) const
 {
-    return ColorRGBA(m_tuple[0] - c.m_tuple[0], m_tuple[1] - c.m_tuple[1], m_tuple[2] - c.m_tuple[2], m_tuple[3] - c.m_tuple[3]);
+    return { m_tuple[0] - c.m_tuple[0], m_tuple[1] - c.m_tuple[1], m_tuple[2] - c.m_tuple[2], m_tuple[3] - c.m_tuple[3] };
 }
 
 ColorRGBA ColorRGBA::operator*(const ColorRGBA& c) const
 {
-    return ColorRGBA(m_tuple[0] * c.m_tuple[0], m_tuple[1] * c.m_tuple[1], m_tuple[2] * c.m_tuple[2], m_tuple[3] * c.m_tuple[3]);
+    return { m_tuple[0] * c.m_tuple[0], m_tuple[1] * c.m_tuple[1], m_tuple[2] * c.m_tuple[2], m_tuple[3] * c.m_tuple[3] };
 }
 
 ColorRGBA ColorRGBA::operator*(float scalar) const
 {
-    return ColorRGBA(m_tuple[0] * scalar, m_tuple[1] * scalar, m_tuple[2] * scalar, m_tuple[3] * scalar);
+    return { m_tuple[0] * scalar, m_tuple[1] * scalar, m_tuple[2] * scalar, m_tuple[3] * scalar };
 }
 
 ColorRGBA& ColorRGBA::operator+=(const ColorRGBA& c)
@@ -199,13 +199,13 @@ ColorRGBA& ColorRGBA::operator*=(float scalar)
 
 ColorRGBA ColorRGBA::clamp() const
 {
-    return ColorRGBA(std::clamp(m_tuple[0], 0.0f, 1.0f), std::clamp(m_tuple[1], 0.0f, 1.0f), std::clamp(m_tuple[2], 0.0f, 1.0f), std::clamp(m_tuple[3], 0.0f, 1.0f));
+    return { std::clamp(m_tuple[0], 0.0f, 1.0f), std::clamp(m_tuple[1], 0.0f, 1.0f), std::clamp(m_tuple[2], 0.0f, 1.0f), std::clamp(m_tuple[3], 0.0f, 1.0f) };
 }
 
 ColorRGBA ColorRGBA::scaleByMax() const
 {
     const float max_channel = std::max({ m_tuple[0], m_tuple[1], m_tuple[2], m_tuple[3] });
-    return ColorRGBA(m_tuple[0] / max_channel, m_tuple[1] / max_channel, m_tuple[2] / max_channel, m_tuple[3] / max_channel);
+    return { m_tuple[0] / max_channel, m_tuple[1] / max_channel, m_tuple[2] / max_channel, m_tuple[3] / max_channel };
 }
 
 const ColorRGBA ColorRGBA::BLACK(0.0f, 0.0f, 0.0f, 1.0f);

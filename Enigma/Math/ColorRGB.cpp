@@ -20,11 +20,11 @@ unsigned int rgbFloat2Int(float r, float g, float b)
 std::array<float, 3> rgbInt2Float(unsigned int rgb)
 {
     unsigned char c = rgb & BYTE_MASK;
-    float b = static_cast<float>(c) / FULL_BYTE_F;
+    const float b = static_cast<float>(c) / FULL_BYTE_F;
     c = (rgb >> BYTE_SHIFT) & BYTE_MASK;
-    float g = static_cast<float>(c) / FULL_BYTE_F;
+    const float g = static_cast<float>(c) / FULL_BYTE_F;
     c = (rgb >> SHORT_SHIFT) & BYTE_MASK;
-    float r = static_cast<float>(c) / FULL_BYTE_F;
+    const float r = static_cast<float>(c) / FULL_BYTE_F;
     return { r, g, b };
 }
 
@@ -124,22 +124,22 @@ bool ColorRGB::operator>=(const ColorRGB& c) const
 
 ColorRGB ColorRGB::operator+(const ColorRGB& c) const
 {
-    return ColorRGB(m_tuple[0] + c.m_tuple[0], m_tuple[1] + c.m_tuple[1], m_tuple[2] + c.m_tuple[2]);
+    return { m_tuple[0] + c.m_tuple[0], m_tuple[1] + c.m_tuple[1], m_tuple[2] + c.m_tuple[2] };
 }
 
 ColorRGB ColorRGB::operator-(const ColorRGB& c) const
 {
-    return ColorRGB(m_tuple[0] - c.m_tuple[0], m_tuple[1] - c.m_tuple[1], m_tuple[2] - c.m_tuple[2]);
+    return { m_tuple[0] - c.m_tuple[0], m_tuple[1] - c.m_tuple[1], m_tuple[2] - c.m_tuple[2] };
 }
 
 ColorRGB ColorRGB::operator*(const ColorRGB& c) const
 {
-    return ColorRGB(m_tuple[0] * c.m_tuple[0], m_tuple[1] * c.m_tuple[1], m_tuple[2] * c.m_tuple[2]);
+    return { m_tuple[0] * c.m_tuple[0], m_tuple[1] * c.m_tuple[1], m_tuple[2] * c.m_tuple[2] };
 }
 
 ColorRGB ColorRGB::operator*(float scalar) const
 {
-    return ColorRGB(m_tuple[0] * scalar, m_tuple[1] * scalar, m_tuple[2] * scalar);
+    return { m_tuple[0] * scalar, m_tuple[1] * scalar, m_tuple[2] * scalar };
 }
 
 ColorRGB& ColorRGB::operator+=(const ColorRGB& c)
@@ -180,13 +180,13 @@ ColorRGB& ColorRGB::operator*=(float scalar)
 
 ColorRGB ColorRGB::clamp() const
 {
-    return ColorRGB(std::clamp(m_tuple[0], 0.0f, 1.0f), std::clamp(m_tuple[1], 0.0f, 1.0f), std::clamp(m_tuple[2], 0.0f, 1.0f));
+    return { std::clamp(m_tuple[0], 0.0f, 1.0f), std::clamp(m_tuple[1], 0.0f, 1.0f), std::clamp(m_tuple[2], 0.0f, 1.0f) };
 }
 
 ColorRGB ColorRGB::scaleByMax() const
 {
     const float max = std::max(m_tuple[0], std::max(m_tuple[1], m_tuple[2]));
-    return ColorRGB(m_tuple[0] / max, m_tuple[1] / max, m_tuple[2] / max);
+    return { m_tuple[0] / max, m_tuple[1] / max, m_tuple[2] / max };
 }
 
 const ColorRGB ColorRGB::BLACK(0x000000);

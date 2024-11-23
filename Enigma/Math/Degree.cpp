@@ -5,7 +5,6 @@
 
 using namespace Math;
 
-
 Degree Degree::operator+(const Degree& other) const
 {
     return Degree{ m_degree + other.m_degree };
