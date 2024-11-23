@@ -10,6 +10,9 @@
     <Filter Include="Angle">
       <UniqueIdentifier>{4f6a364e-f0a5-4a24-9eff-c69fbc03d64f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Color">
+      <UniqueIdentifier>{a4f498c9-6efa-4c26-90dc-156592e7d330}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector2.cpp">
@@ -29,6 +32,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Degree.cpp">
       <Filter>Angle</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\ColorRGB.cpp">
+      <Filter>Color</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\ColorRGBA.cpp">
+      <Filter>Color</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +61,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Degree.hpp">
       <Filter>Angle</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\ColorRGB.hpp">
+      <Filter>Color</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\ColorRGBA.hpp">
+      <Filter>Color</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
