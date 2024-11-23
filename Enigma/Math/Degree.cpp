@@ -83,6 +83,6 @@ bool Degree::operator>=(const Degree& other) const
 
 Radian Degree::radian() const
 {
-    static const float DEG_TO_RAD = Constants::PI / 180.0f;
-    return Radian{ m_degree * DEG_TO_RAD };
+    static const float deg_to_rad = Constants::PI / 180.0f;
+    return Radian{ m_degree * deg_to_rad };
 }
