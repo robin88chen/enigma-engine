@@ -7,12 +7,12 @@
  *********************************************************************/
 #ifndef MATRIX2_HPP
 #define MATRIX2_HPP
-#include "EigenDecompose.hpp"
 #include <array>
 
 namespace Math
 {
     class Vector2;
+    class Radian;
 
     /** Math Lib Matrix2
       @remarks
@@ -38,15 +38,15 @@ namespace Math
         Matrix2(float m00, float m01, float m10, float m11);
         /** Create a matrix from an array of numbers.  The input array is \n
            entry[0..3] = {m00,m01,m10,m11} */
-        Matrix2(const std::array<float, 4>& m);
+        explicit Matrix2(const std::array<float, 4>& m);
 
         static Matrix2 makeZero();
         static Matrix2 makeIdentity();
         static Matrix2 makeDiagonal(float m00, float m11);
-        static Matrix2 fromAngle(float angle);
+        static Matrix2 fromAngle(const Radian& angle);
 
-        operator const float* () const;
-        operator float* ();
+        explicit operator const float* () const;
+        explicit operator float* ();
         const float* operator[] (unsigned row) const;
         float* operator[] (unsigned row);
         float operator() (unsigned row, unsigned col) const;
@@ -78,31 +78,13 @@ namespace Math
         [[nodiscard]] Matrix2 adjoint() const;
         [[nodiscard]] float determinant() const;
         /** @remark The matrix must be a rotation for these functions to be valid. */
-        [[nodiscard]] float rotationAngle() const;
-        //@}
-
-        /** Eigen Decomposition
-        @remark  The matrix must be symmetric.  Factor M = R * D * R^T where \n
-         R = [u0|u1] is a rotation matrix with columns u0 and u1 and \n
-         D = diag(d0,d1) is a diagonal matrix whose diagonal entries are d0 and
-         d1. \n The eigenvector u[i] corresponds to eigenvector d[i].  The
-         eigenvalues are ordered as d0 <= d1. */
-        [[nodiscard]] EigenDecompose<Matrix2> eigenDecomposition() const;
+        [[nodiscard]] Radian rotationAngle() const;
 
         static const Matrix2 ZERO;
         static const Matrix2 IDENTITY;
 
     private:
-        /** data members */
-        union
-        {
-            struct
-            {
-                float        m_11, m_12;
-                float        m_21, m_22;
-            };
-            float m_entry[2][2];
-        };
+        float m_entry[2][2];
     };
 
     Matrix2 operator* (float scalar, const Matrix2& mx);

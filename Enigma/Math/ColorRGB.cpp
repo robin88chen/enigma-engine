@@ -9,7 +9,7 @@ constexpr auto BYTE_SHIFT = 8;
 constexpr auto SHORT_SHIFT = 16;
 constexpr auto BYTE_MASK = 0xff;
 
-unsigned int rgbFloat2Int(float r, float g, float b)
+static unsigned int rgbFloat2Int(float r, float g, float b)
 {
     unsigned int rgb = static_cast<unsigned char>(r * FULL_BYTE);
     rgb = (rgb << BYTE_SHIFT) + static_cast<unsigned char>(g * FULL_BYTE);
@@ -17,7 +17,7 @@ unsigned int rgbFloat2Int(float r, float g, float b)
     return rgb;
 }
 
-std::array<float, 3> rgbInt2Float(unsigned int rgb)
+static std::array<float, 3> rgbInt2Float(unsigned int rgb)
 {
     unsigned char c = rgb & BYTE_MASK;
     const float b = static_cast<float>(c) / FULL_BYTE_F;
@@ -185,7 +185,7 @@ ColorRGB ColorRGB::clamp() const
 
 ColorRGB ColorRGB::scaleByMax() const
 {
-    const float max = std::max(m_tuple[0], std::max(m_tuple[1], m_tuple[2]));
+    const float max = std::max({ m_tuple[0], m_tuple[1], m_tuple[2] });
     return { m_tuple[0] / max, m_tuple[1] / max, m_tuple[2] / max };
 }
 

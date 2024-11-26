@@ -27,6 +27,7 @@ namespace Math
     {
     public:
         static const float PI;
+        static const float HALF_PI;
     };
 }
 

@@ -30,3 +30,4 @@ bool FloatCompare::isEqual(float l, float r)
 }
 
 const float Math::Constants::PI = 4.0f * std::atanf(1.0f);
+const float Math::Constants::HALF_PI = 0.5f * Constants::PI;

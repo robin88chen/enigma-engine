@@ -37,6 +37,7 @@ namespace Math
         [[nodiscard]] float value() const { return m_degree; }
         [[nodiscard]] Radian radian() const;
 
+        static const Degree ZERO;
     private:
         float m_degree;
     };

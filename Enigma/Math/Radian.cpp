@@ -86,3 +86,13 @@ Degree Radian::degree() const
     static const float rad_to_deg = 180.0f / Constants::PI;
     return Degree{ m_radian * rad_to_deg };
 }
+
+const Radian Radian::ZERO{ 0.0f };
+
+namespace Math
+{
+    Radian operator*(float scale, const Radian& radian)
+    {
+        return Radian{ scale * radian.value() };
+    }
+}

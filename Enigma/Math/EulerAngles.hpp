@@ -1,20 +1,23 @@
 ﻿/*********************************************************************
- * \file   EigenDecompose.hpp
+ * \file   EulerAngles.hpp
  * \brief
  *
  * \author Lancelot 'Robin' Chen
  * \date   November 2024
  *********************************************************************/
-#ifndef EIGEN_DECOMPOSE_HPP
-#define EIGEN_DECOMPOSE_HPP
+#ifndef EULER_ANGLES_HPP
+#define EULER_ANGLES_HPP
+
+#include "Radian.hpp"
 
 namespace Math
 {
-    template<class T> struct EigenDecompose
+    struct EulerAngles
     {
-        T m_rot;
-        T m_diag;
+        Radian m_x;
+        Radian m_y;
+        Radian m_z;
     };
 }
 
-#endif // EIGEN_DECOMPOSE_HPP
+#endif // EULER_ANGLES_HPP
