@@ -80,27 +80,26 @@ Matrix3::operator float* ()
     return &m_entry[0][0];
 }
 
-const float* Matrix3::operator[] (int row) const
+const float* Matrix3::operator[] (unsigned row) const
 {
+    assert(row <= 2);
     return m_entry[row];
 }
 
-float* Matrix3::operator[] (int row)
+float* Matrix3::operator[] (unsigned row)
 {
+    assert(row <= 2);
     return m_entry[row];
 }
 
-float Matrix3::operator() (int row, int col) const
+float Matrix3::operator() (unsigned row, unsigned col) const
 {
+    assert(row <= 2);
+    assert(col <= 2);
     return m_entry[row][col];
 }
 
-float& Matrix3::operator() (int row, int col)
-{
-    return m_entry[row][col];
-}
-
-void Matrix3::setRow(int row, const Vector3& v)
+void Matrix3::setRow(unsigned row, const Vector3& v)
 {
     assert(row <= 2);
     m_entry[row][0] = v.x();
@@ -108,13 +107,13 @@ void Matrix3::setRow(int row, const Vector3& v)
     m_entry[row][2] = v.z();
 }
 
-Vector3 Matrix3::getRow(int row) const
+Vector3 Matrix3::getRow(unsigned row) const
 {
     assert(row <= 2);
     return { m_entry[row][0], m_entry[row][1], m_entry[row][2] };
 }
 
-void Matrix3::setColumn(int col, const Vector3& v)
+void Matrix3::setColumn(unsigned col, const Vector3& v)
 {
     assert(col <= 2);
     m_entry[0][col] = v.x();
@@ -122,7 +121,7 @@ void Matrix3::setColumn(int col, const Vector3& v)
     m_entry[2][col] = v.z();
 }
 
-Vector3 Matrix3::getColumn(int col) const
+Vector3 Matrix3::getColumn(unsigned col) const
 {
     assert(col <= 2);
     return { m_entry[0][col], m_entry[1][col], m_entry[2][col] };
@@ -144,7 +143,9 @@ Matrix3& Matrix3::operator= (const Matrix4& mx)
 
 bool Matrix3::operator== (const Matrix3& mx) const
 {
-    return ((FloatCompare::isEqual(m_entry[0][0], mx.m_entry[0][0])) && (FloatCompare::isEqual(m_entry[0][1], mx.m_entry[0][1])) && (FloatCompare::isEqual(m_entry[0][2], mx.m_entry[0][2])) && (FloatCompare::isEqual(m_entry[1][0], mx.m_entry[1][0])) && (FloatCompare::isEqual(m_entry[1][1], mx.m_entry[1][1])) && (FloatCompare::isEqual(m_entry[1][2], mx.m_entry[1][2])) && (FloatCompare::isEqual(m_entry[2][0], mx.m_entry[2][0])) && (FloatCompare::isEqual(m_entry[2][1], mx.m_entry[2][1])) && (FloatCompare::isEqual(m_entry[2][2], mx.m_entry[2][2])));
+    return ((FloatCompare::isEqual(m_entry[0][0], mx.m_entry[0][0])) && (FloatCompare::isEqual(m_entry[0][1], mx.m_entry[0][1])) && (FloatCompare::isEqual(m_entry[0][2], mx.m_entry[0][2]))
+        && (FloatCompare::isEqual(m_entry[1][0], mx.m_entry[1][0])) && (FloatCompare::isEqual(m_entry[1][1], mx.m_entry[1][1])) && (FloatCompare::isEqual(m_entry[1][2], mx.m_entry[1][2]))
+        && (FloatCompare::isEqual(m_entry[2][0], mx.m_entry[2][0])) && (FloatCompare::isEqual(m_entry[2][1], mx.m_entry[2][1])) && (FloatCompare::isEqual(m_entry[2][2], mx.m_entry[2][2])));
 }
 
 bool Matrix3::operator!= (const Matrix3& mx) const
@@ -409,186 +410,6 @@ std::tuple<Vector3, Radian> Matrix3::toAxisAngle() const
 
 }
 
-Matrix3 Matrix3::fromEulerAnglesXyz(const EulerAngles& angles)
-{
-    return rotationX(angles.m_x) * (rotationY(angles.m_y) * rotationZ(angles.m_z));
-}
-
-Matrix3 Matrix3::fromEulerAnglesXzy(const EulerAngles& angles)
-{
-    return rotationX(angles.m_x) * (rotationZ(angles.m_z) * rotationY(angles.m_y));
-}
-
-Matrix3 Matrix3::fromEulerAnglesYxz(const EulerAngles& angles)
-{
-    return rotationY(angles.m_y) * (rotationX(angles.m_x) * rotationZ(angles.m_z));
-}
-
-Matrix3 Matrix3::fromEulerAnglesYzx(const EulerAngles& angles)
-{
-    return rotationY(angles.m_y) * (rotationZ(angles.m_z) * rotationX(angles.m_x));
-}
-
-Matrix3 Matrix3::fromEulerAnglesZxy(const EulerAngles& angles)
-{
-    return rotationZ(angles.m_z) * (rotationX(angles.m_x) * rotationY(angles.m_y));
-}
-
-Matrix3 Matrix3::fromEulerAnglesZyx(const EulerAngles& angles)
-{
-    return rotationZ(angles.m_z) * (rotationY(angles.m_y) * rotationX(angles.m_x));
-}
-
-EulerAngles Matrix3::toEulerAnglesXyz() const
-{
-    // rot =  cy*cz          -cy*sz           sy
-    //        cz*sx*sy+cx*sz  cx*cz-sx*sy*sz -cy*sx
-    //       -cx*cz*sy+sx*sz  cz*sx+cx*sy*sz  cx*cy
-    if (m_entry[0][2] < 1.0f)
-    {
-        if (m_entry[0][2] > -1.0f)
-        {
-            const float x_angle = std::atan2(-m_entry[1][2], m_entry[2][2]);
-            const float y_angle = std::asin(m_entry[0][2]);
-            const float z_angle = std::atan2(-m_entry[0][1], m_entry[0][0]);
-            return { Radian(x_angle), Radian(y_angle), Radian(z_angle) };
-        }
-        // WARNING.  Not unique.  XA - ZA = -atan2(r10,r11)
-        const float x_angle = -atan2(m_entry[1][0], m_entry[1][1]);
-        const float y_angle = -Constants::HALF_PI;
-        return { Radian(x_angle), Radian(y_angle), Radian::ZERO };
-    }
-    // WARNING.  Not unique.  XAngle + ZAngle = atan2(r10,r11)
-    const float x_angle = atan2(m_entry[1][0], m_entry[1][1]);
-    const float y_angle = Constants::HALF_PI;
-    return { Radian(x_angle), Radian(y_angle), Radian::ZERO };
-}
-
-EulerAngles Matrix3::toEulerAnglesXzy() const
-{
-    // rot =  cy*cz          -sz              cz*sy
-    //        sx*sy+cx*cy*sz cx*cz          -cy*sx+cx*sy*sz
-    //       -cx*sy+cy*sx*sz cz*sx           cx*cy+sx*sy*sz
-    if (m_entry[0][1] < 1.0f)
-    {
-        if (m_entry[0][1] > -1.0f)
-        {
-            const float x_angle = std::atan2(m_entry[2][1], m_entry[1][1]);
-            const float z_angle = std::asin(-m_entry[0][1]);
-            const float y_angle = std::atan2(m_entry[0][2], m_entry[0][0]);
-            return { Radian(x_angle), Radian(y_angle), Radian(z_angle) };
-        }
-        // WARNING.  Not unique.  XA - ZA = -atan2(r20,r22)
-        const float x_angle = -std::atan2(m_entry[2][0], m_entry[2][2]);
-        const float z_angle = Constants::HALF_PI;
-        return { Radian(x_angle), Radian::ZERO, Radian(z_angle) };
-    }
-    // WARNING.  Not unique.  XA + ZA = atan2(r20,r22)
-    const float x_angle = std::atan2(m_entry[2][0], m_entry[2][2]);
-    const float z_angle = -Constants::HALF_PI;
-    return { Radian(x_angle), Radian::ZERO, Radian(z_angle) };
-}
-
-EulerAngles Matrix3::toEulerAnglesYxz() const
-{
-    // rot =  cy*cz+sx*sy*sz  cz*sx*sy-cy*sz  cx*sy
-    //        cx*sz           cx*cz          -sx
-    //       -cz*sy+cy*sx*sz  cy*cz*sx+sy*sz  cx*cy
-    if (m_entry[1][2] < 1.0f)
-    {
-        if (m_entry[1][2] > -1.0f)
-        {
-            const float y_angle = std::atan2(m_entry[0][2], m_entry[2][2]);
-            const float x_angle = std::asin(-m_entry[1][2]);
-            const float z_angle = std::atan2(m_entry[1][0], m_entry[1][1]);
-            return { Radian(x_angle), Radian(y_angle), Radian(z_angle) };
-        }
-        // WARNING.  Not unique.  YA - ZA = atan2(r01,r00)
-        const float y_angle = std::atan2(m_entry[0][1], m_entry[0][0]);
-        const float x_angle = Constants::HALF_PI;
-        return { Radian(x_angle), Radian(y_angle), Radian::ZERO };
-    }
-    // WARNING.  Not unique.  YA + ZA = atan2(-r01,r00)
-    const float y_angle = std::atan2(-m_entry[0][1], m_entry[0][0]);
-    const float x_angle = -Constants::HALF_PI;
-    return { Radian(x_angle), Radian(y_angle), Radian::ZERO };
-}
-
-EulerAngles Matrix3::toEulerAnglesYzx() const
-{
-    // rot =  cy*cz           sx*sy-cx*cy*sz  cx*sy+cy*sx*sz
-    //        sz              cx*cz          -cz*sx
-    //       -cz*sy           cy*sx+cx*sy*sz  cx*cy-sx*sy*sz
-    if (m_entry[1][0] < 1.0f)
-    {
-        if (m_entry[1][0] > -1.0f)
-        {
-            const float y_angle = std::atan2(-m_entry[2][0], m_entry[0][0]);
-            const float z_angle = std::asin(m_entry[1][0]);
-            const float x_angle = std::atan2(-m_entry[1][2], m_entry[1][1]);
-            return { Radian(x_angle), Radian(y_angle), Radian(z_angle) };
-        }
-        // WARNING.  Not unique.  YA - XA = -atan2(r21,r22);
-        const float y_angle = -std::atan2(m_entry[2][1], m_entry[2][2]);
-        const float z_angle = -Constants::HALF_PI;
-        return { Radian::ZERO, Radian(y_angle), Radian(z_angle) };
-    }
-    // WARNING.  Not unique.  YA + XA = atan2(r21,r22)
-    const float y_angle = std::atan2(m_entry[2][1], m_entry[2][2]);
-    const float z_angle = Constants::HALF_PI;
-    return { Radian::ZERO, Radian(y_angle), Radian(z_angle) };
-}
-
-EulerAngles Matrix3::toEulerAnglesZxy() const
-{
-    // rot =  cy*cz-sx*sy*sz -cx*sz          cz*sy+cy*sx*sz
-    //        cz*sx*sy+cy*sz  cx*cz          -cy*cz*sx+sy*sz
-    //       -cx*sy           sx              cx*cy
-    if (m_entry[2][1] < 1.0f)
-    {
-        if (m_entry[2][1] > -1.0f)
-        {
-            const float z_angle = std::atan2(-m_entry[0][1], m_entry[1][1]);
-            const float x_angle = std::asin(m_entry[2][1]);
-            const float y_angle = std::atan2(-m_entry[2][0], m_entry[2][2]);
-            return { Radian(x_angle), Radian(y_angle), Radian(z_angle) };
-        }
-        // WARNING.  Not unique.  ZA - XA = -atan2(r12,r10)
-        const float z_angle = -std::atan2(m_entry[0][2], m_entry[0][0]);
-        const float x_angle = -Constants::HALF_PI;
-        return { Radian(x_angle), Radian::ZERO, Radian(z_angle) };
-    }
-    // WARNING.  Not unique.  ZA + XA = atan2(r12,r10)
-    const float z_angle = std::atan2(m_entry[0][2], m_entry[0][0]);
-    const float x_angle = Constants::HALF_PI;
-    return { Radian(x_angle), Radian::ZERO, Radian(z_angle) };
-}
-
-EulerAngles Matrix3::toEulerAnglesZyx() const
-{
-    // rot =  cy*cz           cz*sx*sy-cx*sz  cx*cz*sy+sx*sz
-    //        cy*sz           cx*cz+sx*sy*sz -cz*sx+cx*sy*sz
-    //       -sy              cy*sx           cx*cy
-    if (m_entry[2][0] < 1.0f)
-    {
-        if (m_entry[2][0] > -1.0f)
-        {
-            const float z_angle = std::atan2(m_entry[1][0], m_entry[0][0]);
-            const float y_angle = std::asin(-m_entry[2][0]);
-            const float x_angle = std::atan2(m_entry[2][1], m_entry[2][2]);
-            return { Radian(x_angle), Radian(y_angle), Radian(z_angle) };
-        }
-        // WARNING.  Not unique.  ZA - XA = -atan2(r01,r02)
-        const float z_angle = -std::atan2(m_entry[0][1], m_entry[0][2]);
-        const float y_angle = Constants::HALF_PI;
-        return { Radian::ZERO, Radian(y_angle), Radian(z_angle) };
-    }
-    // WARNING.  Not unique.  ZA + XA = atan2(-r01,-r02)
-    const float z_angle = std::atan2(-m_entry[0][1], -m_entry[0][2]);
-    const float y_angle = -Constants::HALF_PI;
-    return { Radian::ZERO, Radian(y_angle), Radian(z_angle) };
-}
-
 Matrix3 Matrix3::rotationX(const Radian& radian)
 {
     const float cos_value = std::cos(radian.value());
@@ -650,7 +471,6 @@ Matrix3 Matrix3::timesTranspose(const Matrix3& mx) const
         m_entry[2][0] * mx.m_entry[2][0] + m_entry[2][1] * mx.m_entry[2][1] + m_entry[2][2] * mx.m_entry[2][2] };
 }
 
-
 Vector2 Matrix3::transformCoordinate(const Vector2& v) const
 {
     const float z = m_entry[2][0] * v.x() + m_entry[2][1] * v.y() + m_entry[2][2];
@@ -692,8 +512,6 @@ float Matrix3::getMaxScale() const
 
 const Matrix3 Math::Matrix3::ZERO = makeZero();
 const Matrix3 Math::Matrix3::IDENTITY = makeIdentity();
-
-
 
 namespace Math
 {

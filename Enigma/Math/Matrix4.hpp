@@ -47,25 +47,24 @@ namespace Math
             float m30, float m31, float m32, float m33);
         /** Create a matrix from an array of numbers.  The input array is \n
         entry[0..15]={m00,m01,m02,m03,m10,m11,m12,m13,m20,m21,m22,m23,m30,m31,m32,m33} */
-        Matrix4(const std::array<float, 16>& m);
+        explicit Matrix4(const std::array<float, 16>& m);
         /** Create from Matrix 3x3 */
-        Matrix4(const Matrix3& mx);
+        explicit Matrix4(const Matrix3& mx);
         /** Create from Matrix 3x3 and translate column */
-        Matrix4(const Matrix3& rotation_matrix, const Vector3& position);
+        explicit Matrix4(const Matrix3& rotation_matrix, const Vector3& position);
 
         [[nodiscard]] static Matrix4 makeZero();
         [[nodiscard]] static Matrix4 makeIdentity();
 
-        operator const float* () const;
-        operator float* ();
-        const float* operator[] (int row) const;
-        float* operator[] (int row);
-        float operator() (int row, int col) const;
-        float& operator() (int row, int col);
-        void setRow(int row, const Vector4& vec);
-        [[nodiscard]] Vector4 getRow(int row) const;
-        void setColumn(int col, const Vector4& vec);
-        [[nodiscard]] Vector4 getColumn(int col) const;
+        explicit operator const float* () const;
+        explicit operator float* ();
+        const float* operator[] (unsigned row) const;
+        float* operator[] (unsigned row);
+        float operator() (unsigned row, unsigned col) const;
+        void setRow(unsigned row, const Vector4& vec);
+        [[nodiscard]] Vector4 getRow(unsigned row) const;
+        void setColumn(unsigned col, const Vector4& vec);
+        [[nodiscard]] Vector4 getColumn(unsigned col) const;
 
         Matrix4& operator= (const Matrix3& mx);  ///< right column & bottom row will be 0, and m33 is 1
 
@@ -86,8 +85,8 @@ namespace Math
 
         /** 沒有做homogenize, i.e. w未必等於1.0 */
         Vector4 operator* (const Vector4& vec) const;  //< M * v
-        /** 傳回homogenize後的vector3 */
-        Vector3 operator* (const Vector3& vec) const;
+        /** 傳回homogenize後的vector3, ADR : 這容易誤解，又與底下的 transform 重複, 移除之 */
+        //Vector3 operator* (const Vector3& vec) const;
 
         [[nodiscard]] Matrix4 transpose() const;  // M^T
         [[nodiscard]] Matrix4 inverse() const;
@@ -103,8 +102,6 @@ namespace Math
         [[nodiscard]] Vector3 transform(const Vector3& vec) const;
         /** transforms the vector  (x, y, z, 0) of the vector, pV, by the matrix */
         [[nodiscard]] Vector3 transformVector(const Vector3& vec) const;
-        /** transforms the vector  (x, y, z, 0) of the vector, pV, by the matrix, and normalize result, return length if needed */
-        [[nodiscard]] std::tuple<Vector3, float> transformVectorNormalized(const Vector3& vec) const;
 
         [[nodiscard]] static Matrix4 makeTranslateTransform(float tx, float ty, float tz);
         [[nodiscard]] static Matrix4 makeTranslateTransform(const Vector3& vec);
@@ -128,24 +125,24 @@ namespace Math
         R is Rotate Matrix from Quaternion
         </pre>
         */
-        [[nodiscard]] static Matrix4 fromSRT(const Vector3& scale, const Matrix3& rot, const Vector3& trans);
-        [[nodiscard]] static Matrix4 fromSRT(const Vector3& scale, const Quaternion& rot, const Vector3& trans);
+        [[nodiscard]] static Matrix4 fromScaleRotationTranslate(const Vector3& scale, const Matrix3& rot, const Vector3& trans);
+        [[nodiscard]] static Matrix4 fromScaleQuaternionTranslate(const Vector3& scale, const Quaternion& rot, const Vector3& trans);
 
         /** 最右邊的column */
-        [[nodiscard]] Vector3 unmatrixTranslate() const;
+        [[nodiscard]] Vector3 extractTranslation() const;
         /** 假設並沒有shear scale */
-        [[nodiscard]] Vector3 unmatrixScale() const;
+        [[nodiscard]] Vector3 extractScale() const;
         /** 去掉translate & scale取出的rotation (no shear scale) */
-        [[nodiscard]] Matrix4 unmatrixRotation() const;
+        [[nodiscard]] Matrix3 extractRotation() const;
         /** 分解SRT */
-        [[nodiscard]] std::tuple<Vector3, Quaternion, Vector3> unmatrixQuaternionSRT() const;
-        [[nodiscard]] std::tuple<Vector3, Matrix3, Vector3> unmatrixRotateMatrixSRT() const;
+        [[nodiscard]] std::tuple<Vector3, Quaternion, Vector3> unmatrixScaleQuaternionTranslation() const;
+        [[nodiscard]] std::tuple<Vector3, Matrix3, Vector3> unmatrixScaleRotateMatrixTranslation() const;
 
         [[nodiscard]] float getMaxScale() const;
 
     private:
         // minor matrix determinant
-        [[nodiscard]] float minorDet(const int r0, const int r1, const int r2, const int c0, const int c1, const int c2) const;
+        [[nodiscard]] float minorDeterminant(const int r0, const int r1, const int r2, const int c0, const int c1, const int c2) const;
 
         float m_entry[4][4];
     };

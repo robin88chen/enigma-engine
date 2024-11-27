@@ -19,6 +19,9 @@
     <Filter Include="Matrix">
       <UniqueIdentifier>{a08ee348-740c-4a30-a38d-9e73aca775d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quaternion">
+      <UniqueIdentifier>{1b53390e-3033-4c85-ad33-db9e8c766882}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector2.cpp">
@@ -55,6 +58,9 @@
       <Filter>Matrix</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\EigenDecompose.cpp">
+      <Filter>Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\EulerRotations.cpp">
       <Filter>Algebra</Filter>
     </ClCompile>
   </ItemGroup>
@@ -100,6 +106,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix4.hpp">
       <Filter>Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\EulerRotations.hpp">
+      <Filter>Algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Quaternion.hpp">
+      <Filter>Quaternion</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

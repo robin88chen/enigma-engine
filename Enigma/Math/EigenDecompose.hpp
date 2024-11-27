@@ -1,6 +1,6 @@
 ﻿/*********************************************************************
  * \file   EigenDecompose.hpp
- * \brief
+ * \brief  ADR : 從 Matrix 中移出
  *
  * \author Lancelot 'Robin' Chen
  * \date   November 2024

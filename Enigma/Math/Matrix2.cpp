@@ -66,11 +66,6 @@ float Matrix2::operator() (unsigned row, unsigned col) const
     return m_entry[row][col];
 }
 
-float& Matrix2::operator() (unsigned row, unsigned col)
-{
-    return m_entry[row][col];
-}
-
 void Matrix2::setRow(unsigned row, const Vector2& v)
 {
     assert(row <= 1);

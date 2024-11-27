@@ -19,11 +19,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Degree.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\EigenDecompose.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\EulerAngles.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\EulerRotations.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Math.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\MathGlobal.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix2.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix4.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Quaternion.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Radian.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector2.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector3.hpp" />
@@ -34,6 +36,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\ColorRGBA.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Degree.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\EigenDecompose.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\EulerRotations.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\MathGlobal.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix3.cpp" />

@@ -73,14 +73,13 @@ namespace Math
 
         explicit operator const float* () const;
         explicit operator float* ();
-        const float* operator[] (int row) const;
-        float* operator[] (int row);
-        float operator() (int row, int col) const;
-        float& operator() (int row, int col);
-        void setRow(int row, const Vector3& v);
-        [[nodiscard]] Vector3 getRow(int row) const;
-        void setColumn(int col, const Vector3& v);
-        [[nodiscard]] Vector3 getColumn(int col) const;
+        const float* operator[] (unsigned row) const;
+        float* operator[] (unsigned row);
+        float operator() (unsigned row, unsigned col) const;
+        void setRow(unsigned row, const Vector3& v);
+        [[nodiscard]] Vector3 getRow(unsigned row) const;
+        void setColumn(unsigned col, const Vector3& v);
+        [[nodiscard]] Vector3 getColumn(unsigned col) const;
 
         Matrix3& operator= (const Matrix4& mx);  ///< 左上角的 3x3 matrix
 
@@ -106,31 +105,6 @@ namespace Math
         [[nodiscard]] Matrix3 adjoint() const;
         [[nodiscard]] float determinant() const;
         [[nodiscard]] std::tuple<Vector3, Radian> toAxisAngle() const;
-
-        /** @name Euler Angle Rotation
-         @remark
-         The matrix must be orthonormal.  The decomposition is yaw*pitch*roll
-         where yaw is rotation about the Up vector, pitch is rotation about the
-         Right axis, and roll is rotation about the Direction axis.
-         @par
-          the rotation is roll first, then pitch, and finally yaw. for example,
-            FromEulerAnglesXYZ is roll against Z-axis first, then pitch against Y-axis,
-            and finally yaw against X-axis.
-        */
-        //@{
-        static Matrix3 fromEulerAnglesXyz(const EulerAngles& angles);
-        static Matrix3 fromEulerAnglesXzy(const EulerAngles& angles);
-        static Matrix3 fromEulerAnglesYxz(const EulerAngles& angles);
-        static Matrix3 fromEulerAnglesYzx(const EulerAngles& angles);
-        static Matrix3 fromEulerAnglesZxy(const EulerAngles& angles);
-        static Matrix3 fromEulerAnglesZyx(const EulerAngles& angles);
-        [[nodiscard]] EulerAngles toEulerAnglesXyz() const;
-        [[nodiscard]] EulerAngles toEulerAnglesXzy() const;
-        [[nodiscard]] EulerAngles toEulerAnglesYxz() const;
-        [[nodiscard]] EulerAngles toEulerAnglesYzx() const;
-        [[nodiscard]] EulerAngles toEulerAnglesZxy() const;
-        [[nodiscard]] EulerAngles toEulerAnglesZyx() const;
-        //@}
 
         static Matrix3 rotationX(const Radian& radian);
         static Matrix3 rotationY(const Radian& radian);

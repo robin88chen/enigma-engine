@@ -50,7 +50,6 @@ namespace Math
         const float* operator[] (unsigned row) const;
         float* operator[] (unsigned row);
         float operator() (unsigned row, unsigned col) const;
-        float& operator() (unsigned row, unsigned col);
         void setRow(unsigned row, const Vector2& v);
         [[nodiscard]] Vector2 getRow(int row) const;
         void setColumn(int col, const Vector2& v);
