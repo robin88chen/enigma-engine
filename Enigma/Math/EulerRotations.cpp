@@ -50,12 +50,12 @@ namespace Math
                 return { Radian(x_angle), Radian(y_angle), Radian(z_angle) };
             }
             // WARNING.  Not unique.  XA - ZA = -atan2(r10,r11)
-            const float x_angle = -atan2(mx[1][0], mx[1][1]);
+            const float x_angle = -std::atan2(mx[1][0], mx[1][1]);
             const float y_angle = -Constants::HALF_PI;
             return { Radian(x_angle), Radian(y_angle), Radian::ZERO };
         }
         // WARNING.  Not unique.  XAngle + ZAngle = atan2(r10,r11)
-        const float x_angle = atan2(mx[1][0], mx[1][1]);
+        const float x_angle = std::atan2(mx[1][0], mx[1][1]);
         const float y_angle = Constants::HALF_PI;
         return { Radian(x_angle), Radian(y_angle), Radian::ZERO };
     }

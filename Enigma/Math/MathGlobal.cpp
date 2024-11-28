@@ -29,5 +29,5 @@ bool FloatCompare::isEqual(float l, float r)
         || (diff < std::numeric_limits<float>::min());
 }
 
-const float Math::Constants::PI = 4.0f * std::atanf(1.0f);
+const float Math::Constants::PI = 4.0f * std::atan(1.0f);
 const float Math::Constants::HALF_PI = 0.5f * Constants::PI;

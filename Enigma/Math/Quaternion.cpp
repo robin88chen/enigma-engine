@@ -356,13 +356,13 @@ Quaternion Quaternion::sphericalLerpExtraSpins(float t, const Quaternion& p, con
 {
     const float cs = p.dot(q);
 
-    if (const float angle = acos(cs); std::fabs(angle) >= FloatCompare::ZERO_TOLERANCE)
+    if (const float angle = std::acos(cs); std::fabs(angle) >= FloatCompare::ZERO_TOLERANCE)
     {
-        const float sn = sin(angle);
+        const float sn = std::sin(angle);
         const float phase = Constants::PI * static_cast<float>(extra_spins) * t;
         const float inv_sn = 1.0f / sn;
-        const float coeff0 = sin((1.0f - t) * angle - phase) * inv_sn;
-        const float coeff1 = sin(t * angle + phase) * inv_sn;
+        const float coeff0 = std::sin((1.0f - t) * angle - phase) * inv_sn;
+        const float coeff1 = std::sin(t * angle + phase) * inv_sn;
         return coeff0 * p + coeff1 * q;
     }
     return p;

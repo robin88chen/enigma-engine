@@ -8,6 +8,7 @@
 #include "Quaternion.hpp"
 #include <cassert>
 #include <cmath>
+#include <algorithm>
 
 using namespace Math;
 

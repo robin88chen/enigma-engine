@@ -361,7 +361,7 @@ std::tuple<Vector3, Radian> Matrix3::toAxisAngle() const
                 if (m_entry[0][0] >= m_entry[2][2])
                 {
                     // r00 is maximum diagonal term
-                    axis[0] = 0.5f * sqrt(m_entry[0][0] - m_entry[1][1] - m_entry[2][2] + 1.0f);
+                    axis[0] = 0.5f * std::sqrt(m_entry[0][0] - m_entry[1][1] - m_entry[2][2] + 1.0f);
                     const float half_inverse = 0.5f / axis[0];
                     axis[1] = half_inverse * m_entry[0][1];
                     axis[2] = half_inverse * m_entry[0][2];
@@ -369,7 +369,7 @@ std::tuple<Vector3, Radian> Matrix3::toAxisAngle() const
                 else
                 {
                     // r22 is maximum diagonal term
-                    axis[2] = 0.5f * sqrt(m_entry[2][2] - m_entry[0][0] - m_entry[1][1] + 1.0f);
+                    axis[2] = 0.5f * std::sqrt(m_entry[2][2] - m_entry[0][0] - m_entry[1][1] + 1.0f);
                     const float half_inverse = 0.5f / axis[2];
                     axis[0] = half_inverse * m_entry[0][2];
                     axis[1] = half_inverse * m_entry[1][2];
@@ -381,7 +381,7 @@ std::tuple<Vector3, Radian> Matrix3::toAxisAngle() const
                 if (m_entry[1][1] >= m_entry[2][2])
                 {
                     // r11 is maximum diagonal term
-                    axis[1] = 0.5f * sqrt(m_entry[1][1] - m_entry[0][0] - m_entry[2][2] + 1.0f);
+                    axis[1] = 0.5f * std::sqrt(m_entry[1][1] - m_entry[0][0] - m_entry[2][2] + 1.0f);
                     const float half_inverse = 0.5f / axis[1];
                     axis[0] = half_inverse * m_entry[0][1];
                     axis[2] = half_inverse * m_entry[1][2];
@@ -389,7 +389,7 @@ std::tuple<Vector3, Radian> Matrix3::toAxisAngle() const
                 else
                 {
                     // r22 is maximum diagonal term
-                    axis[2] = 0.5f * sqrt(m_entry[2][2] - m_entry[0][0] - m_entry[1][1] + 1.0f);
+                    axis[2] = 0.5f * std::sqrt(m_entry[2][2] - m_entry[0][0] - m_entry[1][1] + 1.0f);
                     const float half_inverse = 0.5f / axis[2];
                     axis[0] = half_inverse * m_entry[0][2];
                     axis[1] = half_inverse * m_entry[1][2];

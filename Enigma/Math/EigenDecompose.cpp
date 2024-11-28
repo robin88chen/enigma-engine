@@ -20,7 +20,7 @@ namespace Math
         Matrix2 rot;
         const float trace = matrix[0][0] + matrix[1][1];
         const float diff = matrix[0][0] - matrix[1][1];
-        const float discr = sqrt(diff * diff + 4.0f * matrix[0][1] * matrix[0][1]);
+        const float discr = std::sqrt(diff * diff + 4.0f * matrix[0][1] * matrix[0][1]);
         const float eig_val0 = 0.5f * (trace - discr);
         const float eig_val1 = 0.5f * (trace + discr);
         const Matrix2 diag = Matrix2::makeDiagonal(eig_val0, eig_val1);
