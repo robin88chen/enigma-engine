@@ -142,7 +142,7 @@ namespace Math
 
     private:
         // minor matrix determinant
-        [[nodiscard]] float minorDeterminant(const int r0, const int r1, const int r2, const int c0, const int c1, const int c2) const;
+        [[nodiscard]] float minorDeterminant(unsigned r0, unsigned r1, unsigned r2, unsigned c0, unsigned c1, unsigned c2) const;
 
         float m_entry[4][4];
     };

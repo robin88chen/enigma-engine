@@ -3,7 +3,6 @@
 #include "Matrix4.hpp"
 #include "Radian.hpp"
 #include "Vector3.hpp"
-#include "EulerAngles.hpp"
 #include "Vector2.hpp"
 #include <cassert>
 #include <cmath>

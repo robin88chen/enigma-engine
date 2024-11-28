@@ -351,8 +351,14 @@ float Matrix4::determinant() const
         m_entry[0][3] * minorDeterminant(1, 2, 3, 0, 1, 2);
 }
 
-float Matrix4::minorDeterminant(const int r0, const int r1, const int r2, const int c0, const int c1, const int c2) const
+float Matrix4::minorDeterminant(unsigned r0, unsigned r1, unsigned r2, unsigned c0, unsigned c1, unsigned c2) const
 {
+    assert(r0 <= 3);
+    assert(r1 <= 3);
+    assert(r2 <= 3);
+    assert(c0 <= 3);
+    assert(c1 <= 3);
+    assert(c2 <= 3);
     return m_entry[r0][c0] * (m_entry[r1][c1] * m_entry[r2][c2] - m_entry[r2][c1] * m_entry[r1][c2]) -
         m_entry[r0][c1] * (m_entry[r1][c0] * m_entry[r2][c2] - m_entry[r2][c0] * m_entry[r1][c2]) +
         m_entry[r0][c2] * (m_entry[r1][c0] * m_entry[r2][c1] - m_entry[r2][c0] * m_entry[r1][c1]);
@@ -537,7 +543,7 @@ Vector3 Matrix4::extractScale() const
 Matrix3 Matrix4::extractRotation() const
 {
     Matrix3 r;
-    Vector3 s = extractScale();
+    const Vector3 s = extractScale();
     r[0][0] = m_entry[0][0] / s.x();
     r[1][0] = m_entry[1][0] / s.x();
     r[2][0] = m_entry[2][0] / s.x();
@@ -558,13 +564,13 @@ std::tuple<Vector3, Matrix3, Vector3> Matrix4::unmatrixScaleRotateMatrixTranslat
 std::tuple<Vector3, Quaternion, Vector3> Matrix4::unmatrixScaleQuaternionTranslation() const
 {
     auto [s, r, t] = unmatrixScaleRotateMatrixTranslation();
-    Quaternion rot = Quaternion::fromRotationMatrix(r);
+    const Quaternion rot = Quaternion::fromRotationMatrix(r);
     return { s, rot, t };
 }
 
 float Matrix4::getMaxScale() const
 {
-    Vector3 s = extractScale();
+    const Vector3 s = extractScale();
     return std::max({ std::abs(s.x()), std::abs(s.y()), std::abs(s.z()) });
 }
 

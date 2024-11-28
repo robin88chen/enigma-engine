@@ -25,12 +25,12 @@ namespace Math
         and finally yaw against X-axis.
     */
     //@{
-    static Matrix3 fromEulerAnglesXyz(const EulerAngles& angles);
-    static Matrix3 fromEulerAnglesXzy(const EulerAngles& angles);
-    static Matrix3 fromEulerAnglesYxz(const EulerAngles& angles);
-    static Matrix3 fromEulerAnglesYzx(const EulerAngles& angles);
-    static Matrix3 fromEulerAnglesZxy(const EulerAngles& angles);
-    static Matrix3 fromEulerAnglesZyx(const EulerAngles& angles);
+    Matrix3 fromEulerAnglesXyz(const EulerAngles& angles);
+    Matrix3 fromEulerAnglesXzy(const EulerAngles& angles);
+    Matrix3 fromEulerAnglesYxz(const EulerAngles& angles);
+    Matrix3 fromEulerAnglesYzx(const EulerAngles& angles);
+    Matrix3 fromEulerAnglesZxy(const EulerAngles& angles);
+    Matrix3 fromEulerAnglesZyx(const EulerAngles& angles);
     [[nodiscard]] EulerAngles toEulerAnglesXyz(const Matrix3& mx);
     [[nodiscard]] EulerAngles toEulerAnglesXzy(const Matrix3& mx);
     [[nodiscard]] EulerAngles toEulerAnglesYxz(const Matrix3& mx);

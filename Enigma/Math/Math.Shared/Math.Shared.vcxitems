@@ -26,6 +26,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix4.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Quaternion.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Radian.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector2.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector3.hpp" />
@@ -41,6 +42,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix4.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Quaternion.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Radian.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector3.cpp" />

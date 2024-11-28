@@ -13,7 +13,6 @@ namespace Math
     class Matrix3;
     class Vector3;
     class Radian;
-    struct QuaternionDecompose;
     /** Math Lib Quaternion
     @remarks
     A quaternion is q = w + x*i + y*j + z*k where (w,x,y,z) is not
@@ -24,12 +23,6 @@ namespace Math
         // construction
         Quaternion();  ///< w=x=y=z=0.0
         Quaternion(float w, float x, float y, float z);
-
-        /// quaternion for the input rotation matrix
-        Quaternion(const Matrix3& rot);
-
-        /// quaternion for the rotation of the axis-angle pair
-        Quaternion(const Vector3& axis, float angle);
 
         explicit operator const float* () const;
         explicit operator float* ();
@@ -80,56 +73,23 @@ namespace Math
         [[nodiscard]] Vector3 rotate(const Vector3& vec) const;
 
         /// spherical linear interpolation, t=0 --> P, t=1 --> Q
-        static Quaternion sphericalLerp(float t, const Quaternion& p, const Quaternion& q, bool shortestPath = false);
+        static Quaternion sphericalLerp(float t, const Quaternion& p, const Quaternion& q, bool shortest_path = false);
 
         /// spherical linear interpolation, t=0 --> P, t=1 --> Q
-        static Quaternion sphericalLerpExtraSpins(float t, const Quaternion& p, const Quaternion& q, int extraSpins);
+        static Quaternion sphericalLerpExtraSpins(float t, const Quaternion& p, const Quaternion& q, int extra_spins);
 
         /// intermediate terms for spherical quadratic interpolation
         static Quaternion intermediate(const Quaternion& q0, const Quaternion& q1, const Quaternion& q2);
 
         /// spherical quadratic interpolation
-        static Quaternion sphericalQuadInterpolation(float t, const Quaternion& q0, const Quaternion& a0, const Quaternion& a1, const Quaternion& q1, bool shortestPath = false);
+        static Quaternion sphericalQuadInterpolation(float t, const Quaternion& q0, const Quaternion& a0, const Quaternion& a1, const Quaternion& q1, bool shortest_path = false);
 
-        /** Compute a quaternion that rotates unit-length vector V1 to unit-length
-         vector V2.  The rotation is about the axis perpendicular to both V1 and
-         V2, with angle of that between V1 and V2.  If V1 and V2 are parallel,
-         any axis of rotation will do, such as the permutation (z2,x2,y2), where
-         V2 = (x2,y2,z2). */
-        static Quaternion align(const Vector3& vec1, const Vector3& vec2);
-
-        /** Decompose a quaternion into q = q_twist * q_swing, where q is 'this'
-         quaternion.  If V1 is the input axis and V2 is the rotation of V1 by
-         q, q_swing represents the rotation about the axis perpendicular to
-         V1 and V2 (see Quaternion::Align), and q_twist is a rotation about V1. */
-        QuaternionDecompose decomposeTwistTimesSwing(const Vector3& vec1) const;
-
-        /** Decompose a quaternion into q = q_swing * q_twist, where q is 'this'
-         quaternion.  If V1 is the input axis and V2 is the rotation of V1 by
-         q, q_swing represents the rotation about the axis perpendicular to
-         V1 and V2 (see Quaternion::Align), and q_twist is a rotation about V1. */
-        QuaternionDecompose decomposeSwingTimesTwist(const Vector3& vec1) const;
-        //@}
-
-        /** @name special values */
-        //@{
         static const Quaternion IDENTITY;  // the identity rotation
         static const Quaternion ZERO;
-        //@}
 
     private:
-
-        void implicitFromRotationMatrix(const Matrix3& rot);
-        void implicitFromAxisAngle(const Vector3& axis, float angle);
         float m_w, m_x, m_y, m_z;
     };
-
-    struct QuaternionDecompose
-    {
-        Quaternion m_swing;
-        Quaternion m_twist;
-    };
-
     Quaternion operator* (float scalar, const Quaternion& quat);
 }
 

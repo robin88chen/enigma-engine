@@ -63,6 +63,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\EulerRotations.cpp">
       <Filter>Algebra</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Quaternion.cpp">
+      <Filter>Quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.cpp">
+      <Filter>Quaternion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector2.hpp">
@@ -111,6 +117,9 @@
       <Filter>Algebra</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Quaternion.hpp">
+      <Filter>Quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.hpp">
       <Filter>Quaternion</Filter>
     </ClInclude>
   </ItemGroup>
