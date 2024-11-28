@@ -1,4 +1,4 @@
-Checks:          'clang-diagnostic-*,clang-analyzer-*,-*,performance-*,bugprone-*,clang-analyzer-*,mpi-*,misc-*,readability-*,cppcoreguidelines-*,modernize-*,-misc-include-cleaner,-modernize-use-trailing-return-type,-cppcoreguidelines-pro-bounds-constant-array-index,-cppcoreguidelines-pro-type-vararg,-readability-uppercase-literal-suffix,-bugprone-easily-swappable-parameters'
+Checks:          'clang-diagnostic-*,clang-analyzer-*,-*,performance-*,bugprone-*,clang-analyzer-*,mpi-*,misc-*,readability-*,cppcoreguidelines-*,modernize-*,-misc-include-cleaner,-modernize-use-trailing-return-type,-cppcoreguidelines-pro-bounds-constant-array-index,-cppcoreguidelines-pro-type-vararg,-readability-uppercase-literal-suffix,-bugprone-easily-swappable-parameters,-misc-use-anonymous-namespace,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-pro-bounds-array-to-pointer-decay'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 #HeaderFilterRegex: '^((?!/nanagui/include/|/propertygrid/).)*$'
@@ -161,7 +161,9 @@ CheckOptions:
   - key:             readability-inconsistent-declaration-parameter-name.Strict
     value:           '0'
   - key:             readability-magic-numbers.IgnoredFloatingPointValues
-    value:           '1.0;100.0;'
+    value:           '1.0;100.0;2.0;4.0;0.5;'
+  - key:             cppcoreguidelines-avoid-magic-numbers.IgnoredFloatingPointValues
+    value:           '1.0;100.0;2.0;4.0;0.5;'
   - key:             readability-magic-numbers.IgnoredIntegerValues
     value:           '1;2;3;4;'
   - key:             readability-redundant-member-init.IgnoreBaseInCopyConstructors

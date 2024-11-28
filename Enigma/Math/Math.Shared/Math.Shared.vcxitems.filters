@@ -13,6 +13,15 @@
     <Filter Include="Color">
       <UniqueIdentifier>{a4f498c9-6efa-4c26-90dc-156592e7d330}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Algebra">
+      <UniqueIdentifier>{7bb14174-e21a-4c4c-a0e6-3613aed40e21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Matrix">
+      <UniqueIdentifier>{a08ee348-740c-4a30-a38d-9e73aca775d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quaternion">
+      <UniqueIdentifier>{1b53390e-3033-4c85-ad33-db9e8c766882}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector2.cpp">
@@ -38,6 +47,27 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\ColorRGBA.cpp">
       <Filter>Color</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix2.cpp">
+      <Filter>Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix3.cpp">
+      <Filter>Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix4.cpp">
+      <Filter>Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\EigenDecompose.cpp">
+      <Filter>Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\EulerRotations.cpp">
+      <Filter>Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Quaternion.cpp">
+      <Filter>Quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.cpp">
+      <Filter>Quaternion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +97,30 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\ColorRGBA.hpp">
       <Filter>Color</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix2.hpp">
+      <Filter>Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix3.hpp">
+      <Filter>Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\EigenDecompose.hpp">
+      <Filter>Algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\EulerAngles.hpp">
+      <Filter>Algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix4.hpp">
+      <Filter>Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\EulerRotations.hpp">
+      <Filter>Algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Quaternion.hpp">
+      <Filter>Quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.hpp">
+      <Filter>Quaternion</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

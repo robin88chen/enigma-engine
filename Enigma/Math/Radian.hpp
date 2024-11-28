@@ -38,9 +38,12 @@ namespace Math
         [[nodiscard]] float value() const { return m_radian; }
         [[nodiscard]] Degree degree() const;
 
+        static const Radian ZERO;
     private:
         float m_radian;
     };
+
+    Radian operator* (float scale, const Radian& radian);
 }
 
 #endif // RADIAN_HPP

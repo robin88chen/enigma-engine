@@ -10,7 +10,7 @@ constexpr auto SHORT_SHIFT = 16;
 constexpr auto THREE_BYTE_SHIFT = 24;
 constexpr auto BYTE_MASK = 0xff;
 
-unsigned int rgbaFloat2Int(float r, float g, float b, float a)
+static unsigned int rgbaFloat2Int(float r, float g, float b, float a)
 {
     unsigned int argb = static_cast<unsigned char>(a * FULL_BYTE);
     argb = (argb << BYTE_SHIFT) + static_cast<unsigned char>(r * FULL_BYTE);
@@ -19,7 +19,7 @@ unsigned int rgbaFloat2Int(float r, float g, float b, float a)
     return argb;
 }
 
-std::array<float, 4> rgbaInt2Float(unsigned int argb)
+static std::array<float, 4> rgbaInt2Float(unsigned int argb)
 {
     unsigned char c = argb & BYTE_MASK;
     const float b = static_cast<float>(c) / FULL_BYTE_F;

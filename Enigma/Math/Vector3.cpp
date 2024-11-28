@@ -166,6 +166,20 @@ Vector3 Vector3::normalize() const
     return Vector3{ m_x / len, m_y / len, m_z / len };
 }
 
+void Vector3::homogenizeSelf()
+{
+    assert(!FloatCompare::isEqual(m_z, 0.0f));
+    m_x /= m_z;
+    m_y /= m_z;
+    m_z = 1.0f;
+}
+
+Vector3 Vector3::homogenize() const
+{
+    assert(!FloatCompare::isEqual(m_z, 0.0f));
+    return Vector3{ m_x / m_z, m_y / m_z, 1.0f };
+}
+
 Vector3 Vector3::cross(const Vector3& v) const
 {
     return Vector3{ m_y * v.m_z - m_z * v.m_y, m_z * v.m_x - m_x * v.m_z, m_x * v.m_y - m_y * v.m_x };

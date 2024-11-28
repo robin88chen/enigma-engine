@@ -177,6 +177,21 @@ Vector4 Vector4::normalize() const
     return Vector4{ m_x / len, m_y / len, m_z / len, m_w / len };
 }
 
+void Vector4::homogenizeSelf()
+{
+    assert(!FloatCompare::isEqual(m_w, 0.0f));
+    m_x /= m_w;
+    m_y /= m_w;
+    m_z /= m_w;
+    m_w = 1.0f;
+}
+
+Vector4 Vector4::homogenize() const
+{
+    assert(!FloatCompare::isEqual(m_w, 0.0f));
+    return Vector4{ m_x / m_w, m_y / m_w, m_z / m_w, 1.0f };
+}
+
 const Vector4 Vector4::ZERO{ 0.0f, 0.0f, 0.0f, 0.0f };
 const Vector4 Vector4::UNIT_X{ 1.0f, 0.0f, 0.0f, 0.0f };
 const Vector4 Vector4::UNIT_Y{ 0.0f, 1.0f, 0.0f, 0.0f };

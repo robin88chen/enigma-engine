@@ -51,6 +51,8 @@ namespace Math
         [[nodiscard]] float dot(const Vector3& v) const;
         void normalizeSelf();
         [[nodiscard]] Vector3 normalize() const;
+        void homogenizeSelf();
+        [[nodiscard]] Vector3 homogenize() const;
         /// The cross products are computed using the left-handed rule.
         [[nodiscard]] Vector3 cross(const Vector3& v) const;
         /// The cross products are computed using the left-handed rule.

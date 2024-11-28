@@ -63,7 +63,7 @@ namespace Math
          all channels by that value. */
         [[nodiscard]] ColorRGB scaleByMax() const;
 
-        static const ColorRGB BLACK; ///< = (0,0,0) 
+        static const ColorRGB BLACK; ///< = (0,0,0)
         static const ColorRGB WHITE; ///< = (1,1,1)
         static const ColorRGB INVALID; ///< = (-1,-1,-1)
         static const ColorRGB ZERO; ///< = (0,0,0)

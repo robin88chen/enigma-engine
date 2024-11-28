@@ -50,6 +50,8 @@ namespace Math
         [[nodiscard]] float dot(const Vector4& v) const;
         void normalizeSelf();
         [[nodiscard]] Vector4 normalize() const;
+        void homogenizeSelf();
+        [[nodiscard]] Vector4 homogenize() const;
 
         static const Vector4 ZERO;
         static const Vector4 UNIT_X;
