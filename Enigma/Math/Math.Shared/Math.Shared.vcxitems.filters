@@ -22,6 +22,9 @@
     <Filter Include="Quaternion">
       <UniqueIdentifier>{1b53390e-3033-4c85-ad33-db9e8c766882}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Box">
+      <UniqueIdentifier>{d94421fd-a810-4196-869f-4375ceaf74eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector2.cpp">
@@ -68,6 +71,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.cpp">
       <Filter>Quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Box2.cpp">
+      <Filter>Box</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Box3.cpp">
+      <Filter>Box</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +130,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.hpp">
       <Filter>Quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Box2.hpp">
+      <Filter>Box</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Box3.hpp">
+      <Filter>Box</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

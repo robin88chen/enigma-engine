@@ -190,6 +190,16 @@ Vector3 Vector3::unitCross(const Vector3& v) const
     return cross(v).normalize();
 }
 
+bool Vector3::isUnitLength() const
+{
+    return FloatCompare::isEqual(squaredLength(), 1.0f);
+}
+
+bool Vector3::isZero() const
+{
+    return FloatCompare::isEqual(squaredLength(), 0.0f);
+}
+
 const Vector3 Vector3::ZERO{ 0.0f, 0.0f, 0.0f };
 const Vector3 Vector3::UNIT_X{ 1.0f, 0.0f, 0.0f };
 const Vector3 Vector3::UNIT_Y{ 0.0f, 1.0f, 0.0f };

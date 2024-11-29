@@ -14,6 +14,8 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Box2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Box3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\ColorRGB.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\ColorRGBA.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Degree.hpp" />
@@ -33,6 +35,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector4.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Box2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Box3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\ColorRGB.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\ColorRGBA.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Degree.cpp" />

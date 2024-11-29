@@ -192,6 +192,16 @@ Vector4 Vector4::homogenize() const
     return Vector4{ m_x / m_w, m_y / m_w, m_z / m_w, 1.0f };
 }
 
+bool Vector4::isUnitLength() const
+{
+    return FloatCompare::isEqual(squaredLength(), 1.0f);
+}
+
+bool Vector4::isZero() const
+{
+    return FloatCompare::isEqual(squaredLength(), 0.0f);
+}
+
 const Vector4 Vector4::ZERO{ 0.0f, 0.0f, 0.0f, 0.0f };
 const Vector4 Vector4::UNIT_X{ 1.0f, 0.0f, 0.0f, 0.0f };
 const Vector4 Vector4::UNIT_Y{ 0.0f, 1.0f, 0.0f, 0.0f };

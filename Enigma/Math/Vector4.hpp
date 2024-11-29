@@ -53,6 +53,9 @@ namespace Math
         void homogenizeSelf();
         [[nodiscard]] Vector4 homogenize() const;
 
+        [[nodiscard]] bool isUnitLength() const;
+        [[nodiscard]] bool isZero() const;
+
         static const Vector4 ZERO;
         static const Vector4 UNIT_X;
         static const Vector4 UNIT_Y;
