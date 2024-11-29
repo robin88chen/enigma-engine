@@ -22,6 +22,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\EigenDecompose.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\EulerAngles.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\EulerRotations.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Line2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Line3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Math.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\MathGlobal.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix2.hpp" />
@@ -42,6 +44,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Degree.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\EigenDecompose.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\EulerRotations.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Line2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Line3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\MathGlobal.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix3.cpp" />

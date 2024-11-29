@@ -60,9 +60,9 @@ void Box2::extent(unsigned index, float extent)
     m_extent[index] = extent;
 }
 
-std::array<Vector2, 4> Box2::computeVertices() const
+std::array<Vector2, Box2::VERTICES_COUNT> Box2::computeVertices() const
 {
-    std::array<Vector2, 4> vertices;
+    std::array<Vector2, VERTICES_COUNT> vertices;
     const Vector2 product0 = m_extent[0] * m_axis[0];
     const Vector2 product1 = m_extent[1] * m_axis[1];
     vertices[0] = m_center - product0 - product1;

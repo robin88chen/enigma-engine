@@ -68,12 +68,13 @@ void Box3::extent(unsigned index, float extent)
     m_extent[index] = extent;
 }
 
-std::array<Vector3, 8> Box3::computeVertices() const
+std::array<Vector3, Box3::VERTICES_COUNT> Box3::computeVertices() const
 {
-    std::array<Vector3, 8> vertices;
+    std::array<Vector3, VERTICES_COUNT> vertices;
     const Vector3 product0 = m_extent[0] * m_axis[0];
     const Vector3 product1 = m_extent[1] * m_axis[1];
     const Vector3 product2 = m_extent[2] * m_axis[2];
+    // NOLINTBEGIN(*-magic-numbers)
     vertices[0] = m_center - product0 - product1 - product2;
     vertices[1] = m_center + product0 - product1 - product2;
     vertices[2] = m_center + product0 + product1 - product2;
@@ -82,6 +83,7 @@ std::array<Vector3, 8> Box3::computeVertices() const
     vertices[5] = m_center + product0 - product1 + product2;
     vertices[6] = m_center + product0 + product1 + product2;
     vertices[7] = m_center - product0 + product1 + product2;
+    // NOLINTEND(*-magic-numbers)
     return vertices;
 }
 
@@ -89,37 +91,31 @@ Box3 Box3::swapToMajorAxis() const
 {
     std::array<Vector3, 3> axis = m_axis;
     std::array<float, 3> extent = m_extent;
-    // 將m_axis 0,1,2調整到主要為x,y,z
-    if (m_axis[1].x() * m_axis[1].x() > m_axis[0].x() * m_axis[0].x())
+    // axis 0,1,2調整到主要為x,y,z
+    if (axis[1].x() * axis[1].x() > axis[0].x() * axis[0].x())
     {
         // y <--> x
-        axis[0] = m_axis[1];
-        axis[1] = m_axis[0];
-        extent[0] = m_extent[1];
-        extent[1] = m_extent[0];
+        std::swap(axis[0], axis[1]);
+        std::swap(extent[0], extent[1]);
     }
-    if (m_axis[2].x() * m_axis[2].x() > m_axis[0].x() * m_axis[0].x())
+    if (axis[2].x() * axis[2].x() > axis[0].x() * axis[0].x())
     {
         // z <--> x
-        axis[0] = m_axis[2];
-        axis[2] = m_axis[0];
-        extent[0] = m_extent[2];
-        extent[2] = m_extent[0];
+        std::swap(axis[0], axis[2]);
+        std::swap(extent[0], extent[2]);
     }
-    if (m_axis[2].y() * m_axis[2].y() > m_axis[1].y() * m_axis[1].y())
+    if (axis[2].y() * axis[2].y() > axis[1].y() * axis[1].y())
     {
         // z <--> y
-        axis[1] = m_axis[2];
-        axis[2] = m_axis[1];
-        extent[1] = m_extent[2];
-        extent[2] = m_extent[1];
+        std::swap(axis[1], axis[2]);
+        std::swap(extent[1], extent[2]);
     }
     // 把軸都調整到正向
     if (axis[0].x() < 0.0f) axis[0] = -axis[0];
     if (axis[1].y() < 0.0f) axis[1] = -axis[1];
     if (axis[2].z() < 0.0f) axis[2] = -axis[2];
     // 調整正交規則
-    Vector3 cross = axis[0].cross(axis[1]);
+    const Vector3 cross = axis[0].cross(axis[1]);
     if (cross.dot(axis[2]) < 0.0f)
     {
         axis[0] = -axis[0];

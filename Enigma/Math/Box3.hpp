@@ -33,11 +33,12 @@ namespace Math
         [[nodiscard]] float extent(unsigned index) const;
         void extent(unsigned index, float extent);
 
+        constexpr static unsigned VERTICES_COUNT = 8;
         /**
         @return { (-x,-y,-z),(+x,-y,-z),(+x,+y,-z),(-x,+y,-z),
         (-x,-y,+z),(+x,-y,+z),(+x,+y,+z),(-x,+y,+z) }
         */
-        [[nodiscard]] std::array<Vector3, 8> computeVertices() const;
+        [[nodiscard]] std::array<Vector3, VERTICES_COUNT> computeVertices() const;
 
         /** swap to major axis (把軸向量取最大值對齊x,y,z) */
         [[nodiscard]] Box3 swapToMajorAxis() const;

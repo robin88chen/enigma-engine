@@ -32,16 +32,17 @@ namespace Math
         void axis(const std::array<Vector2, 2>& axis);
         [[nodiscard]] float extent(unsigned index) const;
         void extent(unsigned index, float extent);
+        constexpr static unsigned VERTICES_COUNT = 4;
         /**
         @return { (-x,-y),(+x,-y),(+x,+y),(-x,+y) }
         */
-        [[nodiscard]] std::array<Vector2, 4> computeVertices() const;
+        [[nodiscard]] std::array<Vector2, VERTICES_COUNT> computeVertices() const;
 
         bool operator== (const Box2& box) const; ///< 浮點數值比較
         bool operator!= (const Box2& box) const;    ///< 浮點數值比較
 
     private:
-        bool isValid() const;
+        [[nodiscard]] bool isValid() const;
 
         Vector2 m_center;
         std::array<Vector2, 2> m_axis;  ///< must be an orthonormal set of vectors

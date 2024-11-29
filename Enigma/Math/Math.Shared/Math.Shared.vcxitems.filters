@@ -25,6 +25,9 @@
     <Filter Include="Box">
       <UniqueIdentifier>{d94421fd-a810-4196-869f-4375ceaf74eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Line">
+      <UniqueIdentifier>{6bdb8574-af83-4cc5-96af-299f27d51bfa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector2.cpp">
@@ -77,6 +80,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Box3.cpp">
       <Filter>Box</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Line2.cpp">
+      <Filter>Line</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Line3.cpp">
+      <Filter>Line</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +145,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Box3.hpp">
       <Filter>Box</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Line2.hpp">
+      <Filter>Line</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Line3.hpp">
+      <Filter>Line</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
