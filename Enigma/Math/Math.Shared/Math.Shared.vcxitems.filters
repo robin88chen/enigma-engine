@@ -28,6 +28,15 @@
     <Filter Include="Line">
       <UniqueIdentifier>{6bdb8574-af83-4cc5-96af-299f27d51bfa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sphere">
+      <UniqueIdentifier>{43208683-3585-48c3-9cab-1d98088e253c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ray">
+      <UniqueIdentifier>{b8525983-3c8a-450f-a7c6-2ac784a88943}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Triangle">
+      <UniqueIdentifier>{ea1f7a88-1bdc-4e87-8fb0-b4874c85df79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector2.cpp">
@@ -86,6 +95,24 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Line3.cpp">
       <Filter>Line</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Sphere2.cpp">
+      <Filter>Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Sphere3.cpp">
+      <Filter>Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Ray2.cpp">
+      <Filter>Ray</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Ray3.cpp">
+      <Filter>Ray</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Triangle2.cpp">
+      <Filter>Triangle</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Triangle3.cpp">
+      <Filter>Triangle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +178,24 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Line3.hpp">
       <Filter>Line</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Sphere2.hpp">
+      <Filter>Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Sphere3.hpp">
+      <Filter>Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Ray2.hpp">
+      <Filter>Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Ray3.hpp">
+      <Filter>Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Triangle2.hpp">
+      <Filter>Triangle</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Triangle3.hpp">
+      <Filter>Triangle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

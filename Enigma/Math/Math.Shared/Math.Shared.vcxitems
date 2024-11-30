@@ -32,6 +32,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Quaternion.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Radian.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Ray2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Ray3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Sphere2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Sphere3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Triangle2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Triangle3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector2.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Vector4.hpp" />
@@ -53,6 +59,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Quaternion.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Radian.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Ray2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Ray3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Sphere2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Sphere3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Triangle2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Triangle3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector4.cpp" />
