@@ -8,7 +8,7 @@
 #ifndef PLANE3_HPP
 #define PLANE3_HPP
 #include "Vector3.hpp"
-
+#include <cstdint>
 namespace Math
 {
     /** Math Lib Plane3
@@ -26,7 +26,7 @@ namespace Math
             overlap = 0,
             positive = 1,
         };
-    public:
+
         Plane3();
         /** specify N and c directly */
         Plane3(const Vector3& normal, float constant);
