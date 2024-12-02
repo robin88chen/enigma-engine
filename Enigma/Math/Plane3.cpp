@@ -62,13 +62,13 @@ Plane3::SideOfPlane Plane3::whichSide(const Vector3& p) const
     const float distance = m_normal.dot(p) - m_constant;
     if (distance > FloatCompare::ZERO_TOLERANCE)
     {
-        return SideOfPlane::Positive;
+        return SideOfPlane::positive;
     }
     if (distance < -FloatCompare::ZERO_TOLERANCE)
     {
-        return SideOfPlane::Negative;
+        return SideOfPlane::negative;
     }
-    return SideOfPlane::Overlap;
+    return SideOfPlane::overlap;
 }
 
 float Plane3::distanceTo(const Vector3& q) const

@@ -22,9 +22,9 @@ namespace Math
     public:
         enum class SideOfPlane : std::int8_t
         {
-            Negative = -1,
-            Overlap = 0,
-            Positive = 1,
+            negative = -1,
+            overlap = 0,
+            positive = 1,
         };
     public:
         Plane3();

@@ -1,5 +1,6 @@
 ﻿#include "Box2.hpp"
 #include "MathGlobal.hpp"
+#include <cmath>
 #include <cassert>
 
 using namespace Math;

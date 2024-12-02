@@ -16,11 +16,11 @@ namespace Math
     {
         T m_width;
         T m_height;
-        bool isEqual(T a, T b, std::enable_if_t<std::is_integral_v<T> >* = nullptr)
+        bool isEqual(T a, T b, std::enable_if_t<std::is_integral_v<T> >* /*unused*/ = nullptr)
         {
             return a == b;
         }
-        bool isEqual(T a, T b, std::enable_if_t<std::is_floating_point_v<T> >* = nullptr)
+        bool isEqual(T a, T b, std::enable_if_t<std::is_floating_point_v<T> >* /*unused*/ = nullptr)
         {
             return FloatCompare::isEqual(a, b);
         }

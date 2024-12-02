@@ -14,7 +14,7 @@ namespace Math
     template<typename T, typename = std::enable_if_t<std::is_scalar_v<T>, T>> class Rectangle
     {
     public:
-        Rectangle() {};
+        Rectangle() = default;
         Rectangle(T left, T top, T right, T bottom) : m_left(left), m_top(top), m_right(right), m_bottom(bottom) {};
         bool operator== (const Rectangle& rect) const
         {
@@ -69,19 +69,19 @@ namespace Math
             return m_bottom - m_top;
         }
     private:
-        bool isEqual(T a, T b, std::enable_if_t<std::is_integral_v<T> >* = nullptr)
+        bool isEqual(T a, T b, std::enable_if_t<std::is_integral_v<T> >* /*unused*/ = nullptr)
         {
             return a == b;
         }
-        bool isEqual(T a, T b, std::enable_if_t<std::is_floating_point_v<T> >* = nullptr)
+        bool isEqual(T a, T b, std::enable_if_t<std::is_floating_point_v<T> >* /*unused*/ = nullptr)
         {
             return FloatCompare::isEqual(a, b);
         }
-        bool isZero(T a, std::enable_if_t<std::is_integral_v<T> >* = nullptr)
+        bool isZero(T a, std::enable_if_t<std::is_integral_v<T> >* /*unused*/ = nullptr)
         {
             return a == 0;
         }
-        bool isZero(T a, std::enable_if_t<std::is_floating_point_v<T> >* = nullptr)
+        bool isZero(T a, std::enable_if_t<std::is_floating_point_v<T> >* /*unused*/ = nullptr)
         {
             return FloatCompare::isEqual(a, 0.0f);
         }
