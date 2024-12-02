@@ -45,6 +45,8 @@ namespace Math
         [[nodiscard]] float dot(const Vector2& v) const;
         [[nodiscard]] Vector2 normalize() const;
         void normalizeSelf();
+        [[nodiscard]] bool isUnitLength() const;
+        [[nodiscard]] bool isZero() const;
 
         /// returns (y,-x)
         [[nodiscard]] Vector2 perpendicular() const;

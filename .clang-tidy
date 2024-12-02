@@ -80,6 +80,8 @@ CheckOptions:
     value:           '1'
   - key:             cppcoreguidelines-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
     value:           '1'
+  - key:             misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
+    value:           '1'
   - key:             readability-braces-around-statements.ShortStatementLines
     value:           '1'
   - key:             google-readability-function-size.StatementThreshold
@@ -134,8 +136,6 @@ CheckOptions:
     value:           ''
   - key:             performance-unnecessary-value-param.IncludeStyle
     value:           llvm
-  - key:             readability-braces-around-statements.ShortStatementLines
-    value:           '1'
   - key:             readability-else-after-return.WarnOnUnfixable
     value:           '1'
   - key:             readability-function-size.BranchThreshold

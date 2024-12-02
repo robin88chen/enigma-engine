@@ -159,6 +159,16 @@ float Vector2::dotPerpendicular(const Vector2& v) const
     return m_x * v.m_y - m_y * v.m_x;
 }
 
+bool Vector2::isUnitLength() const
+{
+    return FloatCompare::isEqual(squaredLength(), 1.0f);
+}
+
+bool Vector2::isZero() const
+{
+    return FloatCompare::isEqual(squaredLength(), 0.0f);
+}
+
 const Vector2 Vector2::ZERO(0.0f, 0.0f);
 const Vector2 Vector2::UNIT_X(1.0f, 0.0f);
 const Vector2 Vector2::UNIT_Y(0.0f, 1.0f);

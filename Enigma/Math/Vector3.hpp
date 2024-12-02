@@ -58,6 +58,9 @@ namespace Math
         /// The cross products are computed using the left-handed rule.
         [[nodiscard]] Vector3 unitCross(const Vector3& v) const;
 
+        [[nodiscard]] bool isUnitLength() const;
+        [[nodiscard]] bool isZero() const;
+
         static const Vector3 ZERO;
         static const Vector3 UNIT_X;
         static const Vector3 UNIT_Y;
