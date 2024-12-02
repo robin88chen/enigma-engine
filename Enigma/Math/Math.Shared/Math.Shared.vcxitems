@@ -19,6 +19,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\ColorRGB.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\ColorRGBA.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Degree.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Dimension.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\EigenDecompose.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\EulerAngles.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\EulerRotations.hpp" />
@@ -29,11 +30,14 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix2.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Matrix4.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Plane3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Quaternion.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Radian.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Random.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Ray2.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Ray3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Rectangle.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Sphere2.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Sphere3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Triangle2.hpp" />
@@ -56,9 +60,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Matrix4.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Plane3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Quaternion.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\QuaternionDecompose.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Radian.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Random.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Ray2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Ray3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Sphere2.cpp" />

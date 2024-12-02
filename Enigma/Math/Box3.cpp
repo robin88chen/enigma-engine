@@ -115,8 +115,7 @@ Box3 Box3::swapToMajorAxis() const
     if (axis[1].y() < 0.0f) axis[1] = -axis[1];
     if (axis[2].z() < 0.0f) axis[2] = -axis[2];
     // 調整正交規則
-    const Vector3 cross = axis[0].cross(axis[1]);
-    if (cross.dot(axis[2]) < 0.0f)
+    if (const Vector3 cross = axis[0].cross(axis[1]); cross.dot(axis[2]) < 0.0f)
     {
         axis[0] = -axis[0];
     }
