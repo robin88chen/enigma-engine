@@ -47,6 +47,11 @@ Vector3 Box3::axis(unsigned index) const
     return m_axis[index];
 }
 
+const std::array<Vector3, 3>& Box3::axis() const
+{
+    return m_axis;
+}
+
 void Box3::axis(const std::array<Vector3, 3>& axis)
 {
     assert(axis[0].isUnitLength() && axis[1].isUnitLength() && axis[2].isUnitLength() &&
@@ -60,6 +65,11 @@ float Box3::extent(unsigned index) const
 {
     assert(index <= 2);
     return m_extent[index];
+}
+
+const std::array<float, 3>& Box3::extent() const
+{
+    return m_extent;
 }
 
 void Box3::extent(unsigned index, float extent)

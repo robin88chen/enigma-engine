@@ -11,6 +11,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math.Win", "Math\Math.Win\M
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math.Android", "Math\Math.Android\Math.Android.vcxproj", "{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Collision", "Collision", "{269EDBB2-F705-43C2-9C4B-8DC303D4403A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Collision.Shared", "Collision\Collision.Shared\Collision.Shared.vcxitems", "{43B111E9-DEF5-43CF-BE3A-610A753937BF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Collision.Win", "Collision\Collision.Win\Collision.Win.vcxproj", "{23EF0885-E601-4E9C-9A25-2712C5E4AD66}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Collision.Android", "Collision\Collision.Android\Collision.Android.vcxproj", "{1629FDD4-A6D9-4235-B874-5BBFA0A44163}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -43,6 +51,28 @@ Global
 		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Release|x64.Build.0 = Release|x64
 		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Release|x86.ActiveCfg = Release|x86
 		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520}.Release|x86.Build.0 = Release|x86
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66}.Debug|ARM64.ActiveCfg = Debug|x64
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66}.Debug|x64.ActiveCfg = Debug|x64
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66}.Debug|x64.Build.0 = Debug|x64
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66}.Debug|x86.ActiveCfg = Debug|Win32
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66}.Debug|x86.Build.0 = Debug|Win32
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66}.Release|ARM64.ActiveCfg = Release|x64
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66}.Release|x64.ActiveCfg = Release|x64
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66}.Release|x64.Build.0 = Release|x64
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66}.Release|x86.ActiveCfg = Release|Win32
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66}.Release|x86.Build.0 = Release|Win32
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Debug|ARM64.Build.0 = Debug|ARM64
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Debug|x64.ActiveCfg = Debug|x64
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Debug|x64.Build.0 = Debug|x64
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Debug|x86.ActiveCfg = Debug|x86
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Debug|x86.Build.0 = Debug|x86
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Release|ARM64.ActiveCfg = Release|ARM64
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Release|ARM64.Build.0 = Release|ARM64
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Release|x64.ActiveCfg = Release|x64
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Release|x64.Build.0 = Release|x64
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Release|x86.ActiveCfg = Release|x86
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,8 +81,14 @@ Global
 		{B4BAF899-23C4-4C20-BC18-CB54BBA879A2} = {1D3A1286-C66B-4E6E-9C5C-05C094675D13}
 		{E06114AD-3D80-49D7-ACDC-C44EA83E9D92} = {1D3A1286-C66B-4E6E-9C5C-05C094675D13}
 		{DAED55D5-BA8E-4F8A-B390-D42FBDF1F520} = {1D3A1286-C66B-4E6E-9C5C-05C094675D13}
+		{43B111E9-DEF5-43CF-BE3A-610A753937BF} = {269EDBB2-F705-43C2-9C4B-8DC303D4403A}
+		{23EF0885-E601-4E9C-9A25-2712C5E4AD66} = {269EDBB2-F705-43C2-9C4B-8DC303D4403A}
+		{1629FDD4-A6D9-4235-B874-5BBFA0A44163} = {269EDBB2-F705-43C2-9C4B-8DC303D4403A}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Collision\Collision.Shared\Collision.Shared.vcxitems*{1629fdd4-a6d9-4235-b874-5bbfa0a44163}*SharedItemsImports = 4
+		Collision\Collision.Shared\Collision.Shared.vcxitems*{23ef0885-e601-4e9c-9a25-2712c5e4ad66}*SharedItemsImports = 4
+		Collision\Collision.Shared\Collision.Shared.vcxitems*{43b111e9-def5-43cf-be3a-610a753937bf}*SharedItemsImports = 9
 		Math\Math.Shared\Math.Shared.vcxitems*{b4baf899-23c4-4c20-bc18-cb54bba879a2}*SharedItemsImports = 9
 		Math\Math.Shared\Math.Shared.vcxitems*{daed55d5-ba8e-4f8a-b390-d42fbdf1f520}*SharedItemsImports = 4
 		Math\Math.Shared\Math.Shared.vcxitems*{e06114ad-3d80-49d7-acdc-c44ea83e9d92}*SharedItemsImports = 4
