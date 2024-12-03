@@ -16,11 +16,19 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Intersector.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox2Box2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox2Sphere2.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox3Box3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox3Sphere3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrSphere2Sphere2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrSphere3Sphere3.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Intersector.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox2Box2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox2Sphere2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox3Box3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox3Sphere3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrSphere2Sphere2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrSphere3Sphere3.cpp" />
   </ItemGroup>
 </Project>
