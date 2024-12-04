@@ -33,6 +33,21 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrLine3Box3.hpp">
       <Filter>Intersect</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrLine3Sphere3.hpp">
+      <Filter>Intersect</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Box3.hpp">
+      <Filter>Intersect</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Plane3.hpp">
+      <Filter>Intersect</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Sphere3.hpp">
+      <Filter>Intersect</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Triangle3.hpp">
+      <Filter>Intersect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Intersector.cpp">
@@ -60,6 +75,21 @@
       <Filter>Intersect</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrLine3Box3.cpp">
+      <Filter>Intersect</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrLine3Sphere3.cpp">
+      <Filter>Intersect</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Box3.cpp">
+      <Filter>Intersect</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Plane3.cpp">
+      <Filter>Intersect</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Sphere3.cpp">
+      <Filter>Intersect</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Triangle3.cpp">
       <Filter>Intersect</Filter>
     </ClCompile>
   </ItemGroup>

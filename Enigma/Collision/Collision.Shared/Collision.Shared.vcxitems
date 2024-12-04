@@ -21,6 +21,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox3Plane3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox3Sphere3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrLine3Box3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrLine3Sphere3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Box3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Plane3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Sphere3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Triangle3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrSphere2Sphere2.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrSphere3Sphere3.hpp" />
   </ItemGroup>
@@ -32,6 +37,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox3Plane3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox3Sphere3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrLine3Box3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrLine3Sphere3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Box3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Plane3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Sphere3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Triangle3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrSphere2Sphere2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrSphere3Sphere3.cpp" />
   </ItemGroup>
