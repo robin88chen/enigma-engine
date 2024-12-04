@@ -61,7 +61,7 @@ namespace Math
          the point is on the negative side, and zero if the point is on the
          plane.
         */
-        [[nodiscard]] float distanceTo(const Vector3& q) const;
+        [[nodiscard]] float signedDistanceTo(const Vector3& q) const;
 
     protected:
         Vector3 m_normal;

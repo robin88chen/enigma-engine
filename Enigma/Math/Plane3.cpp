@@ -71,7 +71,7 @@ Plane3::SideOfPlane Plane3::whichSide(const Vector3& p) const
     return SideOfPlane::overlap;
 }
 
-float Plane3::distanceTo(const Vector3& q) const
+float Plane3::signedDistanceTo(const Vector3& q) const
 {
     return m_normal.dot(q) - m_constant;
 }

@@ -12,7 +12,7 @@
 #include "Math/Sphere2.hpp"
 namespace Collision
 {
-    class IntrBox2Sphere2 : public Intersector
+    class IntrBox2Sphere2 final : public Intersector
     {
     public:
         IntrBox2Sphere2(const Math::Box2& box, const Math::Sphere2& sphere);

@@ -12,7 +12,7 @@
 
 namespace Collision
 {
-    class IntrBox3Box3 : public Intersector
+    class IntrBox3Box3 final : public Intersector
     {
     public:
         IntrBox3Box3(const Math::Box3& box0, const Math::Box3& box1);

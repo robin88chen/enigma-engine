@@ -12,7 +12,7 @@
 
 namespace Collision
 {
-    class IntrSphere2Sphere2 : public Intersector
+    class IntrSphere2Sphere2 final : public Intersector
     {
     public:
         IntrSphere2Sphere2(const Math::Sphere2& sphere0, const Math::Sphere2& sphere1);

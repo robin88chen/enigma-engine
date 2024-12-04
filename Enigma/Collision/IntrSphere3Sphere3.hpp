@@ -11,7 +11,7 @@
 #include "Math/Sphere3.hpp"
 namespace Collision
 {
-    class IntrSphere3Sphere3 : public Intersector
+    class IntrSphere3Sphere3 final : public Intersector
     {
     public:
         IntrSphere3Sphere3(const Math::Sphere3& sphere0, const Math::Sphere3& sphere1);

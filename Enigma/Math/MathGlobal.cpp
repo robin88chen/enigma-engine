@@ -1,5 +1,6 @@
 ﻿#include "MathGlobal.hpp"
 #include <cmath>
+#include <limits>
 
 using namespace Math;
 
@@ -31,3 +32,4 @@ bool FloatCompare::isEqual(float l, float r)
 
 const float Math::Constants::PI = 4.0f * std::atan(1.0f);
 const float Math::Constants::HALF_PI = 0.5f * Constants::PI;
+const float Math::Constants::MAX_FLOAT = std::numeric_limits<float>::max();
