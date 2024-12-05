@@ -1,5 +1,4 @@
-﻿// NOLINTBEGIN
-#include <jni.h>
+﻿#include <jni.h>
 #include <errno.h>
 
 #include <string.h>
@@ -7,4 +6,3 @@
 #include <sys/resource.h>
 
 #include <android/log.h>
-// NOLINTEND
