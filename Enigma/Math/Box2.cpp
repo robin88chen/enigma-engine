@@ -42,6 +42,11 @@ Vector2 Box2::axis(unsigned index) const
     return m_axis[index];
 }
 
+const std::array<Vector2, 2>& Box2::axis() const
+{
+    return m_axis;
+}
+
 void Box2::axis(const std::array<Vector2, 2>& axis)
 {
     assert(axis[0].isUnitLength() && axis[1].isUnitLength() && std::abs(axis[0].dotPerpendicular(axis[1])) <= FloatCompare::ZERO_TOLERANCE);
@@ -52,6 +57,11 @@ float Box2::extent(unsigned index) const
 {
     assert(index <= 1);
     return m_extent[index];
+}
+
+const std::array<float, 2>& Box2::extent() const
+{
+    return m_extent;
 }
 
 void Box2::extent(unsigned index, float extent)

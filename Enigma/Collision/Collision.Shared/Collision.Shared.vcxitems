@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{43b111e9-def5-43cf-be3a-610a753937bf}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\ContainmentBox2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\ContainmentBox3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\ContainmentSphere2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\ContainmentSphere3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Intersector.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox2Box2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox2Sphere2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox3Box3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox3Plane3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox3Sphere3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrLine3Box3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrLine3Sphere3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Box3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Plane3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Sphere3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrRay3Triangle3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrSphere2Sphere2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrSphere3Sphere3.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\ContainmentBox2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\ContainmentBox3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\ContainmentSphere2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\ContainmentSphere3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Intersector.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox2Box2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox2Sphere2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox3Box3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox3Plane3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox3Sphere3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrLine3Box3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrLine3Sphere3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Box3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Plane3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Sphere3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrRay3Triangle3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrSphere2Sphere2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrSphere3Sphere3.cpp" />
+  </ItemGroup>
+</Project>

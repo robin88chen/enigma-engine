@@ -29,8 +29,10 @@ namespace Math
         [[nodiscard]] Vector2 center() const;
         void center(const Vector2& center);
         [[nodiscard]] Vector2 axis(unsigned  index) const;
+        [[nodiscard]] const std::array<Vector2, 2>& axis() const;
         void axis(const std::array<Vector2, 2>& axis);
         [[nodiscard]] float extent(unsigned index) const;
+        [[nodiscard]] const std::array<float, 2>& extent() const;
         void extent(unsigned index, float extent);
         constexpr static unsigned VERTICES_COUNT = 4;
         /**
