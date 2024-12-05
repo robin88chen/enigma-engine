@@ -14,6 +14,10 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\ContainmentBox2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\ContainmentBox3.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\ContainmentSphere2.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\ContainmentSphere3.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Intersector.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox2Box2.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrBox2Sphere2.hpp" />
@@ -30,6 +34,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\IntrSphere3Sphere3.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\ContainmentBox2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\ContainmentBox3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\ContainmentSphere2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\ContainmentSphere3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Intersector.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox2Box2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\IntrBox2Sphere2.cpp" />
