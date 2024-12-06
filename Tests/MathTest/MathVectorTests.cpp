@@ -29,7 +29,7 @@ namespace MathLibTests
             Vector2 vec22(unif_rand(generator), unif_rand(generator));
             float* ar21 = (float*)vec21;
             float* ar22 = (float*)vec22;
-            Assert::IsTrue(FloatCompare::isEqual(ar21[0], vec21.y()));
+            Assert::IsTrue(FloatCompare::isEqual(ar21[0], vec21.x()));
             Assert::IsTrue(FloatCompare::isEqual(ar22[1], vec22.y()));
 
             //Vector2 vec23 = Vector2(ar21);
