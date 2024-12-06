@@ -152,5 +152,6 @@ namespace MathLibTests
             Vector4 vec9 = vec1.normalize();
             Assert::IsTrue(vec9 == vec1 / ll);
         }
+
     };
 }
