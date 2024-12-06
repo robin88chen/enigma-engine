@@ -153,4 +153,5 @@ namespace MathLibTests
             Assert::IsTrue(vec9 == vec1 / ll);
         }
     };
+
 }
