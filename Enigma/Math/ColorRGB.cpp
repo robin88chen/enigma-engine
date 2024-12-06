@@ -1,5 +1,7 @@
 ﻿#include "ColorRGB.hpp"
+#include "MathGlobal.hpp"
 #include <algorithm>
+#include <cassert>
 
 using namespace Math;
 
@@ -11,6 +13,7 @@ constexpr auto BYTE_MASK = 0xff;
 
 static unsigned int rgbFloat2Int(float r, float g, float b)
 {
+    assert(r >= 0.0f && g >= 0.0f && b >= 0.0f);
     unsigned int rgb = static_cast<unsigned char>(r * FULL_BYTE);
     rgb = (rgb << BYTE_SHIFT) + static_cast<unsigned char>(g * FULL_BYTE);
     rgb = (rgb << BYTE_SHIFT) + static_cast<unsigned char>(b * FULL_BYTE);
@@ -34,10 +37,12 @@ ColorRGB::ColorRGB() : m_tuple(), m_rgb(0)
 
 ColorRGB::ColorRGB(float r, float g, float b) : m_tuple({ r, g, b }), m_rgb(rgbFloat2Int(r, g, b))
 {
+    assert(r >= 0.0f && g >= 0.0f && b >= 0.0f);
 }
 
 ColorRGB::ColorRGB(const std::array<float, 3>& c) : m_tuple(c), m_rgb(rgbFloat2Int(c[0], c[1], c[2]))
 {
+    assert(c[0] >= 0.0f && c[1] >= 0.0f && c[2] >= 0.0f);
 }
 
 ColorRGB::ColorRGB(unsigned rgb) : m_tuple(rgbInt2Float(rgb)), m_rgb(rgb)
@@ -61,6 +66,7 @@ float ColorRGB::r() const
 
 void ColorRGB::r(float r)
 {
+    assert(r >= 0.0f);
     m_tuple[0] = r;
     m_rgb = rgbFloat2Int(m_tuple[0], m_tuple[1], m_tuple[2]);
 }
@@ -72,6 +78,7 @@ float ColorRGB::g() const
 
 void ColorRGB::g(float g)
 {
+    assert(g >= 0.0f);
     m_tuple[1] = g;
     m_rgb = rgbFloat2Int(m_tuple[0], m_tuple[1], m_tuple[2]);
 }
@@ -83,23 +90,25 @@ float ColorRGB::b() const
 
 void ColorRGB::b(float b)
 {
+    assert(b >= 0.0f);
     m_tuple[2] = b;
     m_rgb = rgbFloat2Int(m_tuple[0], m_tuple[1], m_tuple[2]);
 }
 
 unsigned ColorRGB::rgb() const
 {
+    assert(m_tuple[0] <= 1.0f && m_tuple[1] <= 1.0f && m_tuple[2] <= 1.0f); // r, g, b are in [0,1]
     return m_rgb;
 }
 
 bool ColorRGB::operator==(const ColorRGB& c) const
 {
-    return m_rgb == c.m_rgb;
+    return FloatCompare::isEqual(m_tuple[0], c.m_tuple[0]) && FloatCompare::isEqual(m_tuple[1], c.m_tuple[1]) && FloatCompare::isEqual(m_tuple[2], c.m_tuple[2]);
 }
 
 bool ColorRGB::operator!=(const ColorRGB& c) const
 {
-    return m_rgb != c.m_rgb;
+    return !(*this == c);
 }
 
 bool ColorRGB::operator<(const ColorRGB& c) const
@@ -139,6 +148,7 @@ ColorRGB ColorRGB::operator*(const ColorRGB& c) const
 
 ColorRGB ColorRGB::operator*(float scalar) const
 {
+    assert(scalar >= 0.0f);
     return { m_tuple[0] * scalar, m_tuple[1] * scalar, m_tuple[2] * scalar };
 }
 
@@ -154,8 +164,11 @@ ColorRGB& ColorRGB::operator+=(const ColorRGB& c)
 ColorRGB& ColorRGB::operator-=(const ColorRGB& c)
 {
     m_tuple[0] -= c.m_tuple[0];
+    assert(m_tuple[0] >= 0.0f);
     m_tuple[1] -= c.m_tuple[1];
+    assert(m_tuple[1] >= 0.0f);
     m_tuple[2] -= c.m_tuple[2];
+    assert(m_tuple[2] >= 0.0f);
     m_rgb = rgbFloat2Int(m_tuple[0], m_tuple[1], m_tuple[2]);
     return *this;
 }
@@ -191,7 +204,6 @@ ColorRGB ColorRGB::scaleByMax() const
 
 const ColorRGB ColorRGB::BLACK(0x000000);
 const ColorRGB ColorRGB::WHITE(0xffffff);
-const ColorRGB ColorRGB::INVALID(0xffffff);
 const ColorRGB ColorRGB::ZERO(0x000000);
 
 namespace Math

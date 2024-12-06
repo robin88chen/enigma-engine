@@ -12,7 +12,7 @@ namespace Math
 {
     /** Color RGB Class
     @remarks
-    The components are intended to be in the interval [0,1].
+    The components must be >= 0.
     */
     class ColorRGB
     {
@@ -65,7 +65,6 @@ namespace Math
 
         static const ColorRGB BLACK; ///< = (0,0,0)
         static const ColorRGB WHITE; ///< = (1,1,1)
-        static const ColorRGB INVALID; ///< = (-1,-1,-1)
         static const ColorRGB ZERO; ///< = (0,0,0)
 
     private:
