@@ -9,7 +9,7 @@ on:
   push:
     #tags: 
     #  - 'engine-*'
-    branches: [ "test*" ]
+    branches: [ "tests/**" ]
   #pull_request:
     #branches: [ "main" ]
 
