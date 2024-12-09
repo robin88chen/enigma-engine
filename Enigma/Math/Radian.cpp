@@ -26,6 +26,11 @@ Radian Radian::operator/(float scalar) const
     return Radian{ m_radian / scalar };
 }
 
+Radian Radian::operator-() const
+{
+    return Radian{ -m_radian };
+}
+
 Radian& Radian::operator+=(const Radian& other)
 {
     m_radian += other.m_radian;
