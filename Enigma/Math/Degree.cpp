@@ -26,6 +26,11 @@ Degree Degree::operator/(float scalar) const
     return Degree{ m_degree / scalar };
 }
 
+Degree Degree::operator-() const
+{
+    return Degree{ -m_degree };
+}
+
 Degree& Degree::operator+=(const Degree& other)
 {
     m_degree += other.m_degree;

@@ -22,6 +22,7 @@ namespace Math
         Radian operator-(const Radian& other) const;
         Radian operator*(float scalar) const;
         Radian operator/(float scalar) const;
+        Radian operator-() const;
 
         Radian& operator+=(const Radian& other);
         Radian& operator-=(const Radian& other);

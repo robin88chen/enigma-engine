@@ -21,6 +21,7 @@ namespace Math
         Degree operator-(const Degree& other) const;
         Degree operator*(float scalar) const;
         Degree operator/(float scalar) const;
+        Degree operator-() const;
 
         Degree& operator+=(const Degree& other);
         Degree& operator-=(const Degree& other);
