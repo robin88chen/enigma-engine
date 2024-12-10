@@ -388,6 +388,9 @@ Quaternion Quaternion::sphericalQuadInterpolation(float t, const Quaternion& q0,
     return sphericalLerp(slerp_t, slerp_p, slerp_q, false);
 }
 
+const Quaternion Quaternion::IDENTITY{ 1.0f, 0.0f, 0.0f, 0.0f };
+const Quaternion Quaternion::ZERO{ 0.0f, 0.0f, 0.0f, 0.0f };
+
 namespace Math
 {
     Quaternion operator* (float scalar, const Quaternion& quat)
