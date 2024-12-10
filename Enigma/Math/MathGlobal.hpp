@@ -8,8 +8,6 @@
 #ifndef MATH_GLOBAL_HPP
 #define MATH_GLOBAL_HPP
 
-#include <limits>
-
 namespace Math
 {
     class FloatCompare
@@ -18,10 +16,11 @@ namespace Math
         [[nodiscard]] static bool isEqual(float l, float r);
         [[nodiscard]] static float epsilonUlp();  ///< 修正 epsilon 誤差的放大倍數, 預設為 1.0f
         static void epsilonUlp(float epsilon);
-        static constexpr float ZERO_TOLERANCE = std::numeric_limits<float>::epsilon();  ///< =10e-6
+        static float zeroTolerance();  ///< =1e-6 * epsilonUlp()
 
     private:
         static float m_epsilonUlp;
+        static float m_zeroTolerance;
     };
     class Constants
     {

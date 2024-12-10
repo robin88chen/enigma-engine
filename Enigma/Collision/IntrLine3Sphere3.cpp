@@ -40,7 +40,7 @@ bool IntrLine3Sphere3::find()
     {
         m_quantity = 0;
     }
-    else if (discr >= Math::FloatCompare::ZERO_TOLERANCE)
+    else if (discr >= Math::FloatCompare::zeroTolerance())
     {
         const float root = std::sqrt(discr);
         m_lineT[0] = -a1 - root;

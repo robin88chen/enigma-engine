@@ -160,7 +160,7 @@ Math::Box3 ContainmentBox3::mergeAlignedBoxes(const Math::Box3& box0, const Math
 
 Math::Box3 ContainmentBox3::computeAlignedBox(const std::vector<Math::Vector3>& pos)
 {
-    constexpr float MINIMUM_SCALE = Math::FloatCompare::ZERO_TOLERANCE * 10.f;
+    const float minimum_scale = Math::FloatCompare::zeroTolerance() * 10.f;
     assert(!pos.empty());
 
     const auto quantity = static_cast<unsigned>(pos.size());
@@ -178,15 +178,15 @@ Math::Box3 ContainmentBox3::computeAlignedBox(const std::vector<Math::Vector3>& 
     const Math::Vector3 center = 0.5f * (vec_max + vec_min);
     Math::Vector3 extend = vec_max - center;
     // 加一個基本大小
-    if (extend.x() <= Math::FloatCompare::ZERO_TOLERANCE) extend.x(MINIMUM_SCALE);
-    if (extend.y() <= Math::FloatCompare::ZERO_TOLERANCE) extend.y(MINIMUM_SCALE);
-    if (extend.z() <= Math::FloatCompare::ZERO_TOLERANCE) extend.z(MINIMUM_SCALE);
+    if (extend.x() <= Math::FloatCompare::zeroTolerance()) extend.x(minimum_scale);
+    if (extend.y() <= Math::FloatCompare::zeroTolerance()) extend.y(minimum_scale);
+    if (extend.z() <= Math::FloatCompare::zeroTolerance()) extend.z(minimum_scale);
     return { center, Math::Vector3::UNIT_X, Math::Vector3::UNIT_Y, Math::Vector3::UNIT_Z, extend.x(), extend.y(), extend.z() };
 }
 
 Math::Box3 ContainmentBox3::computeAlignedBox(const std::vector<Math::Vector4>& pos)
 {
-    constexpr float MINIMUM_SCALE = Math::FloatCompare::ZERO_TOLERANCE * 10.f;
+    const float minimum_scale = Math::FloatCompare::zeroTolerance() * 10.f;
     assert(!pos.empty());
 
     const auto quantity = static_cast<unsigned>(pos.size());
@@ -204,15 +204,15 @@ Math::Box3 ContainmentBox3::computeAlignedBox(const std::vector<Math::Vector4>& 
     const Math::Vector3 center = 0.5f * (vec_max + vec_min);
     Math::Vector3 extend = vec_max - center;
     // 加一個基本大小
-    if (extend.x() <= Math::FloatCompare::ZERO_TOLERANCE) extend.x(MINIMUM_SCALE);
-    if (extend.y() <= Math::FloatCompare::ZERO_TOLERANCE) extend.y(MINIMUM_SCALE);
-    if (extend.z() <= Math::FloatCompare::ZERO_TOLERANCE) extend.z(MINIMUM_SCALE);
+    if (extend.x() <= Math::FloatCompare::zeroTolerance()) extend.x(minimum_scale);
+    if (extend.y() <= Math::FloatCompare::zeroTolerance()) extend.y(minimum_scale);
+    if (extend.z() <= Math::FloatCompare::zeroTolerance()) extend.z(minimum_scale);
     return { center, Math::Vector3::UNIT_X, Math::Vector3::UNIT_Y, Math::Vector3::UNIT_Z, extend.x(), extend.y(), extend.z() };
 }
 
 Math::Box3 ContainmentBox3::computeAlignedBox(const float* vert, unsigned int pitch, unsigned int quantity)
 {
-    constexpr float MINIMUM_SCALE = Math::FloatCompare::ZERO_TOLERANCE * 10.f;
+    const float minimum_scale = Math::FloatCompare::zeroTolerance() * 10.f;
     assert(vert != nullptr);
     assert(quantity != 0);
 
@@ -232,9 +232,9 @@ Math::Box3 ContainmentBox3::computeAlignedBox(const float* vert, unsigned int pi
     const Math::Vector3 center = 0.5f * (vec_max + vec_min);
     Math::Vector3 extend = vec_max - center;
     // 加一個基本大小
-    if (extend.x() <= Math::FloatCompare::ZERO_TOLERANCE) extend.x(MINIMUM_SCALE);
-    if (extend.y() <= Math::FloatCompare::ZERO_TOLERANCE) extend.y(MINIMUM_SCALE);
-    if (extend.z() <= Math::FloatCompare::ZERO_TOLERANCE) extend.z(MINIMUM_SCALE);
+    if (extend.x() <= Math::FloatCompare::zeroTolerance()) extend.x(minimum_scale);
+    if (extend.y() <= Math::FloatCompare::zeroTolerance()) extend.y(minimum_scale);
+    if (extend.z() <= Math::FloatCompare::zeroTolerance()) extend.z(minimum_scale);
     return { center, Math::Vector3::UNIT_X, Math::Vector3::UNIT_Y, Math::Vector3::UNIT_Z, extend.x(), extend.y(), extend.z() };
 }
 

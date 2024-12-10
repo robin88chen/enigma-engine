@@ -60,11 +60,11 @@ bool Plane3::operator!= (const Plane3& plane) const
 Plane3::SideOfPlane Plane3::whichSide(const Vector3& p) const
 {
     const float distance = m_normal.dot(p) - m_constant;
-    if (distance > FloatCompare::ZERO_TOLERANCE)
+    if (distance > FloatCompare::zeroTolerance())
     {
         return SideOfPlane::positive;
     }
-    if (distance < -FloatCompare::ZERO_TOLERANCE)
+    if (distance < -FloatCompare::zeroTolerance())
     {
         return SideOfPlane::negative;
     }

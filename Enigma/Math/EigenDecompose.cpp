@@ -145,7 +145,7 @@ namespace Math
         const float m22 = matrix[2][2];
 
         diagonal[0] = m00;
-        if (std::fabs(m02) >= FloatCompare::ZERO_TOLERANCE)
+        if (std::fabs(m02) >= FloatCompare::zeroTolerance())
         {
             sub_diagonal[0] = std::sqrt(m01 * m01 + m02 * m02);
             const float inv_length = 1.0f / sub_diagonal[0];

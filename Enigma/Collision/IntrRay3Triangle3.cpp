@@ -24,7 +24,7 @@ bool IntrRay3Triangle3::test()
     const Math::Vector3 e2 = m_triangle.vector(2) - m_triangle.vector(0);
     const Math::Vector3 q = m_ray.direction().cross(e2);
     const float a = e1.dot(q);
-    if ((a > -Math::FloatCompare::ZERO_TOLERANCE) && (a < Math::FloatCompare::ZERO_TOLERANCE)) return false;
+    if ((a > -Math::FloatCompare::zeroTolerance()) && (a < Math::FloatCompare::zeroTolerance())) return false;
     const float f = 1.0f / a;
     const Math::Vector3 s = m_ray.origin() - m_triangle.vector(0);
     const float u = f * (s.dot(q));

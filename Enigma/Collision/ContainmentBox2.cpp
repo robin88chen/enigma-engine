@@ -1,5 +1,6 @@
 ﻿#include "ContainmentBox2.hpp"
 #include "Math/Box2.hpp"
+#include "Math/MathGlobal.hpp"
 #include "Math/Sphere2.hpp"
 #include <array>
 #include <cmath>
@@ -100,8 +101,8 @@ bool ContainmentBox2::testBox2EnvelopBox2(const Math::Box2& box0, const Math::Bo
     for (unsigned int i = 0; i < Math::Box2::VERTICES_COUNT; i++)
     {
         const Math::Vector2 diff = vertex[i] - box0.center();
-        if (std::abs(diff.dot(box0.axis(0))) > box0.extent(0)) return false;
-        if (std::abs(diff.dot(box0.axis(1))) > box0.extent(1)) return false;
+        if (std::abs(diff.dot(box0.axis(0))) > box0.extent(0) + Math::FloatCompare::zeroTolerance()) return false;
+        if (std::abs(diff.dot(box0.axis(1))) > box0.extent(1) + Math::FloatCompare::zeroTolerance()) return false;
     }
     return true;
 }

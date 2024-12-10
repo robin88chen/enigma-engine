@@ -26,9 +26,9 @@ bool Box3::isValid() const
 {
     return m_axis[0].isUnitLength() && m_axis[1].isUnitLength() && m_axis[2].isUnitLength() &&
         m_extent[0] >= 0.0f && m_extent[1] >= 0.0f && m_extent[2] >= 0.0f &&
-        std::abs(m_axis[0].dot(m_axis[1])) <= FloatCompare::ZERO_TOLERANCE &&
-        std::abs(m_axis[0].dot(m_axis[2])) <= FloatCompare::ZERO_TOLERANCE &&
-        std::abs(m_axis[1].dot(m_axis[2])) <= FloatCompare::ZERO_TOLERANCE;
+        std::abs(m_axis[0].dot(m_axis[1])) <= FloatCompare::zeroTolerance() &&
+        std::abs(m_axis[0].dot(m_axis[2])) <= FloatCompare::zeroTolerance() &&
+        std::abs(m_axis[1].dot(m_axis[2])) <= FloatCompare::zeroTolerance();
 }
 
 Vector3 Box3::center() const
@@ -55,9 +55,9 @@ const std::array<Vector3, 3>& Box3::axis() const
 void Box3::axis(const std::array<Vector3, 3>& axis)
 {
     assert(axis[0].isUnitLength() && axis[1].isUnitLength() && axis[2].isUnitLength() &&
-        std::abs(axis[0].dot(axis[1])) <= FloatCompare::ZERO_TOLERANCE &&
-        std::abs(axis[0].dot(axis[2])) <= FloatCompare::ZERO_TOLERANCE &&
-        std::abs(axis[1].dot(axis[2])) <= FloatCompare::ZERO_TOLERANCE);
+        std::abs(axis[0].dot(axis[1])) <= FloatCompare::zeroTolerance() &&
+        std::abs(axis[0].dot(axis[2])) <= FloatCompare::zeroTolerance() &&
+        std::abs(axis[1].dot(axis[2])) <= FloatCompare::zeroTolerance());
     m_axis = axis;
 }
 

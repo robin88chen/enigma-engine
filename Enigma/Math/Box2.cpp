@@ -23,7 +23,7 @@ Box2::Box2(const Vector2& center, const Vector2& axis0, const Vector2& axis1, fl
 
 bool Box2::isValid() const
 {
-    return m_axis[0].isUnitLength() && m_axis[1].isUnitLength() && m_extent[0] >= 0.0f && m_extent[1] >= 0.0f && std::abs(m_axis[0].dotPerpendicular(m_axis[1])) <= FloatCompare::ZERO_TOLERANCE;
+    return m_axis[0].isUnitLength() && m_axis[1].isUnitLength() && m_extent[0] >= 0.0f && m_extent[1] >= 0.0f && std::abs(m_axis[0].dot(m_axis[1])) <= FloatCompare::zeroTolerance();
 }
 
 Vector2 Box2::center() const
@@ -49,7 +49,7 @@ const std::array<Vector2, 2>& Box2::axis() const
 
 void Box2::axis(const std::array<Vector2, 2>& axis)
 {
-    assert(axis[0].isUnitLength() && axis[1].isUnitLength() && std::abs(axis[0].dotPerpendicular(axis[1])) <= FloatCompare::ZERO_TOLERANCE);
+    assert(axis[0].isUnitLength() && axis[1].isUnitLength() && std::abs(axis[0].dot(axis[1])) <= FloatCompare::zeroTolerance());
     m_axis = axis;
 }
 

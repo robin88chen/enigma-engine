@@ -20,7 +20,7 @@ Math::Sphere2 ContainmentSphere2::mergeSpheres(const Math::Sphere2& sphere0, con
     const float length = std::sqrt(sqr_length);
     Math::Sphere2 sphere;
 
-    if (length > Math::FloatCompare::ZERO_TOLERANCE)
+    if (length > Math::FloatCompare::zeroTolerance())
     {
         const float coeff = (length + radius_diff) / (2.0f * length);
         sphere.center(sphere0.center() + coeff * center_diff);

@@ -260,7 +260,7 @@ Quaternion Quaternion::exp() const
     // use exp(q) = cos(A)+A*(x*i+y*j+z*k) since A/sin(A) has limit 1.
     const float angle = std::sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
     const float sin_angle = std::sin(angle);
-    if (std::abs(sin_angle) > FloatCompare::ZERO_TOLERANCE)
+    if (std::abs(sin_angle) > FloatCompare::zeroTolerance())
     {
         const float multiplier = sin_angle / angle;
         return { std::cos(angle), m_x * multiplier, m_y * multiplier, m_z * multiplier };
@@ -296,7 +296,7 @@ Quaternion Quaternion::log() const
     // since sin(A)/A has limit 1.
     const float angle = std::acos(m_w);
     const float sin_angle = std::sin(angle);
-    const float multiplier = (std::abs(sin_angle) > FloatCompare::ZERO_TOLERANCE) ? angle / sin_angle : 1.0f;
+    const float multiplier = (std::abs(sin_angle) > FloatCompare::zeroTolerance()) ? angle / sin_angle : 1.0f;
     return { 0.0f, m_x * multiplier, m_y * multiplier, m_z * multiplier };
 }
 
@@ -328,7 +328,7 @@ Quaternion Quaternion::sphericalLerp(float t, const Quaternion& p, const Quatern
 {
     const float cs = p.dot(q);
 
-    if (const float angle = std::acos(cs); std::fabs(angle) >= FloatCompare::ZERO_TOLERANCE)
+    if (const float angle = std::acos(cs); std::fabs(angle) >= FloatCompare::zeroTolerance())
     {
         const float sn = std::sin(angle);
         const float inv_sn = 1.0f / sn;
@@ -356,7 +356,7 @@ Quaternion Quaternion::sphericalLerpExtraSpins(float t, const Quaternion& p, con
 {
     const float cs = p.dot(q);
 
-    if (const float angle = std::acos(cs); std::fabs(angle) >= FloatCompare::ZERO_TOLERANCE)
+    if (const float angle = std::acos(cs); std::fabs(angle) >= FloatCompare::zeroTolerance())
     {
         const float sn = std::sin(angle);
         const float phase = Constants::PI * static_cast<float>(extra_spins) * t;

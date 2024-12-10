@@ -25,7 +25,7 @@ bool IntrBox3Box3::test()
     // the cases when at least one pair of axes are parallel.  If this happens,
     // there is no need to test for separation along the cross(A[i],B[j])
     // directions.
-    constexpr float CUTOFF = 1.0f - Math::FloatCompare::ZERO_TOLERANCE;
+    const float cut_off = 1.0f - Math::FloatCompare::zeroTolerance();
     bool is_exists_parallel_pair = false;
 
     // convenience variables
@@ -48,7 +48,7 @@ bool IntrBox3Box3::test()
     {
         mx_c[0][i] = axis_a[0].dot(axis_b[i]);
         abs_c[0][i] = std::abs(mx_c[0][i]);
-        if (abs_c[0][i] > CUTOFF) is_exists_parallel_pair = true;
+        if (abs_c[0][i] > cut_off) is_exists_parallel_pair = true;
     }
     axis_dot_diff[0] = axis_a[0].dot(vec_diff);
     float radius = std::abs(axis_dot_diff[0]);
@@ -61,7 +61,7 @@ bool IntrBox3Box3::test()
     {
         mx_c[1][i] = axis_a[1].dot(axis_b[i]);
         abs_c[1][i] = std::abs(mx_c[1][i]);
-        if (abs_c[1][i] > CUTOFF) is_exists_parallel_pair = true;
+        if (abs_c[1][i] > cut_off) is_exists_parallel_pair = true;
     }
     axis_dot_diff[1] = axis_a[1].dot(vec_diff);
     radius = std::abs(axis_dot_diff[1]);
@@ -74,7 +74,7 @@ bool IntrBox3Box3::test()
     {
         mx_c[2][i] = axis_a[2].dot(axis_b[i]);
         abs_c[2][i] = std::abs(mx_c[2][i]);
-        if (abs_c[2][i] > CUTOFF) is_exists_parallel_pair = true;
+        if (abs_c[2][i] > cut_off) is_exists_parallel_pair = true;
     }
     axis_dot_diff[2] = axis_a[2].dot(vec_diff);
     radius = std::abs(axis_dot_diff[2]);

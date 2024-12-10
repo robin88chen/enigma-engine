@@ -4,7 +4,9 @@
 
 using namespace Math;
 
+constexpr float EPSILON = 1.0e-6f;  // epsilon 用固定數值
 float FloatCompare::m_epsilonUlp = 1.0f;
+float FloatCompare::m_zeroTolerance = EPSILON;
 
 float FloatCompare::epsilonUlp()
 {
@@ -14,20 +16,26 @@ float FloatCompare::epsilonUlp()
 void FloatCompare::epsilonUlp(float epsilon)
 {
     m_epsilonUlp = epsilon;
+    m_zeroTolerance = EPSILON * m_epsilonUlp;
 }
 
 bool FloatCompare::isEqual(float l, float r)
 {
     const float diff = std::abs(l - r);
-    if (diff <= ZERO_TOLERANCE * m_epsilonUlp) return true;
+    if (diff <= zeroTolerance()) return true;
     // code from
     // https://en.cppreference.com/w/cpp/types/numeric_limits/epsilon
 
     // the machine epsilon has to be scaled to the magnitude of the values used
     // and multiplied by the desired precision in ULPs (units in the last place)
-    return (diff <= ZERO_TOLERANCE * std::abs(l + r) * m_epsilonUlp)
+    return (diff <= zeroTolerance() * std::abs(l + r))
         // unless the result is subnormal
         || (diff < std::numeric_limits<float>::min());
+}
+
+float FloatCompare::zeroTolerance()
+{
+    return m_zeroTolerance;
 }
 
 const float Math::Constants::PI = 4.0f * std::atan(1.0f);
