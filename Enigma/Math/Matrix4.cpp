@@ -392,11 +392,11 @@ Matrix4 Matrix4::makeTranslateTransform(float tx, float ty, float tz)
         0.0f, 0.0f, 0.0f, 1.0f };
 }
 
-Matrix4 Matrix4::makeTranslateTransform(const Vector3& vec)
+Matrix4 Matrix4::makeTranslateTransform(const Point3& pos)
 {
-    return { 1.0f, 0.0f, 0.0f, vec.x(),
-        0.0f, 1.0f, 0.0f, vec.y(),
-        0.0f, 0.0f, 1.0f, vec.z(),
+    return { 1.0f, 0.0f, 0.0f, pos.x(),
+        0.0f, 1.0f, 0.0f, pos.y(),
+        0.0f, 0.0f, 1.0f, pos.z(),
         0.0f, 0.0f, 0.0f, 1.0f };
 }
 

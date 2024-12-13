@@ -5,6 +5,7 @@
 #include "Math/Vector3.hpp"
 #include "Math/Matrix3.hpp"
 #include "Math/Vector4.hpp"
+#include "Math/Sphere3.hpp"
 #include "Math/EigenDecompose.hpp"
 #include <cassert>
 #include <cmath>
@@ -351,3 +352,21 @@ Math::Box3 ContainmentBox3::computeOrientedBox(const float* vert, unsigned int p
     return computeOrientedBox(pos);
 }
 
+bool ContainmentBox3::testBox3EnvelopBox3(const Math::Box3& box0, const Math::Box3& box1)
+{
+    std::array<Math::Point3, Math::Box3::VERTICES_COUNT> vertex = box1.computeVertices();
+    for (unsigned int i = 0; i < Math::Box3::VERTICES_COUNT; i++)
+    {
+        if (!box0.contains(vertex[i])) return false;
+    }
+    return true;
+}
+
+bool ContainmentBox3::testBox3EnvelopSphere3(const Math::Box3& box0, const Math::Sphere3& sphere1)
+{
+    const Math::Vector3 diff = sphere1.center() - box0.center();
+    if (std::abs(diff.dot(box0.axis(0))) + sphere1.radius() > box0.extent(0)) return false;
+    if (std::abs(diff.dot(box0.axis(1))) + sphere1.radius() > box0.extent(1)) return false;
+    if (std::abs(diff.dot(box0.axis(2))) + sphere1.radius() > box0.extent(2)) return false;
+    return true;
+}

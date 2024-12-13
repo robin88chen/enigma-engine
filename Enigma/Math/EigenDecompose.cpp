@@ -226,9 +226,9 @@ namespace Math
                 // rotation.
                 for (int row_index = 0; row_index < 3; row_index++)
                 {
-                    tmp = matrix[row_index][2];
-                    m[row_index][2] = sin_value * matrix[row_index][1] + cos_value * tmp;
-                    m[row_index][1] = cos_value * matrix[row_index][1] - sin_value * tmp;
+                    tmp = m[row_index][2];
+                    m[row_index][2] = sin_value * m[row_index][1] + cos_value * tmp;
+                    m[row_index][1] = cos_value * m[row_index][1] - sin_value * tmp;
                 }
 
                 // Update the tridiagonal matrix.
@@ -284,9 +284,9 @@ namespace Math
                 // rotation.
                 for (int row_index = 0; row_index < 3; row_index++)
                 {
-                    tmp = matrix[row_index][1];
-                    m[row_index][1] = sin_value * matrix[row_index][0] + cos_value * tmp;
-                    m[row_index][0] = cos_value * matrix[row_index][0] - sin_value * tmp;
+                    tmp = m[row_index][1];
+                    m[row_index][1] = sin_value * m[row_index][0] + cos_value * tmp;
+                    m[row_index][0] = cos_value * m[row_index][0] - sin_value * tmp;
                 }
 
                 // Update the tridiagonal matrix.
@@ -340,9 +340,9 @@ namespace Math
             // rotation.
             for (int row_index = 0; row_index < 3; row_index++)
             {
-                const float tmp = matrix[row_index][2];
-                m[row_index][2] = sin_value * matrix[row_index][1] + cos_value * tmp;
-                m[row_index][1] = cos_value * matrix[row_index][1] - sin_value * tmp;
+                const float tmp = m[row_index][2];
+                m[row_index][2] = sin_value * m[row_index][1] + cos_value * tmp;
+                m[row_index][1] = cos_value * m[row_index][1] - sin_value * tmp;
             }
 
             // Set up the parameters for the second pass of the QL step.  The
@@ -378,9 +378,9 @@ namespace Math
             // rotation.
             for (int row_index = 0; row_index < 3; row_index++)
             {
-                const float tmp = matrix[row_index][1];
-                m[row_index][1] = sin_value * matrix[row_index][0] + cos_value * tmp;
-                m[row_index][0] = cos_value * matrix[row_index][0] - sin_value * tmp;
+                const float tmp = m[row_index][1];
+                m[row_index][1] = sin_value * m[row_index][0] + cos_value * tmp;
+                m[row_index][0] = cos_value * m[row_index][0] - sin_value * tmp;
             }
 
             // Complete the update of the tridiagonal matrix.

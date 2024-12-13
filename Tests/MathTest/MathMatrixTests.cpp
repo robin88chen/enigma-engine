@@ -8,6 +8,7 @@
 #include "Math/Vector2.hpp"
 #include "Math/Vector3.hpp"
 #include "Math/Vector4.hpp"
+#include "Math/Point3.hpp"
 #include "Math/EulerAngles.hpp"
 #include "Math/EulerRotations.hpp"
 #include <random>
@@ -373,10 +374,10 @@ namespace MathLibTests
             Vector3 v31 = Vector3(mrc[0], mrc[1], mrc[2]);
             Vector3 v32 = Vector3(mrc[4], mrc[5], mrc[6]);
             Vector3 v33 = Vector3(mrc[8], mrc[9], mrc[10]);
-            Vector3 v34 = Vector3(0.0f, 0.0f, 0.0f);
-            Vector3 av3[4] = { v31,v32,v33,v34 };
+            Point3 p34 = Point3(0.0f, 0.0f, 0.0f);
+            //Vector3 av3[4] = { v31,v32,v33,v34 };
 
-            Matrix4 mx10_4 = Matrix4(Matrix3::fromRowVectors({ v31, v32, v33 }), v34);
+            Matrix4 mx10_4 = Matrix4(Matrix3::fromRowVectors({ v31, v32, v33 }), p34);
             Matrix3 mx10_3 = Matrix3::fromRowVectors({ v31, v32, v33 });
             Matrix4 mx11_4(mx10_3);
             Assert::IsTrue(mx11_4 == mx10_4);
@@ -385,7 +386,7 @@ namespace MathLibTests
             //Matrix4 mx12_4 = Matrix4(av3, false);
             //Assert::IsTrue(mx12_4 == mx10_4);
 
-            mx10_4 = Matrix4(Matrix3::fromColumnVectors({ v31, v32, v33 }), v34);
+            mx10_4 = Matrix4(Matrix3::fromColumnVectors({ v31, v32, v33 }), p34);
             mx10_3 = Matrix3::fromColumnVectors({ v31, v32, v33 });
             mx11_4 = mx10_3;
             Assert::IsTrue(mx11_4 == mx10_4);
@@ -406,22 +407,20 @@ namespace MathLibTests
             }
             Assert::IsTrue(v11 == v12);
 
-            Vector3 v301 = Vector3(unif_rand(generator), unif_rand(generator), unif_rand(generator));
-            Vector3 v302 = mx5.transformCoordinate(v301);
-            Vector4 v401 = Vector4(v301.x(), v301.y(), v301.z(), 1.0f);
+            Point3 p301 = Point3(unif_rand(generator), unif_rand(generator), unif_rand(generator));
+            Point3 p302 = mx5 * p301;
+            Vector4 v401 = Vector4(p301.x(), p301.y(), p301.z(), 1.0f);
             Vector4 v402 = mx5 * v401;
             Vector3 v303 = Vector3(v402.x() / v402.w(), v402.y() / v402.w(), v402.z() / v402.w());
+            Vector3 v302 = Vector3(p302.x(), p302.y(), p302.z());
             Assert::IsTrue(v302 == v303);
 
-            Vector3 v304 = mx5.transformCoordinate(v301);
-            Assert::IsTrue(v304 == v302);
-            Vector3 v305 = mx5.transform(v301);
-            Assert::IsTrue(FloatCompare::isEqual(v305.x(), v402.x()));
-            Assert::IsTrue(FloatCompare::isEqual(v305.y(), v402.y()));
-            Assert::IsTrue(FloatCompare::isEqual(v305.z(), v402.z()));
+            Point3 p304 = mx5 * p301;
+            Assert::IsTrue(p304 == p302);
+            Vector3 v301 = Vector3(p301.x(), p301.y(), p301.z());
             Vector4 v403 = Vector4(v301.x(), v301.y(), v301.z(), 0.0f);
             Vector4 v404 = mx5 * v403;
-            Vector3 v306 = mx5.transformVector(v301);
+            Vector3 v306 = mx5 * v301;
             Assert::IsTrue(FloatCompare::isEqual(v306.x(), v404.x()));
             Assert::IsTrue(FloatCompare::isEqual(v306.y(), v404.y()));
             Assert::IsTrue(FloatCompare::isEqual(v306.z(), v404.z()));
@@ -469,7 +468,7 @@ namespace MathLibTests
             mx4rpy = mx4y * mx4p * mx4r;
             Assert::IsTrue(mx34rpy == mx4rpy);
 
-            Vector3 vpos = Vector3(unif_rand(generator), unif_rand(generator), unif_rand(generator));
+            Point3 vpos = Point3(unif_rand(generator), unif_rand(generator), unif_rand(generator));
             Vector3 vscale = Vector3(unif_rand(generator), unif_rand(generator), unif_rand(generator));
             Matrix4 mxpos;
             mxpos = Matrix4::makeTranslateTransform(vpos);
@@ -477,7 +476,7 @@ namespace MathLibTests
             mxscale = Matrix4::makeScaleTransform(vscale);
             Matrix4 mxsum = mxpos * mx4rpy * mxscale;
 
-            Vector3 vpos1 = mxsum.extractTranslation();
+            Point3 vpos1 = mxsum.extractTranslation();
             Vector3 vscale1 = mxsum.extractScale();
             Matrix4 mx4rpy1(mxsum.extractRotation());
             Matrix4 mxpos1;

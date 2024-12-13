@@ -102,7 +102,7 @@ namespace Math
         static const Matrix4 IDENTITY;
 
         [[nodiscard]] static Matrix4 makeTranslateTransform(float tx, float ty, float tz);
-        [[nodiscard]] static Matrix4 makeTranslateTransform(const Vector3& vec);
+        [[nodiscard]] static Matrix4 makeTranslateTransform(const Point3& pos);
         [[nodiscard]] static Matrix4 makeScaleTransform(float sx, float sy, float sz);
         [[nodiscard]] static Matrix4 makeScaleTransform(const Vector3& vec);
         /** radian > 0 indicates a clockwise rotation in the yz-plane */

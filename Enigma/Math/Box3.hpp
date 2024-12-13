@@ -51,6 +51,8 @@ namespace Math
 
         [[nodiscard]] bool isZero() const;
 
+        [[nodiscard]] bool contains(const Point3& p) const;
+
         static const Box3 UNIT_BOX;
 
     private:

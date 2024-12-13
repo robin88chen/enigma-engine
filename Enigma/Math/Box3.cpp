@@ -154,4 +154,13 @@ bool Box3::isZero() const
     return m_center == Point3::ZERO && FloatCompare::isEqual(m_extent[0], 0.0f) && FloatCompare::isEqual(m_extent[1], 0.0f) && FloatCompare::isEqual(m_extent[2], 0.0f);
 }
 
+bool Box3::contains(const Point3& p) const
+{
+    const Vector3 diff = p - m_center;
+    if (std::abs(diff.dot(m_axis[0])) > m_extent[0] + Math::FloatCompare::zeroTolerance()) return false;
+    if (std::abs(diff.dot(m_axis[1])) > m_extent[1] + Math::FloatCompare::zeroTolerance()) return false;
+    if (std::abs(diff.dot(m_axis[2])) > m_extent[2] + Math::FloatCompare::zeroTolerance()) return false;
+    return true;
+}
+
 const Box3 Box3::UNIT_BOX{ Point3{ 0.0f, 0.0f, 0.0f }, { Vector3{ 1.0f, 0.0f, 0.0f }, Vector3{ 0.0f, 1.0f, 0.0f }, Vector3{ 0.0f, 0.0f, 1.0f } }, { 0.5f, 0.5f, 0.5f } };

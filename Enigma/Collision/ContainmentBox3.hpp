@@ -14,6 +14,7 @@ namespace Math
     class Box3;
     class Point3;
     class Vector4;
+    class Sphere3;
 }
 
 namespace Collision
@@ -30,6 +31,9 @@ namespace Collision
         static Math::Box3 computeOrientedBox(const std::vector<Math::Point3>& pos);
         static Math::Box3 computeOrientedBox(const std::vector<Math::Vector4>& pos4);
         static Math::Box3 computeOrientedBox(const float* vert, unsigned int pitch, unsigned int quantity);
+
+        static bool testBox3EnvelopBox3(const Math::Box3& box0, const Math::Box3& box1);
+        static bool testBox3EnvelopSphere3(const Math::Box3& box0, const Math::Sphere3& sphere1);
     };
 }
 
