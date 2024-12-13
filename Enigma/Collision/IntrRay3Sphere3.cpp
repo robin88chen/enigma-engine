@@ -6,6 +6,7 @@ using namespace Collision;
 
 IntrRay3Sphere3::IntrRay3Sphere3(const Math::Ray3& ray, const Math::Sphere3& sphere) : m_ray(ray), m_sphere(sphere), m_quantity(0), m_tParam{}
 {
+    m_intersectionType = IntersectionType::point;
 }
 
 const Math::Ray3& IntrRay3Sphere3::ray() const

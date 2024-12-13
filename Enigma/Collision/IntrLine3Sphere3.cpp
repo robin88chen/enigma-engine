@@ -8,6 +8,7 @@ using namespace Collision;
 
 IntrLine3Sphere3::IntrLine3Sphere3(const Math::Line3& line, const Math::Sphere3& sphere) : m_line(line), m_sphere(sphere), m_quantity(0), m_lineT{}
 {
+    m_intersectionType = IntersectionType::point;
 }
 
 const Math::Line3& IntrLine3Sphere3::line() const

@@ -6,6 +6,7 @@ using namespace Collision;
 
 IntrRay3Triangle3::IntrRay3Triangle3(const Math::Ray3& ray, const Math::Triangle3& triangle) : m_ray(ray), m_triangle(triangle), m_quantity(0), m_tParam(0.0f)
 {
+    m_intersectionType = IntersectionType::point;
 }
 
 const Math::Ray3& IntrRay3Triangle3::ray() const
