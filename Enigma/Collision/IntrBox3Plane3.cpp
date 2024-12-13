@@ -27,29 +27,29 @@ Math::Plane3::SideOfPlane IntrBox3Plane3::testPlaneSide() const
 {
     if (m_isAligned)
     {
-        Math::Vector3 vec_max = m_box.center() + Math::Vector3(m_box.extent());
-        Math::Vector3 vec_min = m_box.center() - Math::Vector3(m_box.extent());
+        Math::Point3 pt_max = m_box.center() + Math::Vector3(m_box.extent());
+        Math::Point3 pt_min = m_box.center() + (-Math::Vector3(m_box.extent()));
         if (m_plane.normal().x() < 0.0f)
         {
-            const float t = vec_max.x();
-            vec_max.x(vec_min.x());
-            vec_min.x(t);
+            const float t = pt_max.x();
+            pt_max.x(pt_min.x());
+            pt_min.x(t);
         }
         if (m_plane.normal().y() < 0.0f)
         {
-            const float t = vec_max.y();
-            vec_max.y(vec_min.y());
-            vec_min.y(t);
+            const float t = pt_max.y();
+            pt_max.y(pt_min.y());
+            pt_min.y(t);
         }
         if (m_plane.normal().z() < 0.0f)
         {
-            const float t = vec_max.z();
-            vec_max.z(vec_min.z());
-            vec_min.z(t);
+            const float t = pt_max.z();
+            pt_max.z(pt_min.z());
+            pt_min.z(t);
         }
 
-        if (m_plane.normal().dot(vec_min) > m_plane.constant()) return Math::Plane3::SideOfPlane::positive;
-        if (m_plane.normal().dot(vec_max) < m_plane.constant()) return Math::Plane3::SideOfPlane::negative;
+        if (m_plane.normal().dot(pt_min) > m_plane.constant()) return Math::Plane3::SideOfPlane::positive;
+        if (m_plane.normal().dot(pt_max) < m_plane.constant()) return Math::Plane3::SideOfPlane::negative;
         return Math::Plane3::SideOfPlane::overlap;
     }
     const std::array<float, 3> tmp =

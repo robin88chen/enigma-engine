@@ -7,7 +7,7 @@
  *********************************************************************/
 #ifndef TRIANGLE2_HPP
 #define TRIANGLE2_HPP
-#include "Vector2.hpp"
+#include "Point2.hpp"
 #include <array>
 namespace Math
 {
@@ -20,20 +20,20 @@ namespace Math
     {
     public:
         Triangle2();
-        Triangle2(const Vector2& vec0, const Vector2& vec1, const Vector2& vec2);
-        explicit Triangle2(const std::array<Vector2, 3>& vec);
+        Triangle2(const Point2& p0, const Point2& p1, const Point2& p2);
+        explicit Triangle2(const std::array<Point2, 3>& pts);
 
-        [[nodiscard]] Vector2 vector(unsigned i) const;
-        void vector(unsigned i, const Vector2& vec);
+        [[nodiscard]] Point2 point(unsigned i) const;
+        void point(unsigned i, const Point2& p);
 
         bool operator==(const Triangle2& tri) const;
         bool operator!=(const Triangle2& tri) const;
 
         // distance from the point Q to the triangle
-        [[nodiscard]] float distanceTo(const Vector2& vec) const;
+        [[nodiscard]] float distanceTo(const Point2& p) const;
 
     protected:
-        std::array<Vector2, 3> m_vec;
+        std::array<Point2, 3> m_points;
     };
 }
 

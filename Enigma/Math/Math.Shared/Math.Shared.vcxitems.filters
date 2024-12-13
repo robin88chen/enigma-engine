@@ -43,6 +43,9 @@
     <Filter Include="Random">
       <UniqueIdentifier>{40ccfd98-f741-4495-b40b-fd2f77614b12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Point">
+      <UniqueIdentifier>{f20eef70-4535-48f0-9fd6-3071a9396740}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Vector2.cpp">
@@ -125,6 +128,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Random.cpp">
       <Filter>Random</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Point2.cpp">
+      <Filter>Point</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Point3.cpp">
+      <Filter>Point</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +229,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Random.hpp">
       <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Point2.hpp">
+      <Filter>Point</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Point3.hpp">
+      <Filter>Point</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

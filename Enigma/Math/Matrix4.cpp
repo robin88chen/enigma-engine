@@ -3,6 +3,7 @@
 #include "Matrix3.hpp"
 #include "Vector3.hpp"
 #include "Vector4.hpp"
+#include "Point3.hpp"
 #include "MathGlobal.hpp"
 #include "Radian.hpp"
 #include "Quaternion.hpp"
@@ -33,7 +34,7 @@ Matrix4::Matrix4(const Matrix3& mx) : m_entry{ { mx[0][0], mx[0][1], mx[0][2], 0
 {
 }
 
-Matrix4::Matrix4(const Matrix3& rotation_matrix, const Vector3& position)
+Matrix4::Matrix4(const Matrix3& rotation_matrix, const Point3& position)
     : m_entry{ { rotation_matrix[0][0], rotation_matrix[0][1], rotation_matrix[0][2], position.x() },
         { rotation_matrix[1][0], rotation_matrix[1][1], rotation_matrix[1][2], position.y() },
         { rotation_matrix[2][0], rotation_matrix[2][1], rotation_matrix[2][2], position.z() },
@@ -305,6 +306,21 @@ Vector4 Matrix4::operator*(const Vector4& v) const
         m_entry[3][0] * v.x() + m_entry[3][1] * v.y() + m_entry[3][2] * v.z() + m_entry[3][3] * v.w() };
 }
 
+Point3 Matrix4::operator*(const Point3& p) const
+{
+    const float inv_w = 1.0f / (m_entry[3][0] * p.x() + m_entry[3][1] * p.y() + m_entry[3][2] * p.z() + m_entry[3][3]);
+    return { (m_entry[0][0] * p.x() + m_entry[0][1] * p.y() + m_entry[0][2] * p.z() + m_entry[0][3]) * inv_w,
+        (m_entry[1][0] * p.x() + m_entry[1][1] * p.y() + m_entry[1][2] * p.z() + m_entry[1][3]) * inv_w,
+        (m_entry[2][0] * p.x() + m_entry[2][1] * p.y() + m_entry[2][2] * p.z() + m_entry[2][3]) * inv_w };
+}
+
+Vector3 Matrix4::operator*(const Vector3& v) const
+{
+    return { m_entry[0][0] * v.x() + m_entry[0][1] * v.y() + m_entry[0][2] * v.z(),
+        m_entry[1][0] * v.x() + m_entry[1][1] * v.y() + m_entry[1][2] * v.z(),
+        m_entry[2][0] * v.x() + m_entry[2][1] * v.y() + m_entry[2][2] * v.z() };
+}
+
 Matrix4 Matrix4::transpose() const
 {
     return { m_entry[0][0], m_entry[1][0], m_entry[2][0], m_entry[3][0],
@@ -368,28 +384,6 @@ float Matrix4::minorDeterminant(unsigned r0, unsigned r1, unsigned r2, unsigned 
 const Matrix4 Matrix4::ZERO = Matrix4::makeZero();
 const Matrix4 Matrix4::IDENTITY = Matrix4::makeIdentity();
 
-Vector3 Matrix4::transformCoordinate(const Vector3& vec) const
-{
-    const float inv_w = 1.0f / (m_entry[3][0] * vec.x() + m_entry[3][1] * vec.y() + m_entry[3][2] * vec.z() + m_entry[3][3]);
-    return { (m_entry[0][0] * vec.x() + m_entry[0][1] * vec.y() + m_entry[0][2] * vec.z() + m_entry[0][3]) * inv_w,
-        (m_entry[1][0] * vec.x() + m_entry[1][1] * vec.y() + m_entry[1][2] * vec.z() + m_entry[1][3]) * inv_w,
-        (m_entry[2][0] * vec.x() + m_entry[2][1] * vec.y() + m_entry[2][2] * vec.z() + m_entry[2][3]) * inv_w };
-}
-
-Vector3 Matrix4::transformVector(const Vector3& vec) const
-{
-    return { m_entry[0][0] * vec.x() + m_entry[0][1] * vec.y() + m_entry[0][2] * vec.z(),
-        m_entry[1][0] * vec.x() + m_entry[1][1] * vec.y() + m_entry[1][2] * vec.z(),
-        m_entry[2][0] * vec.x() + m_entry[2][1] * vec.y() + m_entry[2][2] * vec.z() };
-}
-
-Vector3 Matrix4::transform(const Vector3& vec) const
-{
-    return { m_entry[0][0] * vec.x() + m_entry[0][1] * vec.y() + m_entry[0][2] * vec.z() + m_entry[0][3],
-        m_entry[1][0] * vec.x() + m_entry[1][1] * vec.y() + m_entry[1][2] * vec.z() + m_entry[1][3],
-        m_entry[2][0] * vec.x() + m_entry[2][1] * vec.y() + m_entry[2][2] * vec.z() + m_entry[2][3] };
-}
-
 Matrix4 Matrix4::makeTranslateTransform(float tx, float ty, float tz)
 {
     return { 1.0f, 0.0f, 0.0f, tx,
@@ -398,11 +392,11 @@ Matrix4 Matrix4::makeTranslateTransform(float tx, float ty, float tz)
         0.0f, 0.0f, 0.0f, 1.0f };
 }
 
-Matrix4 Matrix4::makeTranslateTransform(const Vector3& vec)
+Matrix4 Matrix4::makeTranslateTransform(const Point3& pos)
 {
-    return { 1.0f, 0.0f, 0.0f, vec.x(),
-        0.0f, 1.0f, 0.0f, vec.y(),
-        0.0f, 0.0f, 1.0f, vec.z(),
+    return { 1.0f, 0.0f, 0.0f, pos.x(),
+        0.0f, 1.0f, 0.0f, pos.y(),
+        0.0f, 0.0f, 1.0f, pos.z(),
         0.0f, 0.0f, 0.0f, 1.0f };
 }
 
@@ -502,7 +496,7 @@ Matrix4 Matrix4::fromScaleQuaternionTranslate(const Vector3& scale, const Quater
     return rm;
 }
 
-Vector3 Matrix4::extractTranslation() const
+Point3 Matrix4::extractTranslation() const
 {
     return { m_entry[0][3], m_entry[1][3], m_entry[2][3] };
 }
@@ -557,12 +551,12 @@ Matrix3 Matrix4::extractRotation() const
     return r;
 }
 
-std::tuple<Vector3, Matrix3, Vector3> Matrix4::unmatrixScaleRotateMatrixTranslation() const
+std::tuple<Vector3, Matrix3, Point3> Matrix4::unmatrixScaleRotateMatrixTranslation() const
 {
     return { extractScale(), extractRotation(), extractTranslation() };
 }
 
-std::tuple<Vector3, Quaternion, Vector3> Matrix4::unmatrixScaleQuaternionTranslation() const
+std::tuple<Vector3, Quaternion, Point3> Matrix4::unmatrixScaleQuaternionTranslation() const
 {
     auto [s, r, t] = unmatrixScaleRotateMatrixTranslation();
     const Quaternion rot = Quaternion::fromRotationMatrix(r);

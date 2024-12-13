@@ -21,7 +21,7 @@ const Math::Plane3& IntrRay3Plane3::plane() const
 bool IntrRay3Plane3::test()
 {
     const float e = m_plane.normal().dot(m_ray.direction());
-    if ((e <= Math::FloatCompare::ZERO_TOLERANCE) && (e >= -Math::FloatCompare::ZERO_TOLERANCE)) return false;
+    if ((e <= Math::FloatCompare::zeroTolerance()) && (e >= -Math::FloatCompare::zeroTolerance())) return false;
     const float t = (m_plane.constant() - m_plane.normal().dot(m_ray.origin())) / e;
     if (t < 0.0f) return false;
     m_quantity = 1;
@@ -40,7 +40,7 @@ unsigned IntrRay3Plane3::getQuantity() const
     return m_quantity;
 }
 
-const Math::Vector3& IntrRay3Plane3::getPoint() const
+const Math::Point3& IntrRay3Plane3::getPoint() const
 {
     assert(m_quantity > 0);
     return m_point;

@@ -25,7 +25,7 @@ namespace Collision
         bool find() override;
 
         [[nodiscard]] unsigned getQuantity() const;
-        [[nodiscard]] const Math::Vector3& getPoint(unsigned i) const;
+        [[nodiscard]] const Math::Point3& getPoint(unsigned i) const;
         [[nodiscard]] float getRayT(unsigned i) const;
 
     private:
@@ -33,7 +33,7 @@ namespace Collision
         Math::Box3 m_box;
 
         unsigned m_quantity;
-        std::array<Math::Vector3, 2> m_point;
+        std::array<Math::Point3, 2> m_point;
         std::array<float, 2> m_tParam;
     };
 

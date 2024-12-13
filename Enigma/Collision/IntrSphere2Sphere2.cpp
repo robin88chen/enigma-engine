@@ -1,4 +1,5 @@
 ﻿#include "IntrSphere2Sphere2.hpp"
+#include "Math/Vector2.hpp"
 
 using namespace Collision;
 

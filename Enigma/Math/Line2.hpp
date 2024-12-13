@@ -8,6 +8,7 @@
 #ifndef LINE2_HPP
 #define LINE2_HPP
 #include "Vector2.hpp"
+#include "Point2.hpp"
 
 namespace Math
 {
@@ -20,10 +21,10 @@ namespace Math
     {
     public:
         Line2();
-        Line2(const Vector2& origin, const Vector2& direction);
+        Line2(const Point2& origin, const Vector2& direction);
 
-        [[nodiscard]] Vector2 origin() const;
-        void origin(const Vector2& origin);
+        [[nodiscard]] Point2 origin() const;
+        void origin(const Point2& origin);
         [[nodiscard]] Vector2 direction() const;
         void direction(const Vector2& direction);
 
@@ -31,7 +32,7 @@ namespace Math
         bool operator!= (const Line2& line) const;  ///< 浮點數值比較
 
     private:
-        Vector2 m_origin;
+        Point2 m_origin;
         Vector2 m_direction;
     };
 }

@@ -40,7 +40,7 @@ bool IntrLine3Sphere3::find()
     {
         m_quantity = 0;
     }
-    else if (discr >= Math::FloatCompare::ZERO_TOLERANCE)
+    else if (discr >= Math::FloatCompare::zeroTolerance())
     {
         const float root = std::sqrt(discr);
         m_lineT[0] = -a1 - root;
@@ -64,7 +64,7 @@ unsigned IntrLine3Sphere3::getQuantity() const
     return m_quantity;
 }
 
-const Math::Vector3& IntrLine3Sphere3::getPoint(unsigned i) const
+const Math::Point3& IntrLine3Sphere3::getPoint(unsigned i) const
 {
     assert(i < m_quantity);
     return m_point[i];

@@ -30,7 +30,7 @@ bool IntrRay3Box3::test()
     {
         const float e = m_box.axis(i).dot(p);
         const float f = m_box.axis(i).dot(m_ray.direction());
-        if (std::abs(f) > Math::FloatCompare::ZERO_TOLERANCE) // 軸跟方向不是垂直的, 射線跟slab plane有交點
+        if (std::abs(f) > Math::FloatCompare::zeroTolerance()) // 軸跟方向不是垂直的, 射線跟slab plane有交點
         {
             float t1 = (e + m_box.extent(i)) / f;
             float t2 = (e - m_box.extent(i)) / f;
@@ -75,7 +75,7 @@ unsigned IntrRay3Box3::getQuantity() const
     return m_quantity;
 }
 
-const Math::Vector3& IntrRay3Box3::getPoint(unsigned i) const
+const Math::Point3& IntrRay3Box3::getPoint(unsigned i) const
 {
     assert(i < m_quantity);
     return m_point[i];

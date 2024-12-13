@@ -1,4 +1,5 @@
 ﻿#include "IntrSphere3Sphere3.hpp"
+#include "Math/Vector3.hpp"
 
 using namespace Collision;
 

@@ -8,6 +8,7 @@
 #ifndef BOX3_HPP
 #define BOX3_HPP
 #include "Vector3.hpp"
+#include "Point3.hpp"
 #include <array>
 namespace Math
 {
@@ -22,12 +23,12 @@ namespace Math
     {
     public:
         Box3();
-        Box3(const Vector3& center, const std::array<Vector3, 3>& axis, const std::array<float, 3>& extent);
-        Box3(const Vector3& center, const Vector3& axis0, const Vector3& axis1, const Vector3& axis2,
+        Box3(const Point3& center, const std::array<Vector3, 3>& axis, const std::array<float, 3>& extent);
+        Box3(const Point3& center, const Vector3& axis0, const Vector3& axis1, const Vector3& axis2,
             float extent0, float extent1, float extent2);
 
-        [[nodiscard]] Vector3 center() const;
-        void center(const Vector3& center);
+        [[nodiscard]] Point3 center() const;
+        void center(const Point3& center);
         [[nodiscard]] Vector3 axis(unsigned index) const;
         [[nodiscard]] const std::array<Vector3, 3>& axis() const;
         void axis(const std::array<Vector3, 3>& axis);
@@ -40,7 +41,7 @@ namespace Math
         @return { (-x,-y,-z),(+x,-y,-z),(+x,+y,-z),(-x,+y,-z),
         (-x,-y,+z),(+x,-y,+z),(+x,+y,+z),(-x,+y,+z) }
         */
-        [[nodiscard]] std::array<Vector3, VERTICES_COUNT> computeVertices() const;
+        [[nodiscard]] std::array<Point3, VERTICES_COUNT> computeVertices() const;
 
         /** swap to major axis (把軸向量取最大值對齊x,y,z) */
         [[nodiscard]] Box3 swapToMajorAxis() const;
@@ -50,12 +51,14 @@ namespace Math
 
         [[nodiscard]] bool isZero() const;
 
+        [[nodiscard]] bool contains(const Point3& p) const;
+
         static const Box3 UNIT_BOX;
 
     private:
         [[nodiscard]] bool isValid() const;
 
-        Vector3 m_center;
+        Point3 m_center;
         std::array<Vector3, 3> m_axis;  ///< must be an orthonormal set of vectors
         std::array<float, 3> m_extent;         ///< must be nonnegative
     };

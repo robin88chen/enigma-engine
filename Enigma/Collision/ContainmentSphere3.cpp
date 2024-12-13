@@ -22,7 +22,7 @@ Math::Sphere3 ContainmentSphere3::mergeSpheres(const Math::Sphere3& sphere0, con
     const float length = std::sqrt(sqr_length);
     Math::Sphere3 sphere;
 
-    if (length > Math::FloatCompare::ZERO_TOLERANCE)
+    if (length > Math::FloatCompare::zeroTolerance())
     {
         const float coeff = (length + radius_diff) / (2.0f * length);
         sphere.center(sphere0.center() + coeff * center_diff);
@@ -37,16 +37,16 @@ Math::Sphere3 ContainmentSphere3::mergeSpheres(const Math::Sphere3& sphere0, con
     return sphere;
 }
 
-Math::Sphere3 ContainmentSphere3::computeAverageSphere(const std::vector<Math::Vector3>& pos)
+Math::Sphere3 ContainmentSphere3::computeAverageSphere(const std::vector<Math::Point3>& pos)
 {
     assert(!pos.empty());
     const auto quantity = static_cast<unsigned>(pos.size());
-    Math::Vector3 center = pos[0];
+    Math::Point3 center = pos[0];
     for (unsigned int i = 1; i < quantity; i++)
     {
         center += pos[i];
     }
-    center /= static_cast<float>(quantity);
+    center = center / static_cast<float>(quantity);
     float sq_radius = 0.0f;
     for (unsigned int i = 0; i < quantity; i++)
     {
@@ -61,16 +61,16 @@ Math::Sphere3 ContainmentSphere3::computeAverageSphere(const std::vector<Math::V
 {
     assert(!pos.empty());
     const auto quantity = static_cast<unsigned>(pos.size());
-    Math::Vector3 center(pos[0].x(), pos[0].y(), pos[0].z());
+    Math::Point3 center(pos[0].x(), pos[0].y(), pos[0].z());
     for (unsigned int i = 1; i < quantity; i++)
     {
         center += Math::Vector3(pos[i].x(), pos[i].y(), pos[i].z());
     }
-    center /= static_cast<float>(quantity);
+    center = center / static_cast<float>(quantity);
     float sq_radius = 0.0f;
     for (unsigned int i = 0; i < quantity; i++)
     {
-        const Math::Vector3 diff = Math::Vector3(pos[i].x(), pos[i].y(), pos[i].z()) - center;
+        const Math::Vector3 diff = Math::Point3(pos[i].x(), pos[i].y(), pos[i].z()) - center;
         const float diff_length = diff.squaredLength();
         if (diff_length > sq_radius) sq_radius = diff_length;
     }
@@ -81,19 +81,19 @@ Math::Sphere3 ContainmentSphere3::computeAverageSphere(const float* vert, unsign
 {
     assert(vert != nullptr);
     assert(quantity != 0);
-    Math::Vector3 center(vert[0], vert[1], vert[2]);
+    Math::Point3 center(vert[0], vert[1], vert[2]);
     unsigned int index = pitch;
     for (unsigned int i = 1; i < quantity; i++)
     {
         center += Math::Vector3(vert[index], vert[index + 1], vert[index + 2]);
         index += pitch;
     }
-    center /= static_cast<float>(quantity);
+    center = center / static_cast<float>(quantity);
     float sq_radius = 0.0f;
     index = 0;
     for (unsigned int i = 0; i < quantity; i++)
     {
-        const Math::Vector3 diff = Math::Vector3(vert[index], vert[index + 1], vert[index + 2]) - center;
+        const Math::Vector3 diff = Math::Point3(vert[index], vert[index + 1], vert[index + 2]) - center;
         const float diff_length = diff.squaredLength();
         if (diff_length > sq_radius) sq_radius = diff_length;
     }

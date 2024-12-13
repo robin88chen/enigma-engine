@@ -14,6 +14,7 @@ namespace Math
     class Quaternion;
     class Matrix3;
     class Vector3;
+    class Point3;
     class Vector4;
     class Radian;
     /** Math Lib Matrix4
@@ -51,7 +52,7 @@ namespace Math
         /** Create from Matrix 3x3 */
         explicit Matrix4(const Matrix3& mx);
         /** Create from Matrix 3x3 and translate column */
-        explicit Matrix4(const Matrix3& rotation_matrix, const Vector3& position);
+        explicit Matrix4(const Matrix3& rotation_matrix, const Point3& position);
 
         [[nodiscard]] static Matrix4 makeZero();
         [[nodiscard]] static Matrix4 makeIdentity();
@@ -83,7 +84,11 @@ namespace Math
         Matrix4& operator*= (float scalar);
         Matrix4& operator/= (float scalar);
 
-        /** 沒有做homogenize, i.e. w未必等於1.0 */
+        /** transforms the point, pV (x, y, z, 1), by the matrix, projecting the result back into w=1 */
+        Point3 operator* (const Point3& p) const;  //< M * pV
+        /** transforms the vector  (x, y, z, 0) of the vector, pV, by the matrix */
+        Vector3 operator* (const Vector3& vec) const;  //< M * v
+        /** transform the vector (x, y, z, w), 沒有做homogenize, i.e. w未必等於1.0 */
         Vector4 operator* (const Vector4& vec) const;  //< M * v
         /** 傳回homogenize後的vector3, ADR : 這容易誤解，又與底下的 transform 重複, 移除之 */
         //Vector3 operator* (const Vector3& vec) const;
@@ -96,15 +101,8 @@ namespace Math
         static const Matrix4 ZERO;
         static const Matrix4 IDENTITY;
 
-        /** transforms the vector, pV (x, y, z, 1), by the matrix, projecting the result back into w=1 */
-        [[nodiscard]] Vector3 transformCoordinate(const Vector3& vec) const;
-        /** transforms the vector, pV (x, y, z, 1), by the matrix */
-        [[nodiscard]] Vector3 transform(const Vector3& vec) const;
-        /** transforms the vector  (x, y, z, 0) of the vector, pV, by the matrix */
-        [[nodiscard]] Vector3 transformVector(const Vector3& vec) const;
-
         [[nodiscard]] static Matrix4 makeTranslateTransform(float tx, float ty, float tz);
-        [[nodiscard]] static Matrix4 makeTranslateTransform(const Vector3& vec);
+        [[nodiscard]] static Matrix4 makeTranslateTransform(const Point3& pos);
         [[nodiscard]] static Matrix4 makeScaleTransform(float sx, float sy, float sz);
         [[nodiscard]] static Matrix4 makeScaleTransform(const Vector3& vec);
         /** radian > 0 indicates a clockwise rotation in the yz-plane */
@@ -129,14 +127,14 @@ namespace Math
         [[nodiscard]] static Matrix4 fromScaleQuaternionTranslate(const Vector3& scale, const Quaternion& rot, const Vector3& trans);
 
         /** 最右邊的column */
-        [[nodiscard]] Vector3 extractTranslation() const;
+        [[nodiscard]] Point3 extractTranslation() const;
         /** 假設並沒有shear scale */
         [[nodiscard]] Vector3 extractScale() const;
         /** 去掉translate & scale取出的rotation (no shear scale) */
         [[nodiscard]] Matrix3 extractRotation() const;
         /** 分解SRT */
-        [[nodiscard]] std::tuple<Vector3, Quaternion, Vector3> unmatrixScaleQuaternionTranslation() const;
-        [[nodiscard]] std::tuple<Vector3, Matrix3, Vector3> unmatrixScaleRotateMatrixTranslation() const;
+        [[nodiscard]] std::tuple<Vector3, Quaternion, Point3> unmatrixScaleQuaternionTranslation() const;
+        [[nodiscard]] std::tuple<Vector3, Matrix3, Point3> unmatrixScaleRotateMatrixTranslation() const;
 
         [[nodiscard]] float getMaxScale() const;
 

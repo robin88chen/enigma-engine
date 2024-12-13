@@ -7,7 +7,7 @@
  *********************************************************************/
 #ifndef SPHERE3_HPP
 #define SPHERE3_HPP
-#include "Vector3.hpp"
+#include "Point3.hpp"
 
 namespace Math
 {
@@ -20,10 +20,10 @@ namespace Math
     {
     public:
         Sphere3();
-        Sphere3(const Vector3& center, float radius);
+        Sphere3(const Point3& center, float radius);
 
-        [[nodiscard]] Vector3 center() const;
-        void center(const Vector3& center);
+        [[nodiscard]] Point3 center() const;
+        void center(const Point3& center);
         [[nodiscard]] float radius() const;
         void radius(float radius);
 
@@ -34,7 +34,7 @@ namespace Math
         static const Sphere3 UNIT_SPHERE;
 
     private:
-        Vector3 m_center;
+        Point3 m_center;
         float m_radius;
     };
 }
