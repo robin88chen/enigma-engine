@@ -75,7 +75,7 @@ unsigned IntrRay3Box3::getQuantity() const
     return m_quantity;
 }
 
-const Math::Vector3& IntrRay3Box3::getPoint(unsigned i) const
+const Math::Point3& IntrRay3Box3::getPoint(unsigned i) const
 {
     assert(i < m_quantity);
     return m_point[i];

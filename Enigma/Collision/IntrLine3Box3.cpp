@@ -139,7 +139,7 @@ unsigned IntrLine3Box3::getQuantity() const
     return m_quantity;
 }
 
-const Math::Vector3& IntrLine3Box3::getPoint(unsigned i) const
+const Math::Point3& IntrLine3Box3::getPoint(unsigned i) const
 {
     assert(i < 2);
     return m_point[i];

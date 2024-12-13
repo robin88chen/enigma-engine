@@ -5,17 +5,17 @@
 
 using namespace Math;
 
-Box3::Box3() : m_center(Vector3::ZERO), m_axis{ Vector3::UNIT_X, Vector3::UNIT_Y, Vector3::UNIT_Z }, m_extent{ 0.0f, 0.0f, 0.0f }
+Box3::Box3() : m_center(Point3::ZERO), m_axis{ Vector3::UNIT_X, Vector3::UNIT_Y, Vector3::UNIT_Z }, m_extent{ 0.0f, 0.0f, 0.0f }
 {
 }
 
-Box3::Box3(const Vector3& center, const std::array<Vector3, 3>& axis, const std::array<float, 3>& extent)
+Box3::Box3(const Point3& center, const std::array<Vector3, 3>& axis, const std::array<float, 3>& extent)
     : m_center(center), m_axis(axis), m_extent(extent)
 {
     assert(isValid());
 }
 
-Box3::Box3(const Vector3& center, const Vector3& axis0, const Vector3& axis1, const Vector3& axis2,
+Box3::Box3(const Point3& center, const Vector3& axis0, const Vector3& axis1, const Vector3& axis2,
     float extent0, float extent1, float extent2)
     : m_center(center), m_axis{ axis0, axis1, axis2 }, m_extent{ extent0, extent1, extent2 }
 {
@@ -31,12 +31,12 @@ bool Box3::isValid() const
         std::abs(m_axis[1].dot(m_axis[2])) <= FloatCompare::zeroTolerance();
 }
 
-Vector3 Box3::center() const
+Point3 Box3::center() const
 {
     return m_center;
 }
 
-void Box3::center(const Vector3& center)
+void Box3::center(const Point3& center)
 {
     m_center = center;
 }
@@ -79,21 +79,21 @@ void Box3::extent(unsigned index, float extent)
     m_extent[index] = extent;
 }
 
-std::array<Vector3, Box3::VERTICES_COUNT> Box3::computeVertices() const
+std::array<Point3, Box3::VERTICES_COUNT> Box3::computeVertices() const
 {
-    std::array<Vector3, VERTICES_COUNT> vertices;
+    std::array<Point3, VERTICES_COUNT> vertices;
     const Vector3 product0 = m_extent[0] * m_axis[0];
     const Vector3 product1 = m_extent[1] * m_axis[1];
     const Vector3 product2 = m_extent[2] * m_axis[2];
     // NOLINTBEGIN(*-magic-numbers)
-    vertices[0] = m_center - product0 - product1 - product2;
-    vertices[1] = m_center + product0 - product1 - product2;
-    vertices[2] = m_center + product0 + product1 - product2;
-    vertices[3] = m_center - product0 + product1 - product2;
-    vertices[4] = m_center - product0 - product1 + product2;
-    vertices[5] = m_center + product0 - product1 + product2;
-    vertices[6] = m_center + product0 + product1 + product2;
-    vertices[7] = m_center - product0 + product1 + product2;
+    vertices[0] = m_center + (-product0 - product1 - product2);
+    vertices[1] = m_center + (product0 - product1 - product2);
+    vertices[2] = m_center + (product0 + product1 - product2);
+    vertices[3] = m_center + (-product0 + product1 - product2);
+    vertices[4] = m_center + (-product0 - product1 + product2);
+    vertices[5] = m_center + (product0 - product1 + product2);
+    vertices[6] = m_center + (product0 + product1 + product2);
+    vertices[7] = m_center + (-product0 + product1 + product2);
     // NOLINTEND(*-magic-numbers)
     return vertices;
 }
@@ -151,7 +151,7 @@ bool Box3::operator!= (const Box3& box) const
 
 bool Box3::isZero() const
 {
-    return m_center.isZero() && FloatCompare::isEqual(m_extent[0], 0.0f) && FloatCompare::isEqual(m_extent[1], 0.0f) && FloatCompare::isEqual(m_extent[2], 0.0f);
+    return m_center == Point3::ZERO && FloatCompare::isEqual(m_extent[0], 0.0f) && FloatCompare::isEqual(m_extent[1], 0.0f) && FloatCompare::isEqual(m_extent[2], 0.0f);
 }
 
-const Box3 Box3::UNIT_BOX{ Vector3{ 0.0f, 0.0f, 0.0f }, { Vector3{ 1.0f, 0.0f, 0.0f }, Vector3{ 0.0f, 1.0f, 0.0f }, Vector3{ 0.0f, 0.0f, 1.0f } }, { 0.5f, 0.5f, 0.5f } };
+const Box3 Box3::UNIT_BOX{ Point3{ 0.0f, 0.0f, 0.0f }, { Vector3{ 1.0f, 0.0f, 0.0f }, Vector3{ 0.0f, 1.0f, 0.0f }, Vector3{ 0.0f, 0.0f, 1.0f } }, { 0.5f, 0.5f, 0.5f } };

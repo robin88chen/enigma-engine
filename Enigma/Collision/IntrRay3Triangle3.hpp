@@ -25,7 +25,7 @@ namespace Collision
         bool find() override;
 
         [[nodiscard]] unsigned getQuantity() const;
-        [[nodiscard]] const Math::Vector3& getPoint() const;
+        [[nodiscard]] const Math::Point3& getPoint() const;
         [[nodiscard]] float getRayT() const;
 
     private:
@@ -33,7 +33,7 @@ namespace Collision
         Math::Triangle3 m_triangle;
 
         unsigned m_quantity;
-        Math::Vector3 m_point;
+        Math::Point3 m_point;
         float m_tParam;
     };
 }

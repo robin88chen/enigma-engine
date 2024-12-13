@@ -8,6 +8,7 @@
 #ifndef RAY3_HPP
 #define RAY3_HPP
 #include "Vector3.hpp"
+#include "Point3.hpp"
 
 namespace Math
 {
@@ -21,10 +22,10 @@ namespace Math
     {
     public:
         Ray3();
-        Ray3(const Vector3& origin, const Vector3& direction);
+        Ray3(const Point3& origin, const Vector3& direction);
 
-        [[nodiscard]] Vector3 origin() const;
-        void origin(const Vector3& origin);
+        [[nodiscard]] Point3 origin() const;
+        void origin(const Point3& origin);
         [[nodiscard]] Vector3 direction() const;
         void direction(const Vector3& direction);
 
@@ -32,7 +33,7 @@ namespace Math
         bool operator!= (const Ray3& ray) const;    ///< 浮點數值比較
 
     private:
-        Vector3 m_origin;
+        Point3 m_origin;
         Vector3 m_direction;
     };
 }

@@ -64,7 +64,7 @@ unsigned IntrLine3Sphere3::getQuantity() const
     return m_quantity;
 }
 
-const Math::Vector3& IntrLine3Sphere3::getPoint(unsigned i) const
+const Math::Point3& IntrLine3Sphere3::getPoint(unsigned i) const
 {
     assert(i < m_quantity);
     return m_point[i];

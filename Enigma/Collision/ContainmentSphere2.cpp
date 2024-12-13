@@ -1,6 +1,7 @@
 ﻿#include "ContainmentSphere2.hpp"
 #include "Math/Sphere2.hpp"
 #include "Math/MathGlobal.hpp"
+#include "Math/Vector2.hpp"
 #include <cmath>
 
 using namespace Collision;

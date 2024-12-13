@@ -4,21 +4,21 @@
 
 using namespace Math;
 
-Sphere3::Sphere3() : m_center(Vector3::ZERO), m_radius(0.0f)
+Sphere3::Sphere3() : m_center(Point3::ZERO), m_radius(0.0f)
 {
 }
 
-Sphere3::Sphere3(const Vector3& center, float radius) : m_center(center), m_radius(radius)
+Sphere3::Sphere3(const Point3& center, float radius) : m_center(center), m_radius(radius)
 {
     assert(radius >= 0.0f);
 }
 
-Vector3 Sphere3::center() const
+Point3 Sphere3::center() const
 {
     return m_center;
 }
 
-void Sphere3::center(const Vector3& center)
+void Sphere3::center(const Point3& center)
 {
     m_center = center;
 }
@@ -49,4 +49,4 @@ bool Sphere3::isEmpty() const
     return m_radius <= 0.0f;
 }
 
-const Sphere3 Sphere3::UNIT_SPHERE(Vector3{ 0.0f, 0.0f, 0.0f }, 1.0f);
+const Sphere3 Sphere3::UNIT_SPHERE(Point3{ 0.0f, 0.0f, 0.0f }, 1.0f);

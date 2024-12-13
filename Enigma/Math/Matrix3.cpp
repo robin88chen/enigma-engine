@@ -4,6 +4,7 @@
 #include "Radian.hpp"
 #include "Vector3.hpp"
 #include "Vector2.hpp"
+#include "Point2.hpp"
 #include <cassert>
 #include <cmath>
 
@@ -277,6 +278,21 @@ Vector3 Matrix3::operator* (const Vector3& vec) const
         m_entry[2][0] * vec.x() + m_entry[2][1] * vec.y() + m_entry[2][2] * vec.z() };
 }
 
+Vector2 Matrix3::operator* (const Vector2& vec) const
+{
+    return { m_entry[0][0] * vec.x() + m_entry[0][1] * vec.y(),
+        m_entry[1][0] * vec.x() + m_entry[1][1] * vec.y() };
+}
+
+Point2 Matrix3::operator* (const Point2& p) const
+{
+    const float z = m_entry[2][0] * p.x() + m_entry[2][1] * p.y() + m_entry[2][2];
+    assert(!FloatCompare::isEqual(z, 0.0f));
+    const float inv_z = 1.0f / z;
+    return { (m_entry[0][0] * p.x() + m_entry[0][1] * p.y() + m_entry[0][2]) * inv_z,
+        (m_entry[1][0] * p.x() + m_entry[1][1] * p.y() + m_entry[1][2]) * inv_z };
+}
+
 Matrix3 Matrix3::transpose() const
 {
     return { m_entry[0][0], m_entry[1][0], m_entry[2][0], m_entry[0][1], m_entry[1][1], m_entry[2][1], m_entry[0][2], m_entry[1][2], m_entry[2][2] };
@@ -468,36 +484,6 @@ Matrix3 Matrix3::timesTranspose(const Matrix3& mx) const
         m_entry[2][0] * mx.m_entry[0][0] + m_entry[2][1] * mx.m_entry[0][1] + m_entry[2][2] * mx.m_entry[0][2],
         m_entry[2][0] * mx.m_entry[1][0] + m_entry[2][1] * mx.m_entry[1][1] + m_entry[2][2] * mx.m_entry[1][2],
         m_entry[2][0] * mx.m_entry[2][0] + m_entry[2][1] * mx.m_entry[2][1] + m_entry[2][2] * mx.m_entry[2][2] };
-}
-
-Vector2 Matrix3::transformCoordinate(const Vector2& v) const
-{
-    const float z = m_entry[2][0] * v.x() + m_entry[2][1] * v.y() + m_entry[2][2];
-    assert(!FloatCompare::isEqual(z, 0.0f));
-    const float inv_z = 1.0f / z;
-    return { (m_entry[0][0] * v.x() + m_entry[0][1] * v.y() + m_entry[0][2]) * inv_z,
-        (m_entry[1][0] * v.x() + m_entry[1][1] * v.y() + m_entry[1][2]) * inv_z };
-}
-
-Vector2 Matrix3::transform(const Vector2& v) const
-{
-    return { m_entry[0][0] * v.x() + m_entry[0][1] * v.y() + m_entry[0][2],
-        m_entry[1][0] * v.x() + m_entry[1][1] * v.y() + m_entry[1][2] };
-}
-
-Vector2 Matrix3::transformVector(const Vector2& v) const
-{
-    return { m_entry[0][0] * v.x() + m_entry[0][1] * v.y(),
-        m_entry[1][0] * v.x() + m_entry[1][1] * v.y() };
-}
-
-std::tuple<Vector2, float> Matrix3::transformVectorNormalized(const Vector2& v) const
-{
-    Vector2 result = { m_entry[0][0] * v.x() + m_entry[0][1] * v.y(),
-        m_entry[1][0] * v.x() + m_entry[1][1] * v.y() };
-    const float length = result.length();
-    result.normalizeSelf();
-    return { result, length };
 }
 
 float Matrix3::getMaxScale() const

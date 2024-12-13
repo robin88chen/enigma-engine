@@ -40,7 +40,7 @@ unsigned IntrRay3Plane3::getQuantity() const
     return m_quantity;
 }
 
-const Math::Vector3& IntrRay3Plane3::getPoint() const
+const Math::Point3& IntrRay3Plane3::getPoint() const
 {
     assert(m_quantity > 0);
     return m_point;

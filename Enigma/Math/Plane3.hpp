@@ -11,6 +11,7 @@
 #include <cstdint>
 namespace Math
 {
+    class Point3;
     /** Math Lib Plane3
     @remarks
     The plane is represented as dot(N,X) = c where N is a unit-length
@@ -31,10 +32,10 @@ namespace Math
         /** specify N and c directly */
         Plane3(const Vector3& normal, float constant);
         /** N is specified, c = dot(N,P) where P is on the plane */
-        Plane3(const Vector3& normal, const Vector3& p);
+        Plane3(const Vector3& normal, const Point3& p);
         /** N = cross(P1-P0,P2-P0)/length(cross(P1-P0,P2-P0)), c = dot(N,P0) where
          P0, P1, P2 are points on the plane. */
-        Plane3(const Vector3& p0, const Vector3& p1, const Vector3& p2);
+        Plane3(const Point3& p0, const Point3& p1, const Point3& p2);
 
         [[nodiscard]] Vector3 normal() const;
         void normal(const Vector3& normal);
@@ -51,7 +52,7 @@ namespace Math
          function returns +1 for the positive side, -1 for the negative side,
          and 0 for the point being on the plane.
         */
-        [[nodiscard]] SideOfPlane whichSide(const Vector3& p) const;
+        [[nodiscard]] SideOfPlane whichSide(const Point3& p) const;
 
         /** distance to plane
         @remarks
@@ -61,7 +62,7 @@ namespace Math
          the point is on the negative side, and zero if the point is on the
          plane.
         */
-        [[nodiscard]] float signedDistanceTo(const Vector3& q) const;
+        [[nodiscard]] float signedDistanceTo(const Point3& q) const;
 
     protected:
         Vector3 m_normal;

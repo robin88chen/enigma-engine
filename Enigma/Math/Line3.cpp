@@ -3,21 +3,21 @@
 
 using namespace Math;
 
-Line3::Line3() : m_origin(Vector3::ZERO), m_direction(Vector3::UNIT_X)
+Line3::Line3() : m_origin(Point3::ZERO), m_direction(Vector3::UNIT_X)
 {
 }
 
-Line3::Line3(const Vector3& origin, const Vector3& direction) : m_origin(origin), m_direction(direction)
+Line3::Line3(const Point3& origin, const Vector3& direction) : m_origin(origin), m_direction(direction)
 {
     assert(m_direction.isUnitLength());
 }
 
-Vector3 Line3::origin() const
+Point3 Line3::origin() const
 {
     return m_origin;
 }
 
-void Line3::origin(const Vector3& origin)
+void Line3::origin(const Point3& origin)
 {
     m_origin = origin;
 }

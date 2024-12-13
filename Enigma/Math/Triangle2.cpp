@@ -1,46 +1,47 @@
 ﻿#include "Triangle2.hpp"
+#include "Vector2.hpp"
 #include <cmath>
 
 using namespace Math;
 
-Triangle2::Triangle2() : m_vec{ Vector2::ZERO, Vector2::ZERO, Vector2::ZERO }
+Triangle2::Triangle2() : m_points{ Point2::ZERO, Point2::ZERO, Point2::ZERO }
 {
 }
 
-Triangle2::Triangle2(const Vector2& vec0, const Vector2& vec1, const Vector2& vec2) : m_vec{ vec0, vec1, vec2 }
+Triangle2::Triangle2(const Point2& p0, const Point2& p1, const Point2& p2) : m_points{ p0, p1, p2 }
 {
 }
 
-Triangle2::Triangle2(const std::array<Vector2, 3>& vec) : m_vec(vec)
+Triangle2::Triangle2(const std::array<Point2, 3>& pts) : m_points(pts)
 {
 }
 
-Vector2 Triangle2::vector(unsigned i) const
+Point2 Triangle2::point(unsigned i) const
 {
-    return m_vec[i];
+    return m_points[i];
 }
 
-void Triangle2::vector(unsigned i, const Vector2& vec)
+void Triangle2::point(unsigned i, const Point2& p)
 {
-    m_vec[i] = vec;
+    m_points[i] = p;
 }
 
 bool Triangle2::operator==(const Triangle2& tri) const
 {
-    return m_vec[0] == tri.m_vec[0] && m_vec[1] == tri.m_vec[1] && m_vec[2] == tri.m_vec[2];
+    return m_points[0] == tri.m_points[0] && m_points[1] == tri.m_points[1] && m_points[2] == tri.m_points[2];
 }
 
 bool Triangle2::operator!=(const Triangle2& tri) const
 {
-    return m_vec[0] != tri.m_vec[0] || m_vec[1] != tri.m_vec[1] || m_vec[2] != tri.m_vec[2];
+    return m_points[0] != tri.m_points[0] || m_points[1] != tri.m_points[1] || m_points[2] != tri.m_points[2];
 }
 
 // NOLINTBEGIN(readability-function-cognitive-complexity)
-float Triangle2::distanceTo(const Vector2& vec) const
+float Triangle2::distanceTo(const Point2& p) const
 {
-    const Vector2 diff = m_vec[0] - vec;
-    const Vector2 edge0 = m_vec[1] - m_vec[0];
-    const Vector2 edge1 = m_vec[2] - m_vec[0];
+    const Vector2 diff = m_points[0] - p;
+    const Vector2 edge0 = m_points[1] - m_points[0];
+    const Vector2 edge1 = m_points[2] - m_points[0];
     const float a00 = edge0.squaredLength();
     const float a01 = edge0.dot(edge1);
     const float a11 = edge1.squaredLength();

@@ -1,6 +1,7 @@
 ﻿#include "Vector3.hpp"
 #include "Vector4.hpp"
 #include "MathGlobal.hpp"
+#include "Point3.hpp"
 #include <cassert>
 #include <cmath>
 
@@ -81,6 +82,11 @@ Vector3 Vector3::operator+ (const Vector3& v) const
     return Vector3{ m_x + v.m_x, m_y + v.m_y, m_z + v.m_z };
 }
 
+Point3 Vector3::operator+ (const Point3& p) const
+{
+    return Point3{ m_x + p.x(), m_y + p.y(), m_z + p.z() };
+}
+
 Vector3 Vector3::operator- (const Vector3& v) const
 {
     return Vector3{ m_x - v.m_x, m_y - v.m_y, m_z - v.m_z };
@@ -148,6 +154,11 @@ float Vector3::squaredLength() const
 float Vector3::dot(const Vector3& v) const
 {
     return m_x * v.m_x + m_y * v.m_y + m_z * v.m_z;
+}
+
+float Vector3::dot(const Point3& p) const
+{
+    return m_x * p.x() + m_y * p.y() + m_z * p.z();
 }
 
 void Vector3::normalizeSelf()

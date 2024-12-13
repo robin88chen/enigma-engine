@@ -12,6 +12,7 @@
 namespace Math
 {
     class Vector4;
+    class Point3;
 
     class Vector3
     {
@@ -40,6 +41,7 @@ namespace Math
         Vector3 operator* (float scalar) const;
         Vector3 operator/ (float scalar) const;
         Vector3 operator- () const;
+        Point3 operator+ (const Point3& p) const;
 
         Vector3& operator+= (const Vector3& v);
         Vector3& operator-= (const Vector3& v);
@@ -49,6 +51,7 @@ namespace Math
         [[nodiscard]] float length() const;
         [[nodiscard]] float squaredLength() const;
         [[nodiscard]] float dot(const Vector3& v) const;
+        [[nodiscard]] float dot(const Point3& p) const;
         void normalizeSelf();
         [[nodiscard]] Vector3 normalize() const;
         void homogenizeSelf();

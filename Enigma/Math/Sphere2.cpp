@@ -4,21 +4,21 @@
 
 using namespace Math;
 
-Sphere2::Sphere2() : m_center(Vector2::ZERO), m_radius(0.0f)
+Sphere2::Sphere2() : m_center(Point2::ZERO), m_radius(0.0f)
 {
 }
 
-Sphere2::Sphere2(const Vector2& center, float radius) : m_center(center), m_radius(radius)
+Sphere2::Sphere2(const Point2& center, float radius) : m_center(center), m_radius(radius)
 {
     assert(radius >= 0.0f);
 }
 
-Vector2 Sphere2::center() const
+Point2 Sphere2::center() const
 {
     return m_center;
 }
 
-void Sphere2::center(const Vector2& center)
+void Sphere2::center(const Point2& center)
 {
     m_center = center;
 }

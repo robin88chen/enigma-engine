@@ -7,7 +7,7 @@
  *********************************************************************/
 #ifndef SPHERE2_HPP
 #define SPHERE2_HPP
-#include "Vector2.hpp"
+#include "Point2.hpp"
 
 namespace Math
 {
@@ -20,10 +20,10 @@ namespace Math
     {
     public:
         Sphere2();
-        Sphere2(const Vector2& center, float radius);
+        Sphere2(const Point2& center, float radius);
 
-        [[nodiscard]] Vector2 center() const;
-        void center(const Vector2& center);
+        [[nodiscard]] Point2 center() const;
+        void center(const Point2& center);
         [[nodiscard]] float radius() const;
         void radius(float radius);
 
@@ -31,7 +31,7 @@ namespace Math
         bool operator!= (const Sphere2& sphere) const;  ///< 浮點數值比較
 
     private:
-        Vector2 m_center;
+        Point2 m_center;
         float m_radius;
     };
 }

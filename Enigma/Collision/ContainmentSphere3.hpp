@@ -12,7 +12,7 @@
 namespace Math
 {
     class Sphere3;
-    class Vector3;
+    class Point3;
     class Vector4;
 }
 
@@ -22,7 +22,7 @@ namespace Collision
     {
     public:
         static Math::Sphere3 mergeSpheres(const Math::Sphere3& sphere0, const Math::Sphere3& sphere1);
-        static Math::Sphere3 computeAverageSphere(const std::vector<Math::Vector3>& pos);
+        static Math::Sphere3 computeAverageSphere(const std::vector<Math::Point3>& pos);
         static Math::Sphere3 computeAverageSphere(const std::vector<Math::Vector4>& pos);
         static Math::Sphere3 computeAverageSphere(const float* vert, unsigned int pitch, unsigned int quantity);
     };

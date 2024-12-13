@@ -1,46 +1,48 @@
 ﻿#include "Triangle3.hpp"
+#include "Point3.hpp"
+#include "Vector3.hpp"
 #include <cmath>
 
 using namespace Math;
 
-Triangle3::Triangle3() : m_vec{ Vector3::ZERO, Vector3::ZERO, Vector3::ZERO }
+Triangle3::Triangle3() : m_points{ Point3::ZERO, Point3::ZERO, Point3::ZERO }
 {
 }
 
-Triangle3::Triangle3(const Vector3& vec0, const Vector3& vec1, const Vector3& vec2) : m_vec{ vec0, vec1, vec2 }
+Triangle3::Triangle3(const Point3& p0, const Point3& p1, const Point3& p2) : m_points{ p0, p1, p2 }
 {
 }
 
-Triangle3::Triangle3(const std::array<Vector3, 3>& vec) : m_vec(vec)
+Triangle3::Triangle3(const std::array<Point3, 3>& pts) : m_points(pts)
 {
 }
 
-Vector3 Triangle3::vector(int i) const
+Point3 Triangle3::point(int i) const
 {
-    return m_vec[i];
+    return m_points[i];
 }
 
-void Triangle3::vector(unsigned i, const Vector3& vec)
+void Triangle3::point(unsigned i, const Point3& p)
 {
-    m_vec[i] = vec;
+    m_points[i] = p;
 }
 
 bool Triangle3::operator== (const Triangle3& tri) const
 {
-    return m_vec[0] == tri.m_vec[0] && m_vec[1] == tri.m_vec[1] && m_vec[2] == tri.m_vec[2];
+    return m_points[0] == tri.m_points[0] && m_points[1] == tri.m_points[1] && m_points[2] == tri.m_points[2];
 }
 
 bool Triangle3::operator!= (const Triangle3& tri) const
 {
-    return m_vec[0] != tri.m_vec[0] || m_vec[1] != tri.m_vec[1] || m_vec[2] != tri.m_vec[2];
+    return m_points[0] != tri.m_points[0] || m_points[1] != tri.m_points[1] || m_points[2] != tri.m_points[2];
 }
 
 // NOLINTBEGIN(readability-function-cognitive-complexity)
-float Triangle3::distanceTo(const Vector3& vec) const
+float Triangle3::distanceTo(const Point3& q) const
 {
-    const Vector3 diff = m_vec[0] - vec;
-    const Vector3 edge0 = m_vec[1] - m_vec[0];
-    const Vector3 edge1 = m_vec[2] - m_vec[0];
+    const Vector3 diff = m_points[0] - q;
+    const Vector3 edge0 = m_points[1] - m_points[0];
+    const Vector3 edge1 = m_points[2] - m_points[0];
     const float a00 = edge0.squaredLength();
     const float a01 = edge0.dot(edge1);
     const float a11 = edge1.squaredLength();

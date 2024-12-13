@@ -1,6 +1,5 @@
 ﻿#include "ContainmentBox2.hpp"
 #include "Math/Box2.hpp"
-#include "Math/MathGlobal.hpp"
 #include "Math/Sphere2.hpp"
 #include <array>
 #include <cmath>
@@ -14,7 +13,7 @@ Math::Box2 ContainmentBox2::mergeBoxes(const Math::Box2& box0, const Math::Box2&
     // The first guess at the box center.  This value will be updated later
     // after the input box vertices are projected onto axes determined by an
     // average of box axes.
-    Math::Vector2 center = 0.5f * (box0.center() + box1.center());
+    Math::Point2 center = 0.5f * (box0.center() + box1.center());
 
     // The merged box axes are the averages of the input box axes.  The
     // axes of the second box are negated, if necessary, so they form acute
@@ -46,7 +45,7 @@ Math::Box2 ContainmentBox2::mergeBoxes(const Math::Box2& box0, const Math::Box2&
     Math::Vector2 pmin = Math::Vector2::ZERO;
     Math::Vector2 pmax = Math::Vector2::ZERO;
 
-    std::array<Math::Vector2, Math::Box2::VERTICES_COUNT> vertex = box0.computeVertices();
+    std::array<Math::Point2, Math::Box2::VERTICES_COUNT> vertex = box0.computeVertices();
     for (unsigned i = 0; i < Math::Box2::VERTICES_COUNT; ++i)
     {
         const Math::Vector2 diff = vertex[i] - center;
@@ -97,12 +96,10 @@ Math::Box2 ContainmentBox2::mergeBoxes(const Math::Box2& box0, const Math::Box2&
 
 bool ContainmentBox2::testBox2EnvelopBox2(const Math::Box2& box0, const Math::Box2& box1)
 {
-    std::array<Math::Vector2, Math::Box2::VERTICES_COUNT> vertex = box1.computeVertices();
+    std::array<Math::Point2, Math::Box2::VERTICES_COUNT> vertex = box1.computeVertices();
     for (unsigned int i = 0; i < Math::Box2::VERTICES_COUNT; i++)
     {
-        const Math::Vector2 diff = vertex[i] - box0.center();
-        if (std::abs(diff.dot(box0.axis(0))) > box0.extent(0) + Math::FloatCompare::zeroTolerance()) return false;
-        if (std::abs(diff.dot(box0.axis(1))) > box0.extent(1) + Math::FloatCompare::zeroTolerance()) return false;
+        if (!box0.contains(vertex[i])) return false;
     }
     return true;
 }

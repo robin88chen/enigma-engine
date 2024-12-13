@@ -20,13 +20,13 @@ const Math::Triangle3& IntrRay3Triangle3::triangle() const
 
 bool IntrRay3Triangle3::test()
 {
-    const Math::Vector3 e1 = m_triangle.vector(1) - m_triangle.vector(0);
-    const Math::Vector3 e2 = m_triangle.vector(2) - m_triangle.vector(0);
+    const Math::Vector3 e1 = m_triangle.point(1) - m_triangle.point(0);
+    const Math::Vector3 e2 = m_triangle.point(2) - m_triangle.point(0);
     const Math::Vector3 q = m_ray.direction().cross(e2);
     const float a = e1.dot(q);
     if ((a > -Math::FloatCompare::zeroTolerance()) && (a < Math::FloatCompare::zeroTolerance())) return false;
     const float f = 1.0f / a;
-    const Math::Vector3 s = m_ray.origin() - m_triangle.vector(0);
+    const Math::Vector3 s = m_ray.origin() - m_triangle.point(0);
     const float u = f * (s.dot(q));
     if (u < 0.0f || u > 1.0f) return false;
     const Math::Vector3 r = s.cross(e1);
@@ -52,7 +52,7 @@ unsigned IntrRay3Triangle3::getQuantity() const
     return m_quantity;
 }
 
-const Math::Vector3& IntrRay3Triangle3::getPoint() const
+const Math::Point3& IntrRay3Triangle3::getPoint() const
 {
     assert(m_quantity > 0);
     return m_point;

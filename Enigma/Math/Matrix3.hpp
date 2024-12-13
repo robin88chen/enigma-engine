@@ -12,6 +12,7 @@
 namespace Math
 {
     class Vector2;
+    class Point2;
     class Vector3;
     class Matrix4;
     class Radian;
@@ -98,7 +99,12 @@ namespace Math
         Matrix3& operator*= (float scalar);
         Matrix3& operator/= (float scalar);
 
+        /** transforms the vector, pV (x, y, z), by the matrix */
         Vector3 operator* (const Vector3& v) const;  //< M * v
+        /** transforms the vector, pV (x, y, 1), by the matrix, projecting the result back into z=1 */
+        Point2 operator* (const Point2& p) const;  //< M * pV
+        /** transforms the vector  (x, y, 0) of the vector, pV, by the matrix */
+        Vector2 operator* (const Vector2& v) const;  //< M * v
 
         [[nodiscard]] Matrix3 transpose() const;  // M^T
         [[nodiscard]] Matrix3 inverse() const;
@@ -122,16 +128,6 @@ namespace Math
         [[nodiscard]] Matrix3 transposeTimes(const Matrix3& mx) const;
         /** TimesTranspose M * mx^T */
         [[nodiscard]] Matrix3 timesTranspose(const Matrix3& mx) const;
-
-
-        /** transforms the vector, pV (x, y, 1), by the matrix, projecting the result back into z=1 */
-        [[nodiscard]] Vector2 transformCoordinate(const Vector2& v) const;
-        /** transforms the vector, pV (x, y, 1), by the matrix */
-        [[nodiscard]] Vector2 transform(const Vector2& v) const;
-        /** transforms the vector  (x, y, 0) of the vector, pV, by the matrix */
-        [[nodiscard]] Vector2 transformVector(const Vector2& v) const;
-        /** transforms the vector  (x, y, 0) of the vector, pV, by the matrix, and normalize result, return length if needed */
-        [[nodiscard]] std::tuple<Vector2, float> transformVectorNormalized(const Vector2& v) const;
 
         [[nodiscard]] float getMaxScale() const;
 

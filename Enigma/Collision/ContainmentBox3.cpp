@@ -28,7 +28,7 @@ Math::Box3 ContainmentBox3::mergeBoxes(const Math::Box3& box0, const Math::Box3&
     // The first guess at the box center.  This value will be updated later
     // after the input box vertices are projected onto axes determined by an
     // average of box axes.
-    Math::Vector3 center = 0.5f * (box_major0.center() + box_major1.center());
+    Math::Point3 center = 0.5f * (box_major0.center() + box_major1.center());
 
     // A box's axes, when viewed as the columns of a matrix, form a rotation
     // matrix.  The input box axes are converted to quaternions.  The average
@@ -65,7 +65,7 @@ Math::Box3 ContainmentBox3::mergeBoxes(const Math::Box3& box0, const Math::Box3&
     Math::Vector3 vec_min = Math::Vector3::ZERO;
     Math::Vector3 vec_max = Math::Vector3::ZERO;
 
-    std::array<Math::Vector3, Math::Box3::VERTICES_COUNT> vertex = box_major0.computeVertices();
+    std::array<Math::Point3, Math::Box3::VERTICES_COUNT> vertex = box_major0.computeVertices();
     for (unsigned i = 0; i < Math::Box3::VERTICES_COUNT; i++)
     {
         const Math::Vector3 diff = vertex[i] - center;
@@ -117,11 +117,11 @@ Math::Box3 ContainmentBox3::mergeBoxes(const Math::Box3& box0, const Math::Box3&
 Math::Box3 ContainmentBox3::mergeAlignedBoxes(const Math::Box3& box0, const Math::Box3& box1)
 {
     // 取兩個box的最大最小位置
-    Math::Vector3 vec_max = box0.center() + Math::Vector3(box0.extent());
-    Math::Vector3 vec_min = box0.center() - Math::Vector3(box0.extent());
+    Math::Point3 vec_max = box0.center() + Math::Vector3(box0.extent());
+    Math::Point3 vec_min = box0.center() + (-Math::Vector3(box0.extent()));
 
-    const Math::Vector3 vec_max1 = box1.center() + Math::Vector3(box1.extent());
-    const Math::Vector3 vec_min1 = box1.center() - Math::Vector3(box1.extent());
+    const Math::Point3 vec_max1 = box1.center() + Math::Vector3(box1.extent());
+    const Math::Point3 vec_min1 = box1.center() + (-Math::Vector3(box1.extent()));
 
     if (vec_max.x() < vec_max1.x())
     {
@@ -158,14 +158,14 @@ Math::Box3 ContainmentBox3::mergeAlignedBoxes(const Math::Box3& box0, const Math
     return box;
 }
 
-Math::Box3 ContainmentBox3::computeAlignedBox(const std::vector<Math::Vector3>& pos)
+Math::Box3 ContainmentBox3::computeAlignedBox(const std::vector<Math::Point3>& pos)
 {
     const float minimum_scale = Math::FloatCompare::zeroTolerance() * 10.f;
     assert(!pos.empty());
 
     const auto quantity = static_cast<unsigned>(pos.size());
-    Math::Vector3 vec_min = pos[0];
-    Math::Vector3 vec_max = pos[0];
+    Math::Point3 vec_min = pos[0];
+    Math::Point3 vec_max = pos[0];
     for (unsigned i = 1; i < quantity; i++)
     {
         if (pos[i].x() > vec_max.x()) vec_max.x(pos[i].x());
@@ -175,7 +175,7 @@ Math::Box3 ContainmentBox3::computeAlignedBox(const std::vector<Math::Vector3>& 
         if (pos[i].y() < vec_min.y()) vec_min.y(pos[i].y());
         if (pos[i].z() < vec_min.z()) vec_min.z(pos[i].z());
     }
-    const Math::Vector3 center = 0.5f * (vec_max + vec_min);
+    const Math::Point3 center = 0.5f * (vec_max + vec_min);
     Math::Vector3 extend = vec_max - center;
     // 加一個基本大小
     if (extend.x() <= Math::FloatCompare::zeroTolerance()) extend.x(minimum_scale);
@@ -190,8 +190,8 @@ Math::Box3 ContainmentBox3::computeAlignedBox(const std::vector<Math::Vector4>& 
     assert(!pos.empty());
 
     const auto quantity = static_cast<unsigned>(pos.size());
-    Math::Vector3 vec_min(pos[0].x(), pos[0].y(), pos[0].z());
-    Math::Vector3 vec_max = vec_min;
+    Math::Point3 vec_min(pos[0].x(), pos[0].y(), pos[0].z());
+    Math::Point3 vec_max = vec_min;
     for (unsigned int i = 1; i < quantity; i++)
     {
         if (pos[i].x() > vec_max.x()) vec_max.x(pos[i].x());
@@ -201,7 +201,7 @@ Math::Box3 ContainmentBox3::computeAlignedBox(const std::vector<Math::Vector4>& 
         if (pos[i].y() < vec_min.y()) vec_min.y(pos[i].y());
         if (pos[i].z() < vec_min.z()) vec_min.z(pos[i].z());
     }
-    const Math::Vector3 center = 0.5f * (vec_max + vec_min);
+    const Math::Point3 center = 0.5f * (vec_max + vec_min);
     Math::Vector3 extend = vec_max - center;
     // 加一個基本大小
     if (extend.x() <= Math::FloatCompare::zeroTolerance()) extend.x(minimum_scale);
@@ -216,8 +216,8 @@ Math::Box3 ContainmentBox3::computeAlignedBox(const float* vert, unsigned int pi
     assert(vert != nullptr);
     assert(quantity != 0);
 
-    Math::Vector3 vec_min(vert[0], vert[1], vert[2]);
-    Math::Vector3 vec_max = vec_min;
+    Math::Point3 vec_min(vert[0], vert[1], vert[2]);
+    Math::Point3 vec_max = vec_min;
     unsigned int index = pitch;
     for (unsigned int i = 1; i < quantity; i++)
     {
@@ -229,7 +229,7 @@ Math::Box3 ContainmentBox3::computeAlignedBox(const float* vert, unsigned int pi
         if (vert[index + 2] < vec_min.z()) vec_min.z(vert[index + 2]);
         index += pitch;
     }
-    const Math::Vector3 center = 0.5f * (vec_max + vec_min);
+    const Math::Point3 center = 0.5f * (vec_max + vec_min);
     Math::Vector3 extend = vec_max - center;
     // 加一個基本大小
     if (extend.x() <= Math::FloatCompare::zeroTolerance()) extend.x(minimum_scale);
@@ -238,18 +238,18 @@ Math::Box3 ContainmentBox3::computeAlignedBox(const float* vert, unsigned int pi
     return { center, Math::Vector3::UNIT_X, Math::Vector3::UNIT_Y, Math::Vector3::UNIT_Z, extend.x(), extend.y(), extend.z() };
 }
 
-Math::Box3 ContainmentBox3::computeOrientedBox(const std::vector<Math::Vector3>& pos)
+Math::Box3 ContainmentBox3::computeOrientedBox(const std::vector<Math::Point3>& pos)
 {
     assert(!pos.empty());
 
     const auto quantity = static_cast<unsigned>(pos.size());
-    Math::Vector3 center = pos[0];
+    Math::Point3 center = pos[0];
     for (unsigned int i = 1; i < quantity; i++)
     {
         center += pos[i];
     }
     const float inv_quantity = 1.0f / static_cast<float>(quantity);
-    center *= inv_quantity;
+    center = center * inv_quantity;
 
     float sum_xx = 0.0f;
     float sum_xy = 0.0f;
@@ -308,7 +308,7 @@ Math::Box3 ContainmentBox3::computeOrientedBox(const std::vector<Math::Vector3>&
         if (dot > vec_max.z()) vec_max.z(dot);
     }
 
-    Math::Vector3 center_new = box.center();
+    Math::Point3 center_new = box.center();
     center_new += (0.5f * (vec_min.x() + vec_max.x()) * box.axis(0)
         + 0.5f * (vec_min.y() + vec_max.y()) * box.axis(1)
         + 0.5f * (vec_min.z() + vec_max.z()) * box.axis(2));
@@ -326,10 +326,10 @@ Math::Box3 ContainmentBox3::computeOrientedBox(const std::vector<Math::Vector4>&
     assert(!pos4.empty());
 
     const auto quantity = static_cast<unsigned>(pos4.size());
-    std::vector<Math::Vector3> pos(quantity);
+    std::vector<Math::Point3> pos(quantity);
     for (unsigned int i = 0; i < quantity; i++)
     {
-        pos[i] = Math::Vector3(pos4[i].x(), pos4[i].y(), pos4[i].z());
+        pos[i] = Math::Point3(pos4[i].x(), pos4[i].y(), pos4[i].z());
     }
 
     return computeOrientedBox(pos);
@@ -340,11 +340,11 @@ Math::Box3 ContainmentBox3::computeOrientedBox(const float* vert, unsigned int p
     assert(vert != nullptr);
     assert(quantity != 0);
 
-    std::vector<Math::Vector3> pos(quantity);
+    std::vector<Math::Point3> pos(quantity);
     unsigned int index = 0;
     for (unsigned int i = 0; i < quantity; i++)
     {
-        pos[i] = Math::Vector3(vert[index], vert[index + 1], vert[index + 2]);
+        pos[i] = Math::Point3(vert[index], vert[index + 1], vert[index + 2]);
         index += pitch;
     }
 

@@ -1,5 +1,6 @@
 ﻿#include "Plane3.hpp"
 #include "MathGlobal.hpp"
+#include "Point3.hpp"
 #include <cassert>
 
 using namespace Math;
@@ -13,12 +14,12 @@ Plane3::Plane3(const Vector3& normal, float constant) : m_normal(normal), m_cons
     assert(m_normal.isUnitLength());
 }
 
-Plane3::Plane3(const Vector3& normal, const Vector3& p) : m_normal(normal), m_constant(m_normal.dot(p))
+Plane3::Plane3(const Vector3& normal, const Point3& p) : m_normal(normal), m_constant(m_normal.dot(p))
 {
     assert(m_normal.isUnitLength());
 }
 
-Plane3::Plane3(const Vector3& p0, const Vector3& p1, const Vector3& p2)
+Plane3::Plane3(const Point3& p0, const Point3& p1, const Point3& p2)
 {
     m_normal = (p1 - p0).cross(p2 - p0);
     assert(!m_normal.isZero());
@@ -57,7 +58,7 @@ bool Plane3::operator!= (const Plane3& plane) const
     return m_normal != plane.m_normal || !FloatCompare::isEqual(m_constant, plane.m_constant);
 }
 
-Plane3::SideOfPlane Plane3::whichSide(const Vector3& p) const
+Plane3::SideOfPlane Plane3::whichSide(const Point3& p) const
 {
     const float distance = m_normal.dot(p) - m_constant;
     if (distance > FloatCompare::zeroTolerance())
@@ -71,7 +72,7 @@ Plane3::SideOfPlane Plane3::whichSide(const Vector3& p) const
     return SideOfPlane::overlap;
 }
 
-float Plane3::signedDistanceTo(const Vector3& q) const
+float Plane3::signedDistanceTo(const Point3& q) const
 {
     return m_normal.dot(q) - m_constant;
 }
