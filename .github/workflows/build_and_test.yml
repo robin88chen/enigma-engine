@@ -28,7 +28,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        test_sln : [MathTest, ContainmentTest]
+        test_sln : [MathTest, ContainmentTest, IntersectionTests]
     #    platform : [x64, ARM64]
 
     steps:
