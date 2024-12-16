@@ -365,8 +365,8 @@ bool ContainmentBox3::testBox3EnvelopBox3(const Math::Box3& box0, const Math::Bo
 bool ContainmentBox3::testBox3EnvelopSphere3(const Math::Box3& box0, const Math::Sphere3& sphere1)
 {
     const Math::Vector3 diff = sphere1.center() - box0.center();
-    if (std::abs(diff.dot(box0.axis(0))) + sphere1.radius() > box0.extent(0)) return false;
-    if (std::abs(diff.dot(box0.axis(1))) + sphere1.radius() > box0.extent(1)) return false;
-    if (std::abs(diff.dot(box0.axis(2))) + sphere1.radius() > box0.extent(2)) return false;
+    if (const float diff_radius0 = std::abs(diff.dot(box0.axis(0))) + sphere1.radius(); diff_radius0 > box0.extent(0) + Math::FloatCompare::tolerance(diff_radius0, box0.extent(0))) return false;
+    if (const float diff_radius1 = std::abs(diff.dot(box0.axis(1))) + sphere1.radius(); diff_radius1 > box0.extent(1) + Math::FloatCompare::tolerance(diff_radius1, box0.extent(1))) return false;
+    if (const float diff_radius2 = std::abs(diff.dot(box0.axis(2))) + sphere1.radius(); diff_radius2 > box0.extent(2) + Math::FloatCompare::tolerance(diff_radius2, box0.extent(2))) return false;
     return true;
 }

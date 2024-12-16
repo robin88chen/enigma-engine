@@ -96,7 +96,7 @@ bool Box2::operator!= (const Box2& box) const
 bool Box2::contains(const Point2& p) const
 {
     const Vector2 diff = p - m_center;
-    if (std::abs(diff.dot(m_axis[0])) > m_extent[0] + Math::FloatCompare::zeroTolerance()) return false;
-    if (std::abs(diff.dot(m_axis[1])) > m_extent[1] + Math::FloatCompare::zeroTolerance()) return false;
+    if (const float diff_dot0 = std::abs(diff.dot(m_axis[0])); diff_dot0 > m_extent[0] + FloatCompare::tolerance(diff_dot0, m_extent[0])) return false;
+    if (const float diff_dot1 = std::abs(diff.dot(m_axis[1])); diff_dot1 > m_extent[1] + FloatCompare::tolerance(diff_dot1, m_extent[1])) return false;
     return true;
 }

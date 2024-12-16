@@ -33,6 +33,7 @@ namespace Math
         [[nodiscard]] bool isEmpty() const;
         static const Sphere3 UNIT_SPHERE;
 
+        bool contains(const Point3& point) const; ///< 是否包含點
     private:
         Point3 m_center;
         float m_radius;

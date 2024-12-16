@@ -21,6 +21,7 @@ const Math::Triangle3& IntrRay3Triangle3::triangle() const
 
 bool IntrRay3Triangle3::test()
 {
+    m_quantity = 0;
     const Math::Vector3 e1 = m_triangle.point(1) - m_triangle.point(0);
     const Math::Vector3 e2 = m_triangle.point(2) - m_triangle.point(0);
     const Math::Vector3 q = m_ray.direction().cross(e2);

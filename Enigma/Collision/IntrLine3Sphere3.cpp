@@ -32,6 +32,7 @@ bool IntrLine3Sphere3::test()
 
 bool IntrLine3Sphere3::find()
 {
+    m_quantity = 0;
     const Math::Vector3 diff = m_line.origin() - m_sphere.center();
     const float a0 = diff.dot(diff) - m_sphere.radius() * m_sphere.radius();
     const float a1 = m_line.direction().dot(diff);

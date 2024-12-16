@@ -1,5 +1,6 @@
 ﻿#include "IntrSphere3Sphere3.hpp"
 #include "Math/Vector3.hpp"
+#include "Math/MathGlobal.hpp"
 
 using namespace Collision;
 
@@ -22,5 +23,5 @@ bool IntrSphere3Sphere3::test()
     const Math::Vector3 center_diff = m_sphere1.center() - m_sphere0.center();
     const float sqr_distance = center_diff.squaredLength();
     const float sqr_radius_sum = (m_sphere0.radius() + m_sphere1.radius()) * (m_sphere0.radius() + m_sphere1.radius());
-    return sqr_distance <= sqr_radius_sum;
+    return sqr_distance <= sqr_radius_sum + Math::FloatCompare::tolerance(sqr_distance, sqr_radius_sum);
 }

@@ -53,6 +53,7 @@ bool IntrLine3Box3::test()
 
 bool IntrLine3Box3::find()
 {
+    m_quantity = 0;
     float t0 = -Math::Constants::MAX_FLOAT;
     float t1 = Math::Constants::MAX_FLOAT;
 

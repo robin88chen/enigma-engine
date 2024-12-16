@@ -22,6 +22,7 @@ const Math::Box3& IntrRay3Box3::box() const
 
 bool IntrRay3Box3::test()
 {
+    m_quantity = 0;
     /** RayOBB intersection, form Real-time Rendering p574 */
     float tmin = -Math::Constants::MAX_FLOAT;
     float tmax = Math::Constants::MAX_FLOAT;
