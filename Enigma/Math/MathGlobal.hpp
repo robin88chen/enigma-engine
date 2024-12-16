@@ -14,6 +14,7 @@ namespace Math
     {
     public:
         [[nodiscard]] static bool isEqual(float l, float r);
+        [[nodiscard]] static float tolerance(float l, float r);
         [[nodiscard]] static float epsilonUlp();  ///< 修正 epsilon 誤差的放大倍數, 預設為 1.0f
         static void epsilonUlp(float epsilon);
         static float zeroTolerance();  ///< =1e-6 * epsilonUlp()

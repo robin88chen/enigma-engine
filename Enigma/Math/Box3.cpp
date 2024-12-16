@@ -157,9 +157,9 @@ bool Box3::isZero() const
 bool Box3::contains(const Point3& p) const
 {
     const Vector3 diff = p - m_center;
-    if (std::abs(diff.dot(m_axis[0])) > m_extent[0] + Math::FloatCompare::zeroTolerance()) return false;
-    if (std::abs(diff.dot(m_axis[1])) > m_extent[1] + Math::FloatCompare::zeroTolerance()) return false;
-    if (std::abs(diff.dot(m_axis[2])) > m_extent[2] + Math::FloatCompare::zeroTolerance()) return false;
+    if (const float diff_dot0 = std::abs(diff.dot(m_axis[0])); diff_dot0 > m_extent[0] + FloatCompare::tolerance(diff_dot0, m_extent[0])) return false;
+    if (const float diff_dot1 = std::abs(diff.dot(m_axis[1])); diff_dot1 > m_extent[1] + FloatCompare::tolerance(diff_dot1, m_extent[1])) return false;
+    if (const float diff_dot2 = std::abs(diff.dot(m_axis[2])); diff_dot2 > m_extent[2] + FloatCompare::tolerance(diff_dot2, m_extent[2])) return false;
     return true;
 }
 

@@ -1,5 +1,6 @@
 ﻿#include "Sphere2.hpp"
 #include "MathGlobal.hpp"
+#include "Vector2.hpp"
 #include <cassert>
 
 using namespace Math;
@@ -42,4 +43,11 @@ bool Sphere2::operator== (const Sphere2& sphere) const
 bool Sphere2::operator!= (const Sphere2& sphere) const
 {
     return m_center != sphere.m_center || !FloatCompare::isEqual(m_radius, sphere.m_radius);
+}
+
+bool Sphere2::contains(const Point2& point) const
+{
+    const float sqr_length = (point - m_center).squaredLength();
+    const float sqr_radius = m_radius * m_radius;
+    return sqr_length <= sqr_radius + FloatCompare::tolerance(sqr_length, sqr_radius);
 }

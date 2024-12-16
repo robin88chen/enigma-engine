@@ -1,5 +1,6 @@
 ﻿#include "Sphere3.hpp"
 #include "MathGlobal.hpp"
+#include "Vector3.hpp"
 #include <cassert>
 
 using namespace Math;
@@ -47,6 +48,13 @@ bool Sphere3::operator!= (const Sphere3& sphere) const
 bool Sphere3::isEmpty() const
 {
     return m_radius <= 0.0f;
+}
+
+bool Sphere3::contains(const Point3& point) const
+{
+    const float sqr_length = (point - m_center).squaredLength();
+    const float sqr_radius = m_radius * m_radius;
+    return sqr_length < sqr_radius + FloatCompare::tolerance(sqr_length, sqr_radius);
 }
 
 const Sphere3 Sphere3::UNIT_SPHERE(Point3{ 0.0f, 0.0f, 0.0f }, 1.0f);

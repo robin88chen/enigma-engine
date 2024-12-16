@@ -1,5 +1,6 @@
 ﻿#include "ContainmentBox2.hpp"
 #include "Math/Box2.hpp"
+#include "Math/MathGlobal.hpp"
 #include "Math/Sphere2.hpp"
 #include <array>
 #include <cmath>
@@ -107,7 +108,7 @@ bool ContainmentBox2::testBox2EnvelopBox2(const Math::Box2& box0, const Math::Bo
 bool ContainmentBox2::testBox2EnvelopSphere2(const Math::Box2& box0, const Math::Sphere2& sphere1)
 {
     const Math::Vector2 diff = sphere1.center() - box0.center();
-    if (std::abs(diff.dot(box0.axis(0))) + sphere1.radius() > box0.extent(0)) return false;
-    if (std::abs(diff.dot(box0.axis(1))) + sphere1.radius() > box0.extent(1)) return false;
+    if (const float diff_radius0 = std::abs(diff.dot(box0.axis(0))) + sphere1.radius(); diff_radius0 > box0.extent(0) + Math::FloatCompare::tolerance(diff_radius0, box0.extent(0))) return false;
+    if (const float diff_radius1 = std::abs(diff.dot(box0.axis(1))) + sphere1.radius(); diff_radius1 > box0.extent(1) + Math::FloatCompare::tolerance(diff_radius1, box0.extent(1))) return false;
     return true;
 }

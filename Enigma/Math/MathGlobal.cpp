@@ -28,9 +28,14 @@ bool FloatCompare::isEqual(float l, float r)
 
     // the machine epsilon has to be scaled to the magnitude of the values used
     // and multiplied by the desired precision in ULPs (units in the last place)
-    return (diff <= zeroTolerance() * std::abs(l + r))
+    return (diff <= tolerance(l, r))
         // unless the result is subnormal
         || (diff < std::numeric_limits<float>::min());
+}
+
+float FloatCompare::tolerance(float l, float r)
+{
+    return zeroTolerance() * std::abs(l + r);
 }
 
 float FloatCompare::zeroTolerance()

@@ -8,6 +8,7 @@ using namespace Collision;
 
 IntrLine3Box3::IntrLine3Box3(const Math::Line3& line, const Math::Box3& box) : m_line(line), m_box(box), m_quantity(0), m_lineT{}
 {
+    m_intersectionType = IntersectionType::point;
 }
 
 const Math::Line3& IntrLine3Box3::line() const
@@ -52,6 +53,7 @@ bool IntrLine3Box3::test()
 
 bool IntrLine3Box3::find()
 {
+    m_quantity = 0;
     float t0 = -Math::Constants::MAX_FLOAT;
     float t1 = Math::Constants::MAX_FLOAT;
 

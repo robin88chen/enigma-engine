@@ -7,6 +7,7 @@ using namespace Collision;
 
 IntrRay3Box3::IntrRay3Box3(const Math::Ray3& ray, const Math::Box3& box) : m_ray(ray), m_box(box), m_quantity(0), m_tParam{}
 {
+    m_intersectionType = IntersectionType::point;
 }
 
 const Math::Ray3& IntrRay3Box3::ray() const
@@ -21,6 +22,7 @@ const Math::Box3& IntrRay3Box3::box() const
 
 bool IntrRay3Box3::test()
 {
+    m_quantity = 0;
     /** RayOBB intersection, form Real-time Rendering p574 */
     float tmin = -Math::Constants::MAX_FLOAT;
     float tmax = Math::Constants::MAX_FLOAT;

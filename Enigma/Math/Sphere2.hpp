@@ -30,6 +30,7 @@ namespace Math
         bool operator== (const Sphere2& sphere) const; ///< 浮點數值比較
         bool operator!= (const Sphere2& sphere) const;  ///< 浮點數值比較
 
+        [[nodiscard]] bool contains(const Point2& point) const; ///< 是否包含點
     private:
         Point2 m_center;
         float m_radius;
