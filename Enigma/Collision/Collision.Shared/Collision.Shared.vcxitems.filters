@@ -63,6 +63,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\ContainmentSphere3.hpp">
       <Filter>Containment</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Collision.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\Intersector.cpp">

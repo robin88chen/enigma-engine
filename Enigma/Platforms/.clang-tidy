@@ -1,0 +1,4 @@
+InheritParentConfig: true
+CheckOptions:
+  - key:             cppcoreguidelines-macro-usage.AllowedRegexp
+    value:           DEBUG*|PLATFORM_*|FATAL*|LOG*
