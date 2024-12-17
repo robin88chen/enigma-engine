@@ -226,5 +226,3 @@ CheckOptions:
     value:           lower_case
   - key:             readability-identifier-naming.GlobalVariablePrefix
     value:           g_
-  - key:             cppcoreguidelines-macro-usage.AllowedRegexp
-    value:           DEBUG*|PLATFORM_*

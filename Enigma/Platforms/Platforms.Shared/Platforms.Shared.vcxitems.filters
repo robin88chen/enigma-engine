@@ -7,14 +7,25 @@
     <Filter Include="Debug">
       <UniqueIdentifier>{6671f891-3635-4223-9608-434d38be1279}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{27af973f-f273-4fba-b7c8-da54aff1005c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Module">
+      <UniqueIdentifier>{5736533e-bf35-4c37-90a1-514431081bae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\PlatformConfig.hpp">
       <Filter>Configuration</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\Platforms.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Debug.hpp">
       <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Logger.hpp">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Platforms.hpp">
+      <Filter>Module</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -23,6 +34,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\DebugAndroid.cpp">
       <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Logger.cpp">
+      <Filter>Logger</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

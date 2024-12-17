@@ -15,11 +15,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Debug.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\Logger.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\PlatformConfig.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\Platforms.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\DebugAndroid.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\DebugWin32.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\Logger.cpp" />
   </ItemGroup>
 </Project>
