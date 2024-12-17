@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Module">
+      <UniqueIdentifier>{501bc55b-3599-4662-83e3-59cb42f476a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Errors">
+      <UniqueIdentifier>{3977b760-43e7-4684-a132-46055be8807a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderData">
+      <UniqueIdentifier>{e0be39af-1145-45ea-b220-055fc7ef52b5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetPackage.hpp">
+      <Filter>Module</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetPackageErrors.hpp">
+      <Filter>Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetHeaderDataMap.hpp">
+      <Filter>HeaderData</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\AssetPackageErrors.cpp">
+      <Filter>Errors</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\AssetHeaderDataMap.cpp">
+      <Filter>HeaderData</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
