@@ -10,6 +10,12 @@
     <Filter Include="HeaderData">
       <UniqueIdentifier>{e0be39af-1145-45ea-b220-055fc7ef52b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="NameList">
+      <UniqueIdentifier>{1dd2f82f-d87a-41cf-a1e3-6bdef7e8d27b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PackageFile">
+      <UniqueIdentifier>{e1da5141-bb75-46aa-a093-40df7fd4a72b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetPackage.hpp">
@@ -21,6 +27,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetHeaderDataMap.hpp">
       <Filter>HeaderData</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetNameList.hpp">
+      <Filter>NameList</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetPackageFile.hpp">
+      <Filter>PackageFile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\AssetPackageErrors.cpp">
@@ -28,6 +40,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\AssetHeaderDataMap.cpp">
       <Filter>HeaderData</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\AssetNameList.cpp">
+      <Filter>NameList</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\AssetPackageFile.cpp">
+      <Filter>PackageFile</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

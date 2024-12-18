@@ -12,7 +12,7 @@ AssetHeaderDataMap::AssetHeaderDataMap()
     m_headerDataMap.clear();
 }
 
-AssetHeaderDataMap::~AssetHeaderDataMap()
+AssetHeaderDataMap::~AssetHeaderDataMap() noexcept
 {
     m_headerDataMap.clear();
 }

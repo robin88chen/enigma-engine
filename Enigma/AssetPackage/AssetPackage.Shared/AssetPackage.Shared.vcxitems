@@ -15,11 +15,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetHeaderDataMap.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetNameList.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetPackage.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetPackageErrors.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\AssetPackageFile.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\AssetHeaderDataMap.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\AssetNameList.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\AssetPackageErrors.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\AssetPackageFile.cpp">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
   </ItemGroup>
 </Project>

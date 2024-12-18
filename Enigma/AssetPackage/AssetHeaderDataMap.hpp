@@ -34,7 +34,7 @@ namespace AssetPackage
         AssetHeaderDataMap();
         AssetHeaderDataMap(const AssetHeaderDataMap&) = delete;
         AssetHeaderDataMap(AssetHeaderDataMap&&) = delete;
-        ~AssetHeaderDataMap();
+        ~AssetHeaderDataMap() noexcept;
 
         AssetHeaderDataMap& operator=(const AssetHeaderDataMap&) = delete;
         AssetHeaderDataMap& operator=(AssetHeaderDataMap&&) = delete;
