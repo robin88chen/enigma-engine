@@ -28,7 +28,7 @@ namespace AssetPackage
             unsigned int m_orgSize;
             unsigned int m_offset;
             unsigned int m_crc;
-            AssetHeaderData() : m_name{ "" }, m_version{ 0 }, m_size{ 0 }, m_orgSize{ 0 }, m_offset{ 0 }, m_crc{ 0 } {};
+            AssetHeaderData() : m_version(0), m_size(0), m_orgSize(0), m_offset(0), m_crc(0) {};
         };
     public:
         AssetHeaderDataMap();

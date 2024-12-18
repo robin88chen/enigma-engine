@@ -49,7 +49,7 @@ namespace AssetPackage
     private:
         const static ErrorCategory CATEGORY;
     };
-    extern std::error_code make_error_code(ErrorCode ec);
+    extern std::error_code make_error_code(ErrorCode ec); // NOLINT(readability-identifier-naming)
 }
 
 // let compiler know that ErrorCode is compatible with std::error_code
