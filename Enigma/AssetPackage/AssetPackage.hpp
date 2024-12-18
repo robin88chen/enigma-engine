@@ -1,14 +1,13 @@
 ﻿/*****************************************************************
- * \file   Platforms.hpp
- * \brief  Platforms Module main header
+ * \file   AssetPackage.hpp
+ * \brief
  *
  * \author Lancelot 'Robin' Chen
  * \date   December 2024
  ******************************************************************/
-#ifndef PLATFORMS_MODULE_HPP
-#define PLATFORMS_MODULE_HPP
+#ifndef MODULE_ASSET_PACKAGE_HPP
+#define MODULE_ASSET_PACKAGE_HPP
 
-#include "Debug.hpp"
-#include "Logger.hpp"
+#include "AssetPackageFile.hpp"
 
-#endif // PLATFORMS_MODULE_HPP
+#endif // MODULE_ASSET_PACKAGE_HPP
