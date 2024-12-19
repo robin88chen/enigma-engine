@@ -1,17 +1,24 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Build Engine 👾
-
+name: Manual Build Engine 🐱‍👤
+#get config & platform information
 on:
-  push:
-    tags: 
-      - 'ver-*'
-    #branches: [ "workflow" ]
-  #pull_request:
-    #branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      config:
+        description: 'Configuration of'
+        required: true
+        default: 'Debug'
+        type: choice
+        options:
+          - Debug
+          - Release
+      platform:
+        description: 'Build for platform'
+        required: true
+        default: 'x64'
+        type: choice
+        options:
+          - x64
+          - ARM64
 
 env:
   # Path to the solution file relative to the root of the project.
@@ -28,10 +35,10 @@ permissions:
 jobs:
   build:
     runs-on: windows-latest
-    strategy:
-      matrix:
-        config : [Debug, Release]
-        platform : [x64, ARM64]
+    #strategy:
+    #  matrix:
+    #    config : [Debug, Release]
+    #    platform : [x64, ARM64]
 
     steps:
     - uses: actions/checkout@v4
@@ -47,4 +54,4 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild /m /p:Configuration=${{matrix.config}} /p:platform=${{matrix.platform}} ${{env.SOLUTION_FILE_PATH}}
+      run: msbuild /m /p:Configuration=${{inputs.config}} /p:platform=${{inputs.platform}} ${{env.SOLUTION_FILE_PATH}}

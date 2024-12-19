@@ -1,5 +1,5 @@
 name: Manual Unit Test 📊
-#get log & tags information
+#get test solution
 on:
   workflow_dispatch:
     inputs:
