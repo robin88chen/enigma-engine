@@ -5,7 +5,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalLibraryDirectories>$(EnigmaSourceRoot)$(PlatformTarget)\$(Configuration);$(EnigmaSourceRoot)ShareLib\zlib\prebuilt\$(PlatformTarget)\$(Configuration)Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(EnigmaSourceRoot)$(PlatformTarget)\$(Configuration);$(EnigmaRoot)ShareLib\zlib\prebuilt\$(PlatformTarget)\$(Configuration)Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Math.Win.lib;Collision.Win.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>

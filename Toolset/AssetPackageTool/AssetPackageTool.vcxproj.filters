@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="MainApplication.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="MainForm.cpp">
+      <Filter>MainForm</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="MainForm.hpp">
+      <Filter>MainForm</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Application">
+      <UniqueIdentifier>{bd1e0b1e-2cd1-4a98-b0dc-e3b38dc3da19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainForm">
+      <UniqueIdentifier>{5c001f3c-ee1d-4165-9952-e4b3cd132f29}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
