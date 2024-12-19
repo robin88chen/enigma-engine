@@ -55,3 +55,7 @@ jobs:
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{inputs.config}} /p:platform=${{inputs.platform}} ${{env.SOLUTION_FILE_PATH}}
+    - uses: actions/upload-artifact@v4
+      with:
+        name: build-${{inputs.config}}-${{inputs.platform}}
+        path: ${{env.SOLUTION_FILE_PATH}}/${{inputs.platform}}/${{inputs.config}}/*.[lib,a]
