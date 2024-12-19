@@ -48,3 +48,8 @@ jobs:
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{matrix.config}} /p:platform=${{matrix.platform}} ${{env.SOLUTION_FILE_PATH}}
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Engine-${{matrix.config}}-${{matrix.platform}}
+        path: ${{env.SOLUTION_FILE_PATH}}/${{matrix.platform}}/${{matrix.config}}/*.[lib,a]
