@@ -51,5 +51,5 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: Engine-${{matrix.config}}-${{matrix.platform}}
+        name: Engine-${{github.ref_name}}-${{matrix.config}}-${{matrix.platform}}
         path: ${{env.SOLUTION_FILE_PATH}}/${{matrix.platform}}/${{matrix.config}}/*.[lib,a]
