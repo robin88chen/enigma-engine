@@ -24,6 +24,8 @@ namespace AssetPackageTool
         static nana::color m_menuBarForeground;
         static nana::color m_menuBarSelectBackground;
         static nana::color m_menuBarBorder;
+        static nana::color m_tabBarItemBackground;
+        static nana::color m_tabBarItemBackgroundHighlight;
     };
 }
 #endif // !_VIEWER_COLOR_DEF_H

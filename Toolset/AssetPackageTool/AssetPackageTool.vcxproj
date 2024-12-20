@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssetPackagePanel.cpp" />
     <ClCompile Include="MainApplication.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="menu_skin_renderer.cpp" />
@@ -147,12 +148,15 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SchemeColorDef.cpp" />
+    <ClCompile Include="tabbar_item_skin_renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetPackagePanel.hpp" />
     <ClInclude Include="MainForm.hpp" />
     <ClInclude Include="menu_skin_renderer.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SchemeColorDef.hpp" />
+    <ClInclude Include="tabbar_item_skin_renderer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

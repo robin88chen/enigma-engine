@@ -14,6 +14,12 @@
     <ClCompile Include="menu_skin_renderer.cpp">
       <Filter>widget skin</Filter>
     </ClCompile>
+    <ClCompile Include="AssetPackagePanel.cpp">
+      <Filter>AssetPackagePanel</Filter>
+    </ClCompile>
+    <ClCompile Include="tabbar_item_skin_renderer.cpp">
+      <Filter>widget skin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -24,6 +30,12 @@
       <Filter>SchemeColors</Filter>
     </ClInclude>
     <ClInclude Include="menu_skin_renderer.hpp">
+      <Filter>widget skin</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetPackagePanel.hpp">
+      <Filter>AssetPackagePanel</Filter>
+    </ClInclude>
+    <ClInclude Include="tabbar_item_skin_renderer.hpp">
       <Filter>widget skin</Filter>
     </ClInclude>
   </ItemGroup>
@@ -39,6 +51,9 @@
     </Filter>
     <Filter Include="widget skin">
       <UniqueIdentifier>{0bee057f-adc6-444c-8ad1-070920337e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssetPackagePanel">
+      <UniqueIdentifier>{5c823f3f-99cd-4d7e-860d-79649a23fd3a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

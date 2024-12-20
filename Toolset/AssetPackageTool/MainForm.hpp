@@ -10,9 +10,11 @@
 
 #include <nana/gui.hpp>
 #include <nana/gui/widgets/menubar.hpp>
+#include <nana/gui/widgets/tabbar.hpp>
 
 namespace AssetPackageTool
 {
+    class AssetPackagePanel;
     class MainForm final : public nana::form
     {
     public:
@@ -33,8 +35,8 @@ namespace AssetPackageTool
     private:
         std::shared_ptr<nana::place> m_place;
         std::shared_ptr<nana::menubar> m_menuBar;
-        //nana::tabbar<int>* m_tabbar;
-        //std::vector<AssetPackagePanel*> m_assetPanels;
+        std::shared_ptr<nana::tabbar<int>> m_tabBar;
+        std::vector<std::shared_ptr<AssetPackagePanel>> m_assetPanels;
     };
 }
 

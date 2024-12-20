@@ -6,7 +6,7 @@
   <ItemDefinitionGroup>
     <Link>
       <AdditionalLibraryDirectories>$(EnigmaSourceRoot)$(PlatformTarget)\$(Configuration);$(EnigmaRoot)ShareLib\zlib\prebuilt\$(PlatformTarget)\$(Configuration)Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Math.Win.lib;Collision.Win.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Math.Win.lib;Collision.Win.lib;Platforms.Win.lib;AssetPackage.Win.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>NOMINMAX;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>

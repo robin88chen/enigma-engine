@@ -77,7 +77,7 @@ AssetPackageFile::~AssetPackageFile() noexcept
 std::shared_ptr<AssetPackageFile> AssetPackageFile::createNewPackage(const std::string& base_filename)
 {
     const std::shared_ptr<AssetPackageFile> package = std::shared_ptr<AssetPackageFile>(new AssetPackageFile());
-    const error er = package->createNewPackageImp(base_filename);
+    [[maybe_unused]] const error er = package->createNewPackageImp(base_filename);
     assert(!er);
     return package;
 }
@@ -112,7 +112,7 @@ error AssetPackageFile::createNewPackageImp(const std::string& base_filename)
 std::shared_ptr<AssetPackageFile> AssetPackageFile::openPackage(const std::string& base_filename)
 {
     const std::shared_ptr<AssetPackageFile> package = std::shared_ptr<AssetPackageFile>(new AssetPackageFile());
-    const error er = package->openPackageImp(base_filename);
+    [[maybe_unused]] const error er = package->openPackageImp(base_filename);
     assert(!er);
     return package;
 }
