@@ -8,11 +8,23 @@
     <ClCompile Include="MainForm.cpp">
       <Filter>MainForm</Filter>
     </ClCompile>
+    <ClCompile Include="SchemeColorDef.cpp">
+      <Filter>SchemeColors</Filter>
+    </ClCompile>
+    <ClCompile Include="menu_skin_renderer.cpp">
+      <Filter>widget skin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="MainForm.hpp">
       <Filter>MainForm</Filter>
+    </ClInclude>
+    <ClInclude Include="SchemeColorDef.hpp">
+      <Filter>SchemeColors</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_skin_renderer.hpp">
+      <Filter>widget skin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -21,6 +33,12 @@
     </Filter>
     <Filter Include="MainForm">
       <UniqueIdentifier>{5c001f3c-ee1d-4165-9952-e4b3cd132f29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SchemeColors">
+      <UniqueIdentifier>{d39af7b6-9ae3-4c3f-8ece-94dc337f0ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget skin">
+      <UniqueIdentifier>{0bee057f-adc6-444c-8ad1-070920337e2c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

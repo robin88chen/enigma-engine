@@ -9,25 +9,30 @@
 #define MAIN_FORM_HPP
 
 #include <nana/gui.hpp>
+#include <nana/gui/widgets/menubar.hpp>
 
 namespace AssetPackageTool
 {
-    class MainForm : public nana::form
+    class MainForm final : public nana::form
     {
     public:
         MainForm();
-        virtual ~MainForm();
+        MainForm(const MainForm&) = delete;
+        MainForm& operator=(const MainForm&) = delete;
+        virtual ~MainForm() override;
+        MainForm(MainForm&&) = delete;
+        MainForm& operator=(MainForm&&) = delete;
 
         void initialize();
     private:
-        //void initMenu();
+        void initMenu();
 
-        //void OnCloseCommand(nana::menu::item_proxy& menu_item);
-        //void OnCreatePackage(nana::menu::item_proxy& menu_item);
-        //void OnOpenPackage(nana::menu::item_proxy& menu_item);
+        void onCloseCommand(nana::menu::item_proxy& menu_item);
+        void onCreatePackage(nana::menu::item_proxy& menu_item);
+        void onOpenPackage(nana::menu::item_proxy& menu_item);
     private:
         std::shared_ptr<nana::place> m_place;
-        //nana::menubar* m_menubar;
+        std::shared_ptr<nana::menubar> m_menuBar;
         //nana::tabbar<int>* m_tabbar;
         //std::vector<AssetPackagePanel*> m_assetPanels;
     };
